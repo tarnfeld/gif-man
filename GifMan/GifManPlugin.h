@@ -12,9 +12,6 @@
     
     NSOperationQueue *__skypeOperationQueue;
     NSStatusItem *__statusItem;
-    
-    IMP __originalResourceMethod;
-    IMP __originalPolicyMethod;
 }
 
 + (void)load;
