@@ -422,7 +422,8 @@ SCS.Conversation = function() {
                 _container.append(html);
             }
             if (scroll && atEnd) {
-                self.scrollToEnd();
+                // NEIN NEIN NEIN
+                // self.scrollToEnd();
             }
             return SCS.err.showError(200, "appendItem");
         } else {
