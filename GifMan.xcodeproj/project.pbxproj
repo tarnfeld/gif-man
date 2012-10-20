@@ -158,7 +158,7 @@
 		E23BD3D81633421600D370EF /* Copy Resources */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
-			dstPath = GifMan.SkypeChatStyle/Resources;
+			dstPath = GifMan.SkypeChatStyle/Contents/Resources;
 			dstSubfolderSpec = 16;
 			files = (
 				E23BD43C1633432B00D370EF /* Conversation.html in Copy Resources */,
@@ -169,7 +169,7 @@
 		E23BD43D1633433600D370EF /* Copy CSS */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
-			dstPath = GifMan.SkypeChatStyle/Resources/css;
+			dstPath = GifMan.SkypeChatStyle/Contents/Resources/css;
 			dstSubfolderSpec = 16;
 			files = (
 				E23BD4401633439B00D370EF /* main.css in Copy CSS */,
@@ -180,7 +180,7 @@
 		E23BD43E1633437B00D370EF /* Copy Files */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
-			dstPath = GifMan.SkypeChatStyle;
+			dstPath = GifMan.SkypeChatStyle/Contents;
 			dstSubfolderSpec = 16;
 			files = (
 				E23BD43F1633438300D370EF /* Info.plist in Copy Files */,
@@ -191,7 +191,7 @@
 		E23BD4461633442700D370EF /* Copy Graphics */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
-			dstPath = GifMan.SkypeChatStyle/Resources/gfx;
+			dstPath = GifMan.SkypeChatStyle/Contents/Resources/gfx;
 			dstSubfolderSpec = 16;
 			files = (
 				E23BD4491633445000D370EF /* icon_arrow_down.png in Copy Graphics */,
@@ -217,7 +217,7 @@
 		E23BD4471633443300D370EF /* Copy Javascript */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
-			dstPath = GifMan.SkypeChatStyle/Resources/js;
+			dstPath = GifMan.SkypeChatStyle/Contents/Resources/js;
 			dstSubfolderSpec = 16;
 			files = (
 				E23BD4591633445C00D370EF /* jquery.min.js in Copy Javascript */,
@@ -229,7 +229,7 @@
 		E23BD4481633443A00D370EF /* Copy Templates */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
-			dstPath = GifMan.SkypeChatStyle/Resources/templates;
+			dstPath = GifMan.SkypeChatStyle/Contents/Resources/templates;
 			dstSubfolderSpec = 16;
 			files = (
 				E23BD45B1633446C00D370EF /* Alert.html in Copy Templates */,

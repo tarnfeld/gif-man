@@ -58,7 +58,7 @@
 
 - (void)swizzleRequestMethod
 {
-    NSLog(@"GIFMAN: Replacing skype webkit method to allow requests");
+    NSLog(@"GIFMAN: Replacing skype webkit methods to allow requests");
 
     Class display = NSClassFromString(@"SkypeChatDisplay");
     SEL selector = @selector(webView:resource:willSendRequest:redirectResponse:fromDataSource:);
@@ -66,11 +66,20 @@
     Method newMethod = class_getInstanceMethod(self.class, selector);
     IMP implementation = method_getImplementation(newMethod);
     class_replaceMethod(display, selector, implementation, method_getTypeEncoding(originalMethod));
+    
+    selector = @selector(webView:decidePolicyForNavigationAction:request:frame:decisionListener:);
+    originalMethod = class_getInstanceMethod(display, selector);
+    newMethod = class_getInstanceMethod(self.class, selector);
+    implementation = method_getImplementation(newMethod);
+    class_replaceMethod(display, selector, implementation, method_getTypeEncoding(originalMethod));
 }
 
 - (void)setupStatusItem
 {
-    NSLog(@"Setup status item");
+    NSLog(@"GIFMAN: Setup status item");
+    
+    __statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSSquareStatusItemLength];
+    [__statusItem setTitle:@"HA"];
 }
 
 #pragma mark -
@@ -83,8 +92,36 @@
     return request;
 }
 
+- (void)webView:(WebView *)webView decidePolicyForNavigationAction:(NSDictionary *)actionInformation request:(NSURLRequest *)request frame:(WebFrame *)frame decisionListener:(id)listener
+{
+    NSLog(@"GIFMAN: Replaced webkit decision listener method called");
+    
+    // If it's a file:/// URL we should allow it.
+    // I don't know the exact implementation of the skype app's verison of this method...
+    // ...so i'm just guessing how it'd work.
+    
+    NSURL *url = [request URL];
+    NSString *urlString = [NSString stringWithFormat:@"%@", url];
+    
+    NSRange range = [urlString rangeOfString:@"file:///"];
+    if (range.location != NSNotFound) {
+        [listener use];
+        return;
+    }
+    
+    // Check for youtube
+    range = [urlString rangeOfString:@"youtube.com/embed"];
+    if (range.location != NSNotFound) {
+        [listener use];
+        return;
+    }
+
+    // Otherwise go ahead and open the URL
+    [[NSWorkspace sharedWorkspace] openURL:url];
+}
+
 #pragma mark -
-#pragma mark SkypeAPIDelegate
+#pragma mark ;
 
 - (NSString *)clientApplicationName
 {

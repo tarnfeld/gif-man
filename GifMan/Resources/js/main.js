@@ -14,7 +14,7 @@ if (typeof SCS == "undefined") {
  * @class Construct a new SCS.Identifier object
  * @constructor
  */
-SCS.Identifier = function() {    
+SCS.Identifier = function() {
 
     /**
      * Create 16 character random string to be used as ID
@@ -32,7 +32,7 @@ SCS.Identifier = function() {
         }
         return rndString;
     };
-    
+
     /**
      * Add new ID to an element
      * @param {String} id ID to add to HTML markup first item
@@ -67,7 +67,7 @@ SCS.ErrorHandler = function() {
         "514": "Unknown value",
         "515": "Cocoa display controller dC undefined"
     };
-    
+
     /**
      * Return humanreadable status code description for 200, 510, 511, 512, 513, 514, 515
      * @param {int} code Status code
@@ -106,7 +106,7 @@ SCS.Conversation = function() {
     var self = this;
     var _container;
     var _scrolltimer = false;
-    
+
     /**
      * Conversation init
      * @private
@@ -127,7 +127,7 @@ SCS.Conversation = function() {
             return SCS.err.showError(510, "_init");
         }
     };
-    
+
     /**
      * Check for display controller status
      * @private
@@ -139,7 +139,7 @@ SCS.Conversation = function() {
             return SCS.err.showError(200, "_dc");
         }
     };
-    
+
     /**
      * Shared functions for items
      * @private
@@ -164,7 +164,7 @@ SCS.Conversation = function() {
             return SCS.err.showError(510, "_item");
         }
     };
-    
+
     /**
      * Add link actions to history items
      * @private
@@ -182,7 +182,7 @@ SCS.Conversation = function() {
             return SCS.err.showError(510, "_history");
         }
     };
-    
+
     /**
      * Add play & stop voicemail functionality
      * @private
@@ -192,7 +192,7 @@ SCS.Conversation = function() {
             $(".item.voicemail button").live("click", function() {
                 var $b = $(this);
                 var $vm = $(this).closest(".voicemail");
-                
+
                 // Play/stop voicemail
                 if ($b.hasClass("control")) {
                     var $played = $(".progress", $vm);
@@ -206,7 +206,7 @@ SCS.Conversation = function() {
                         }
                     }
                 }
-                
+
                 // Delete voicemail
                 if ($b.hasClass("delete")) {
                     if (dC.stopVoicemailWithID_($vm.attr("id"))) {
@@ -223,7 +223,7 @@ SCS.Conversation = function() {
             return SCS.err.showError(510, "_voicemail");
         }
     };
-    
+
     /**
      * Message functions
      * @private
@@ -233,39 +233,39 @@ SCS.Conversation = function() {
             $(".item.message button").live("click", function(e) {
                 var $b = $(this);
                 var $m = $(this).closest(".message");
-                
+
                 // Edit message
                 if ($b.hasClass("edit")) {
                     dC.startMessageEditWithID_($m.attr("id"));
                 }
-                
+
                 // Delete message
                 if ($b.hasClass("delete")) {
                     dC.removeMessageWithID_($m.attr("id"));
-                }                
+                }
             });
             $(".item.message.editable").live("mouseover", function() {
                 var $m = $(this);
-                
+
                 // Ask from SkyLib if message is editable and remove editable status if False
                 if (!dC.isMessageEditable_($m.attr("id"))) {
                     $m.removeClass("editable");
                 }
-                
+
             });
             $(".item.message.editable .body").live("dblclick", function(e) {
                 var $m = $(this).closest(".item");
                 if ($m.find(".editMode").length > 0) {
                     return;
                 }
-                
+
                 if (dC.isMessageEditableInline_($m.attr("id"))) {
                     if (dC.startMessageInlineEditWithID_body_($m.attr("id"), $(".body", $m).html())) {
                         self.messageStartInlineEdit($m.attr("id"));
                     }
                 }
             });
-            
+
             // Cancel message editmode on “Escape”
             $(window).bind("keyup", function(e) {
                 if (e.which == 27) {
@@ -276,9 +276,9 @@ SCS.Conversation = function() {
                         }
                     });
                 }
-                
+
             });
-            
+
             // Cancel inline editing if clicked somewhere else on the body
             $("body").bind("click", function(e) {
                 if ($(e.target).hasClass("editMode")) {
@@ -291,7 +291,7 @@ SCS.Conversation = function() {
                     }
                 });
             });
-            
+
             // Save the message on “Enter” and allow line breaks with “Shift-Enter”
             $(".item.message.editable .editMode").live("keydown", function(e) {
                 var $mb = $(this);
@@ -305,20 +305,20 @@ SCS.Conversation = function() {
                     }
                 }
             });
-            
+
             return SCS.err.showError(200, "_message");
         } else {
             return SCS.err.showError(510, "_message");
         }
     };
-    
+
     /**
      * Add file transfer item functionality
      * @private
      */
     this._transfer = function() {
         if (_container.length > 0) {
-            
+
             // Open/close sub transfers in transfer item
             $(".item.transfer .main .name").live("click", function() {
                 var $link = $(this);
@@ -333,7 +333,7 @@ SCS.Conversation = function() {
                     }
                 }
             });
-            
+
             // Icon in transfer
             $(".item.transfer .icon").live("dblclick", function() {
                 var $icon = $(this);
@@ -341,46 +341,46 @@ SCS.Conversation = function() {
                 var $ins = $icon.closest(".instance");
                 dC.doubleClickIconWithID_index_($ft.attr("id"), $(".instance", $ft).index($ins));
             });
-            
+
             // Buttons in transfer item
             $(".item.transfer button").live("click", function() {
                 var $b = $(this);
                 var $ft = $b.closest(".transfer");
                 var $ins = $b.closest(".instance");
-                
+
                 // Accept transfers
                 if ($b.hasClass("accept")) {
                     if (dC.acceptTransferWithID_index_($ft.attr("id"), $(".instance", $ft).index($ins))) {
                         self.transferAccept($ft.attr("id"), $(".instance", $ft).index($ins));
                     }
                 }
-                
+
                 // Decline transfers
                 if ($b.hasClass("decline")) {
                     if (dC.cancelTransferWithID_index_($ft.attr("id"), $(".instance", $ft).index($ins))) {
                         self.transferCancel($ft.attr("id"), $(".instance", $ft).index($ins));
                     }
                 }
-                
+
                 // Cancel running transfers
                 if ($b.hasClass("cancel")) {
                     if (dC.cancelTransferWithID_index_($ft.attr("id"), $(".instance", $ft).index($ins))) {
                         self.transferCancel($ft.attr("id"), $(".instance", $ft).index($ins));
                     }
                 }
-                
+
                 // Delete transfers
                 if ($b.hasClass("delete")) {
                     if (dC.deleteTransferWithID_index_($ft.attr("id"), $(".instance", $ft).index($ins))) {
                         self.transferDelete($ft.attr("id"), $(".instance", $ft).index($ins));
                     }
                 }
-                
+
                 // Quicklook file
                 if ($b.hasClass("quicklook")) {
                     dC.showTransferInQuickLookWithID_index_($ft.attr("id"), $(".instance", $ft).index($ins));
                 }
-                
+
                 // Reveal transfer in Finder
                 if ($b.hasClass("reveal")) {
                     dC.revealTransferInFinderWithID_index_($ft.attr("id"), $(".instance", $ft).index($ins));
@@ -391,7 +391,7 @@ SCS.Conversation = function() {
             return SCS.err.showError(510, "_transfer");
         }
     };
-    
+
     /**
      * Check if current scrollposition is near the bottom of the screen
      * @private
@@ -399,7 +399,7 @@ SCS.Conversation = function() {
     this._nearBottom = function() {
         return (document.body.scrollTop+window.innerHeight >= document.body.offsetHeight-75);
     };
-    
+
     /**
      * Append an item to end of the conversation and add an ID to the item
      * @param {String} html HTML markup of the item to be added
@@ -408,14 +408,17 @@ SCS.Conversation = function() {
      * @type {String}
      * @see #prependItem
      * @see #appendBulk
-     */    
+     */
     this.appendItem = function(html, scroll) {
         if (_container.length > 0) {
+
+            // Inject the embed items
+            html = this._injectEmbedItems(html);
+
             var atEnd = self._nearBottom();
             if ($("#typing").length > 0) {
                 $("#conversation #typing").before(html);
             } else {
-                alert(html);
                 _container.append(html);
             }
             if (scroll && atEnd) {
@@ -432,7 +435,7 @@ SCS.Conversation = function() {
      * @param {String} id ID of item to scroll to
      * @return Response code with description
      * @type {String}
-     */    
+     */
     this.scrollToItem = function(id) {
         if (typeof id == "undefined" || id == "") {
             return SCS.err.showError(513, "scrollToItem");
@@ -449,7 +452,7 @@ SCS.Conversation = function() {
             return SCS.err.showError(510, "scrollToItem");
         }
     };
-    
+
     /**
      * Prepend an item to the beggining of the conversation and add an ID to the item
      * @param {String} html HTML markup of the item to be added
@@ -458,7 +461,7 @@ SCS.Conversation = function() {
      * @type {String}
      * @see #appendItem
      * @see #appendBulk
-     */    
+     */
     this.prependItem = function(html, scroll) {
         if (_container.length > 0) {
             _container.prepend(html);
@@ -470,7 +473,7 @@ SCS.Conversation = function() {
             return SCS.err.showError(510, "prependItem");
         }
     };
-    
+
     /**
      * Append a large chunk of messages at once
      * @param {String} html HTML markup to add as a bulk string
@@ -481,7 +484,7 @@ SCS.Conversation = function() {
      * @type {String}
      * @see #appendItem
      * @see #prependItem
-     */    
+     */
     this.appendBulk = function(html, scroll, origin, location) {
         if (_container.length > 0) {
             var atEnd = self._nearBottom();
@@ -518,7 +521,7 @@ SCS.Conversation = function() {
      * @see #appendItem
      * @see #prependItem
      * @see #appendBulk
-     */    
+     */
     this.removeItem = function(id, scroll) {
         if (typeof id == "undefined" || id == "") {
             return SCS.err.showError(513, "removeItem");
@@ -546,7 +549,7 @@ SCS.Conversation = function() {
      * @param {Boolean} scroll If conversation should scroll to bottom after HTML is added
      * @return Response code with description
      * @type {String}
-     */    
+     */
     this.typingUpdate = function(html, status, scroll) {
         if (_container.length > 0) {
             if (status == "hide" || html == "") {
@@ -565,12 +568,12 @@ SCS.Conversation = function() {
             return SCS.err.showError(510, "typingUpdate");
         }
     };
-    
+
     /**
      * Scroll the conversation all the way to the end
      * @return Response code with description
      * @type {String}
-     */    
+     */
     this.scrollToEnd = function() {
         if (_container.length > 0) {
             window.scrollTo(0,_container.outerHeight());
@@ -579,7 +582,7 @@ SCS.Conversation = function() {
             return SCS.err.showError(510, "scrollToEnd");
         }
     };
-    
+
     /**
      * Accept a transfer
      * @deprecated
@@ -615,7 +618,7 @@ SCS.Conversation = function() {
             return SCS.err.showError(510, "transferAccept");
         }
     };
-    
+
     /**
      * Cancel a transfer
      * @deprecated
@@ -649,7 +652,7 @@ SCS.Conversation = function() {
             return SCS.err.showError(510, "transferCancel");
         }
     };
-    
+
     /**
      * Remove waiting status from a transfer
      * @deprecated
@@ -684,7 +687,7 @@ SCS.Conversation = function() {
         }
     };
 
-        
+
     /**
      * Set transfer position for file transfer
      * @param {String} id ID of item to select
@@ -727,7 +730,7 @@ SCS.Conversation = function() {
             return SCS.err.showError(510, "transferPosition");
         }
     };
-    
+
     /**
      * Complete a transfer
      * @deprecated
@@ -757,7 +760,7 @@ SCS.Conversation = function() {
             return SCS.err.showError(510, "transferComplete");
         }
     };
-    
+
     /**
      * Update transfer status in the head
      * @param {String} id ID of item to select
@@ -789,7 +792,7 @@ SCS.Conversation = function() {
             return SCS.err.showError(510, "transferUpdateHead");
         }
     };
-    
+
     /**
      * Update transfer objects in a transfer item
      * @param {String} id ID of item to select
@@ -820,7 +823,7 @@ SCS.Conversation = function() {
             return SCS.err.showError(510, "transferUpdateStatus");
         }
     };
-    
+
     /**
      * Play a voicemail
      * @param {String} id ID of item to select
@@ -846,7 +849,7 @@ SCS.Conversation = function() {
             return SCS.err.showError(510, "voicemailPlay");
         }
     };
-    
+
     /**
      * Stop a voicemail
      * @param {String} id ID of item to select
@@ -871,7 +874,7 @@ SCS.Conversation = function() {
             return SCS.err.showError(510, "voicemailStop");
         }
     };
-    
+
     /**
      * Set voicemail play progress
      * @param {String} id ID of item to select
@@ -905,7 +908,7 @@ SCS.Conversation = function() {
             return SCS.err.showError(510, "voicemailPosition");
         }
     };
-    
+
     /**
      * Update SMS status
      * @param {String} id ID of item to select
@@ -937,7 +940,7 @@ SCS.Conversation = function() {
             return SCS.err.showError(510, "smsUpdateStatus");
         }
     };
-    
+
     /**
      * Mark message as read (works for both SMS and chat messages)
      * @param {String} id ID of item to select
@@ -959,7 +962,7 @@ SCS.Conversation = function() {
                 } else {
                     $m.removeClass("edited deleted sending").addClass(status);
                 }
-                return SCS.err.showError(200, "messageMarkAs");            
+                return SCS.err.showError(200, "messageMarkAs");
             } else {
                 return SCS.err.showError(511, "messageMarkAs");
             }
@@ -991,7 +994,7 @@ SCS.Conversation = function() {
             return SCS.err.showError(510, "messageEnableEdit");
         }
     };
-    
+
     /**
      * Disable editing a message
      * @param {String} id ID of item to select
@@ -1015,7 +1018,7 @@ SCS.Conversation = function() {
             return SCS.err.showError(510, "messageDisableEdit");
         }
     };
-    
+
     /**
      * Update message contents, used after editing or deleting (=set message content as empty) a message
      * @param {String} id ID of item to select
@@ -1032,6 +1035,7 @@ SCS.Conversation = function() {
         var $m = $("#"+id+"");
         if (_container.length > 0) {
             if ($m.length > 0 && $m.hasClass("message")) {
+
                 if (status != "undefined" && status != null) {
                     self.messageMarkAs(id, status);
                 }
@@ -1041,6 +1045,10 @@ SCS.Conversation = function() {
                 if (time != null) {
                     $(".time", $m).html(time);
                 }
+
+                // Inject the embed items
+                $m = $(this._injectEmbedItems($m[0]));
+
                 return SCS.err.showError(200, "messageUpdate");
             } else {
                 return SCS.err.showError(511, "messageUpdate");
@@ -1049,7 +1057,7 @@ SCS.Conversation = function() {
             return SCS.err.showError(510, "messageUpdate");
         }
     };
-    
+
     /**
      * Toggle message followup status
      * @param {String} id ID of item to select
@@ -1077,7 +1085,7 @@ SCS.Conversation = function() {
             return SCS.err.showError(510, "messageFollowupStatus");
         }
     };
-    
+
     /**
      * Start inline editing of a messsage
      * @param {String} id ID of item to select
@@ -1099,7 +1107,7 @@ SCS.Conversation = function() {
             return SCS.err.showError(510, "messageStartInlineEdit");
         }
     };
-    
+
     /**
      * End inline editing of a messsage
      * @param {String} id ID of item to select
@@ -1121,7 +1129,7 @@ SCS.Conversation = function() {
             return SCS.err.showError(510, "messageEndInlineEdit");
         }
     };
-    
+
     /**
      * Init SCS.Conversation object
      * @return Response code with description
@@ -1138,7 +1146,60 @@ SCS.Conversation = function() {
         self._transfer();
         return SCS.err.showError(200, "init");
     };
-    
+
+    /**
+     * Custom Embed
+     */
+    this._injectEmbedItems = function(html) {
+
+        // Turn it into a jQuery object
+        var html = $(html);
+
+        // Grab all the links
+        var links = $(html).find(".body a");
+
+        // Collect all the link URLs up
+        links.each(function() {
+            var el = $(this),
+                href = $(el).attr("href"),
+                image_url = null,
+                embed_html = null;
+
+            // Check for image extention
+            var images = ["gif", "jpg", "jpeg", "tiff", "png"];
+            var parts = href.split("."), extention = parts[parts.length - 1].toLowerCase();
+            if (images.indexOf(extention) != -1) {
+                image_url = href;
+            }
+
+            // Check for cl.ly
+            var cloudapp = ["sha.gd", "cl.ly", "tfld.me"]; // Nasty.
+            $.each(cloudapp, function(i, domain) {
+                if (href.indexOf(domain) != -1 && href.indexOf("/image") != -1) { // We only care about images
+                    image_url = href + "/content";
+                }
+            });
+
+            if (image_url) {
+                embed_html = "<br /><a href='" + image_url + "'><img src='" + image_url + "' width='200px' onerror='this.parentNode.removeChild(this)' /></a>";
+            }
+
+            if (!embed_html) {
+                if (href.indexOf("?v=") != -1) {
+                    var matches = href.match(/\?v=([a-zA-Z0-9]+)/);
+                    if (matches.length > 1) {
+                        embed_html = "<br /><iframe type='text/html' width='300' height='180' src='http://www.youtube.com/embed/" + matches[1] + "' frameborder='0'></iframe>";
+                    }
+                }
+            }
+
+            if (embed_html) {
+                html.find(".body").append(embed_html);
+            }
+        });
+
+        return html[0];
+     };
 };
 
 /**
