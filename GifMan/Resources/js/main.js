@@ -1181,6 +1181,11 @@ SCS.Conversation = function() {
                 }
             });
 
+            // Check for imgurl
+            if (href.indexOf('imgur.com') != -1) {
+                image_url = href.replace(/^\/|\/$/g, '') + '.png'; // Might not be png, but webkit is clever.
+            }
+
             if (image_url) {
                 embed_html = "<br /><a href='" + image_url + "'><img src='" + image_url + "' width='200px' onerror='this.parentNode.removeChild(this)' /></a>";
             }
