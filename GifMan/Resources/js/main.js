@@ -1220,7 +1220,7 @@ Duedil.embed = {
 
         // Get the file extention
         var parts = link.split("."),
-            extention = parts[parts.length - 1];
+            extention = parts[parts.length - 1].toLowerCase();
 
         // 1) Check for file extentions
         var image_ext = ["jpg", "jpeg", "gif", "png"];
@@ -1241,6 +1241,13 @@ Duedil.embed = {
         // 3) Youtube?
         if (link.indexOf("?v=") != -1) {
             var matches = link.match(/\?v=([a-zA-Z0-9\-]+)/);
+            if (matches.length > 1) {
+                callback("<br /><iframe type='text/html' width='300' height='180' src='http://www.youtube.com/embed/" + matches[1] + "' frameborder='0'></iframe>");
+                return;
+            }
+        }
+        else if (link.indexOf("youtu.be/") != -1) {
+            var matches = link.match(/youtu\.be\/([a-zA-Z0-9\-]+)/);
             if (matches.length > 1) {
                 callback("<br /><iframe type='text/html' width='300' height='180' src='http://www.youtube.com/embed/" + matches[1] + "' frameborder='0'></iframe>");
                 return;
