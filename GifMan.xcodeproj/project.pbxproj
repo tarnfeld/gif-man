@@ -135,6 +135,9 @@
 		E289B25B1631F0AE00412023 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E289B2591631F0AE00412023 /* InfoPlist.strings */; };
 		E289B2671631F0F600412023 /* GifManPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = E289B2661631F0F600412023 /* GifManPlugin.m */; };
 		E289B26D1631F32200412023 /* Skype.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E289B26C1631F32200412023 /* Skype.framework */; };
+		E28BF4ED16344B7F00162986 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E28BF4EC16344B7F00162986 /* WebKit.framework */; };
+		E28BF4F71634516100162986 /* loading.gif in Resources */ = {isa = PBXBuildFile; fileRef = E28BF4F61634516100162986 /* loading.gif */; };
+		E28BF4FA1634529E00162986 /* loading.gif in Copy Graphics */ = {isa = PBXBuildFile; fileRef = E28BF4F61634516100162986 /* loading.gif */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -210,6 +213,7 @@
 				E23BD4561633445000D370EF /* transfer-32.png in Copy Graphics */,
 				E23BD4571633445000D370EF /* transfer-multiple-32.png in Copy Graphics */,
 				E23BD4581633445000D370EF /* typing-16x16-white.gif in Copy Graphics */,
+				E28BF4FA1634529E00162986 /* loading.gif in Copy Graphics */,
 			);
 			name = "Copy Graphics";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -323,6 +327,8 @@
 		E289B2651631F0F600412023 /* GifManPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GifManPlugin.h; sourceTree = "<group>"; };
 		E289B2661631F0F600412023 /* GifManPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GifManPlugin.m; sourceTree = "<group>"; };
 		E289B26C1631F32200412023 /* Skype.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Skype.framework; path = GifMan/Skype.framework; sourceTree = "<group>"; };
+		E28BF4EC16344B7F00162986 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		E28BF4F61634516100162986 /* loading.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = loading.gif; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -330,6 +336,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E28BF4ED16344B7F00162986 /* WebKit.framework in Frameworks */,
 				E289B2511631F0AE00412023 /* Cocoa.framework in Frameworks */,
 				E289B26D1631F32200412023 /* Skype.framework in Frameworks */,
 			);
@@ -388,6 +395,7 @@
 		E23BD3DF163342B900D370EF /* gfx */ = {
 			isa = PBXGroup;
 			children = (
+				E28BF4F61634516100162986 /* loading.gif */,
 				E23BD3E0163342B900D370EF /* icon_arrow_down.png */,
 				E23BD3E1163342B900D370EF /* icon_arrow_right.png */,
 				E23BD3E2163342B900D370EF /* icon_cancel.png */,
@@ -470,6 +478,7 @@
 		E289B24F1631F0AE00412023 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E28BF4EC16344B7F00162986 /* WebKit.framework */,
 				E289B26C1631F32200412023 /* Skype.framework */,
 				E289B2501631F0AE00412023 /* Cocoa.framework */,
 				E289B2521631F0AE00412023 /* Other Frameworks */,
@@ -605,6 +614,7 @@
 				E23BD439163342B900D370EF /* Topic.html in Resources */,
 				E23BD43A163342B900D370EF /* TransferHead.html in Resources */,
 				E23BD43B163342B900D370EF /* Typing.html in Resources */,
+				E28BF4F71634516100162986 /* loading.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -789,6 +799,7 @@
 				E23BD3A1163341A700D370EF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E23BD4761633447E00D370EF /* Build configuration list for PBXAggregateTarget "GifMan" */ = {
 			isa = XCConfigurationList;
@@ -797,6 +808,7 @@
 				E23BD4781633447E00D370EF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E289B2471631F0AE00412023 /* Build configuration list for PBXProject "GifMan" */ = {
 			isa = XCConfigurationList;

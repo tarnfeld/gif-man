@@ -19,5 +19,6 @@
 
 - (void)swizzleRequestMethod;
 - (void)setupStatusItem;
+- (void)statusItemSelected:(id)sender;
 
 @end

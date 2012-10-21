@@ -13,14 +13,14 @@ $r_l_d_: 	rgba(0,0,0,1);
 	-------------
 	Contains many resets, browser fixes and defaults to make life a bit easier.
 	Inspired by the likes of Eric Meyer et al.
-	
-	
+
+
 	Version:	1.8 (a.k.a. Green II)
 	Created:	October 13th, 2010
 	Author:		Maykel Loomans - www.maykelloomans.com
-	
-	
-	Changes:	
+
+
+	Changes:
 	 Since 1.0	Font-shorthand for basic fonts.
 	 Since 1.1	Added input[type=image], input.image
 	 Since 1.2	Added input[type=radio], input.radio
@@ -521,7 +521,7 @@ button:not(.pill) {
   .progressbar .progress.hidden {
     display: none !important; }
 
-/*	Layout 
+/*	Layout
 */
 body {
   position: relative;
@@ -534,6 +534,7 @@ body {
 
 .item {
   clear: left;
+  position: relative;
   border-top: 1px solid #e6e6e6;
   -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.8) inset; }
   .item .container {
@@ -549,7 +550,7 @@ body {
       zoom: 1; }
   .item .head,
   .item .body {
-    padding: 0 0 0 30px; }
+    padding: 0 0 0 10px; }
   .item .head {
     margin: 0 0 5px; }
   .item .avatar {
@@ -567,6 +568,14 @@ body {
     margin-bottom: -4px; }
   .item .icon {
     width: 16px; }
+  .item .loading {
+    width: 16px;
+    height: 16px;
+    background: url(../gfx/loading.gif);
+    display: block;
+    float: right;
+    margin: -18px 4px 0 8px;
+    display: none; }
 
 .message .actions {
   display: none; }
@@ -806,14 +815,14 @@ body {
   &:hover {
   	width: auto !important;
   	overflow: visible;
-  	
+
   	background: rgba(255,255,255,0.9);
-  	
+
   	margin: 0 -5px 0 -2px;
   	padding: 0 5px;
-  	
+
   	@include border-radius(10px);
-  	
+
   	z-index: 30;
   }*/ }
 .transfer .progressbar {

@@ -2,10 +2,13 @@
  * @fileoverview Skype Panamericana Chatstyle main JS library
  * @author Margus Holland (margusholland@me.com)
  * @version 1.0
-*/
-
+ */
 if (typeof SCS == "undefined") {
     var SCS = {};
+}
+
+if (typeof Duedil == "undefined") {
+    var Duedil = {};
 }
 
 /**
@@ -14,7 +17,7 @@ if (typeof SCS == "undefined") {
  * @class Construct a new SCS.Identifier object
  * @constructor
  */
-SCS.Identifier = function() {
+SCS.Identifier = function () {
 
     /**
      * Create 16 character random string to be used as ID
@@ -22,13 +25,13 @@ SCS.Identifier = function() {
      * @return 16 character long alphanumeric string
      * @type {String}
      */
-    var _randomString = function() {
+    var _randomString = function () {
         var chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
         var strLength = 16;
         var rndString = "";
-        for (var i=0; i< strLength; i++) {
+        for (var i = 0; i < strLength; i++) {
             var rnum = Math.floor(Math.random() * chars.length);
-            rndString += chars.substring(rnum, rnum+1);
+            rndString += chars.substring(rnum, rnum + 1);
         }
         return rndString;
     };
@@ -40,11 +43,11 @@ SCS.Identifier = function() {
      * @return HTML with with an ID added to the first element
      * @type {String}
      */
-    this.addId = function(html, id) {
+    this.addId = function (html, id) {
         if (typeof id == "undefined" || id == "") {
             var id = _randomString();
         }
-        $(html).each(function() {
+        $(html).each(function () {
             $html = $(this).attr("id", id);
         });
         return $html.get(0);
@@ -57,7 +60,7 @@ SCS.Identifier = function() {
  * @class Construct a new errorhandler object
  * @constructor
  */
-SCS.ErrorHandler = function() {
+SCS.ErrorHandler = function () {
     var _statuses = {
         "200": "OK",
         "510": "Can’t find conversation",
@@ -75,16 +78,16 @@ SCS.ErrorHandler = function() {
      * @return Status string or false if unknown code
      * @type {String}
      */
-    this.showError = function(code, fname) {
+    this.showError = function (code, fname) {
         var errString = "";
         if (typeof code != "undefined") {
             if (typeof _statuses[code] == "undefined") {
                 return false;
             }
             if (typeof fname != "undefined" && fname != "") {
-                errString = fname + " : " + "["+code+"] " +  _statuses[code];
+                errString = fname + " : " + "[" + code + "] " + _statuses[code];
             } else {
-                errString = "["+code+"] " +  _statuses[code];
+                errString = "[" + code + "] " + _statuses[code];
             }
             if (typeof debug != "undefined" && debug == true) {
                 console.log(errString);
@@ -102,7 +105,7 @@ SCS.ErrorHandler = function() {
  * @class Construct a new SCS.Conversation object
  * @constructor
  */
-SCS.Conversation = function() {
+SCS.Conversation = function () {
     var self = this;
     var _container;
     var _scrolltimer = false;
@@ -111,9 +114,9 @@ SCS.Conversation = function() {
      * Conversation init
      * @private
      */
-    this._init = function() {
+    this._init = function () {
         if (_container.length > 0) {
-            $(window).scroll(function() {
+            $(window).scroll(function () {
                 if (window.scrollY < 11 && _scrolltimer == false) {
                     dC.scrollWindowToTopEvent();
                     _scrolltimer = true;
@@ -132,7 +135,7 @@ SCS.Conversation = function() {
      * Check for display controller status
      * @private
      */
-    this._dc = function() {
+    this._dc = function () {
         if (typeof dC == "undefined") {
             return SCS.err.showError(515, "_dc");
         } else {
@@ -144,15 +147,15 @@ SCS.Conversation = function() {
      * Shared functions for items
      * @private
      */
-    this._item = function() {
+    this._item = function () {
         if (_container.length > 0) {
-            $(".item .head .sender a:not(.profile)").live("click", function(e) {
+            $(".item .head .sender a:not(.profile)").live("click", function (e) {
                 var $a = $(this);
                 // Start private conversation with the contact
                 e.preventDefault();
                 dC.openConversationWithIdentity_($a.attr("href"));
             });
-            $(".item .head .sender img, .item .head .sender span.profile").live("click", function(e) {
+            $(".item .head .sender img, .item .head .sender span.profile").live("click", function (e) {
                 var $i = $(this);
                 // Open profile of the current user
                 if ($i.attr("data-sender")) {
@@ -169,9 +172,9 @@ SCS.Conversation = function() {
      * Add link actions to history items
      * @private
      */
-    this._history = function() {
+    this._history = function () {
         if (_container.length > 0) {
-            $(".item.history a").live("click", function(e) {
+            $(".item.history a").live("click", function (e) {
                 var $a = $(this);
                 var $nt = $(this).closest(".history");
                 e.preventDefault();
@@ -187,9 +190,9 @@ SCS.Conversation = function() {
      * Add play & stop voicemail functionality
      * @private
      */
-    this._voicemail = function() {
+    this._voicemail = function () {
         if (_container.length > 0) {
-            $(".item.voicemail button").live("click", function() {
+            $(".item.voicemail button").live("click", function () {
                 var $b = $(this);
                 var $vm = $(this).closest(".voicemail");
 
@@ -211,7 +214,10 @@ SCS.Conversation = function() {
                 if ($b.hasClass("delete")) {
                     if (dC.stopVoicemailWithID_($vm.attr("id"))) {
                         if (dC.deleteVoicemailWithID_($vm.attr("id"))) {
-                            $vm.animate({"opacity": 0, "height": 0}, 750, function() {
+                            $vm.animate({
+                                "opacity": 0,
+                                "height": 0
+                            }, 750, function () {
                                 $vm.remove();
                             });
                         }
@@ -228,9 +234,9 @@ SCS.Conversation = function() {
      * Message functions
      * @private
      */
-    this._message = function() {
+    this._message = function () {
         if (_container.length > 0) {
-            $(".item.message button").live("click", function(e) {
+            $(".item.message button").live("click", function (e) {
                 var $b = $(this);
                 var $m = $(this).closest(".message");
 
@@ -244,7 +250,7 @@ SCS.Conversation = function() {
                     dC.removeMessageWithID_($m.attr("id"));
                 }
             });
-            $(".item.message.editable").live("mouseover", function() {
+            $(".item.message.editable").live("mouseover", function () {
                 var $m = $(this);
 
                 // Ask from SkyLib if message is editable and remove editable status if False
@@ -253,7 +259,7 @@ SCS.Conversation = function() {
                 }
 
             });
-            $(".item.message.editable .body").live("dblclick", function(e) {
+            $(".item.message.editable .body").live("dblclick", function (e) {
                 var $m = $(this).closest(".item");
                 if ($m.find(".editMode").length > 0) {
                     return;
@@ -267,9 +273,9 @@ SCS.Conversation = function() {
             });
 
             // Cancel message editmode on “Escape”
-            $(window).bind("keyup", function(e) {
+            $(window).bind("keyup", function (e) {
                 if (e.which == 27) {
-                    $(".item .editMode").each(function() {
+                    $(".item .editMode").each(function () {
                         var $m = $(this).closest(".item");
                         if (dC.cancelMessageInlineEditWithID_($m.attr("id"))) {
                             self.messageEndInlineEdit($m.attr("id"));
@@ -280,11 +286,11 @@ SCS.Conversation = function() {
             });
 
             // Cancel inline editing if clicked somewhere else on the body
-            $("body").bind("click", function(e) {
+            $("body").bind("click", function (e) {
                 if ($(e.target).hasClass("editMode")) {
                     return;
                 }
-                $(".item .editMode").each(function() {
+                $(".item .editMode").each(function () {
                     var $m = $(this).closest(".item");
                     if (dC.cancelMessageInlineEditWithID_($m.attr("id"))) {
                         self.messageEndInlineEdit($m.attr("id"));
@@ -293,7 +299,7 @@ SCS.Conversation = function() {
             });
 
             // Save the message on “Enter” and allow line breaks with “Shift-Enter”
-            $(".item.message.editable .editMode").live("keydown", function(e) {
+            $(".item.message.editable .editMode").live("keydown", function (e) {
                 var $mb = $(this);
                 var $m = $mb.closest(".item");
                 if (e.which == 13) {
@@ -316,11 +322,11 @@ SCS.Conversation = function() {
      * Add file transfer item functionality
      * @private
      */
-    this._transfer = function() {
+    this._transfer = function () {
         if (_container.length > 0) {
 
             // Open/close sub transfers in transfer item
-            $(".item.transfer .main .name").live("click", function() {
+            $(".item.transfer .main .name").live("click", function () {
                 var $link = $(this);
                 var $ft = $link.closest(".transfer");
                 if ($(".sub", $ft).length > 0) {
@@ -335,7 +341,7 @@ SCS.Conversation = function() {
             });
 
             // Icon in transfer
-            $(".item.transfer .icon").live("dblclick", function() {
+            $(".item.transfer .icon").live("dblclick", function () {
                 var $icon = $(this);
                 var $ft = $icon.closest(".transfer");
                 var $ins = $icon.closest(".instance");
@@ -343,7 +349,7 @@ SCS.Conversation = function() {
             });
 
             // Buttons in transfer item
-            $(".item.transfer button").live("click", function() {
+            $(".item.transfer button").live("click", function () {
                 var $b = $(this);
                 var $ft = $b.closest(".transfer");
                 var $ins = $b.closest(".instance");
@@ -396,8 +402,8 @@ SCS.Conversation = function() {
      * Check if current scrollposition is near the bottom of the screen
      * @private
      */
-    this._nearBottom = function() {
-        return (document.body.scrollTop+window.innerHeight >= document.body.offsetHeight-75);
+    this._nearBottom = function () {
+        return (document.body.scrollTop + window.innerHeight >= document.body.offsetHeight - 75);
     };
 
     /**
@@ -409,11 +415,9 @@ SCS.Conversation = function() {
      * @see #prependItem
      * @see #appendBulk
      */
-    this.appendItem = function(html, scroll) {
+    this.appendItem = function (html, scroll) {
         if (_container.length > 0) {
-
-            // Inject the embed items
-            html = this._injectEmbedItems(html);
+            html = $(html);
 
             var atEnd = self._nearBottom();
             if ($("#typing").length > 0) {
@@ -425,6 +429,9 @@ SCS.Conversation = function() {
                 // NEIN NEIN NEIN
                 // self.scrollToEnd();
             }
+
+            Duedil.embed.handleMessage(html);
+
             return SCS.err.showError(200, "appendItem");
         } else {
             return SCS.err.showError(510, "appendItem");
@@ -437,14 +444,14 @@ SCS.Conversation = function() {
      * @return Response code with description
      * @type {String}
      */
-    this.scrollToItem = function(id) {
+    this.scrollToItem = function (id) {
         if (typeof id == "undefined" || id == "") {
             return SCS.err.showError(513, "scrollToItem");
         }
         if (_container.length > 0) {
-            var $i = $("#"+id);
+            var $i = $("#" + id);
             if ($i.length > 0) {
-                window.scrollTo(0,$i.get(0).offsetTop);
+                window.scrollTo(0, $i.get(0).offsetTop);
                 return SCS.err.showError(200, "scrollToItem");
             } else {
                 return SCS.err.showError(511, "scrollToItem");
@@ -463,7 +470,7 @@ SCS.Conversation = function() {
      * @see #appendItem
      * @see #appendBulk
      */
-    this.prependItem = function(html, scroll) {
+    this.prependItem = function (html, scroll) {
         if (_container.length > 0) {
             _container.prepend(html);
             if (scroll && self._nearBottom()) {
@@ -486,14 +493,14 @@ SCS.Conversation = function() {
      * @see #appendItem
      * @see #prependItem
      */
-    this.appendBulk = function(html, scroll, origin, location) {
+    this.appendBulk = function (html, scroll, origin, location) {
         if (_container.length > 0) {
             var atEnd = self._nearBottom();
-            if (typeof origin != "undefined" && origin != "" && $("#"+origin).length > 0 && typeof location != "undefined") {
+            if (typeof origin != "undefined" && origin != "" && $("#" + origin).length > 0 && typeof location != "undefined") {
                 if (location == "before") {
-                    $("#conversation #"+origin).before(html);
+                    $("#conversation #" + origin).before(html);
                 } else if (location == "after") {
-                    $("#conversation #"+origin).after(html);
+                    $("#conversation #" + origin).after(html);
                 } else {
                     return SCS.err.showError(514, "appendBulk");
                 }
@@ -523,14 +530,14 @@ SCS.Conversation = function() {
      * @see #prependItem
      * @see #appendBulk
      */
-    this.removeItem = function(id, scroll) {
+    this.removeItem = function (id, scroll) {
         if (typeof id == "undefined" || id == "") {
             return SCS.err.showError(513, "removeItem");
         }
         if (_container.length > 0) {
-            var $i = $("#"+id);
+            var $i = $("#" + id);
             if ($i.length > 0) {
-                $("#"+id).remove();
+                $("#" + id).remove();
                 if (scroll || (self._nearBottom() && scroll != false)) {
                     self.scrollToEnd();
                 }
@@ -551,7 +558,7 @@ SCS.Conversation = function() {
      * @return Response code with description
      * @type {String}
      */
-    this.typingUpdate = function(html, status, scroll) {
+    this.typingUpdate = function (html, status, scroll) {
         if (_container.length > 0) {
             if (status == "hide" || html == "") {
                 $("#typing").addClass("invisible");
@@ -575,9 +582,9 @@ SCS.Conversation = function() {
      * @return Response code with description
      * @type {String}
      */
-    this.scrollToEnd = function() {
+    this.scrollToEnd = function () {
         if (_container.length > 0) {
-            window.scrollTo(0,_container.outerHeight());
+            window.scrollTo(0, _container.outerHeight());
             return SCS.err.showError(200, "scrollToEnd");
         } else {
             return SCS.err.showError(510, "scrollToEnd");
@@ -593,20 +600,20 @@ SCS.Conversation = function() {
      * @type {String}
      * @see #transferCancel
      */
-    this.transferAccept = function(id, index) {
+    this.transferAccept = function (id, index) {
         if (typeof id == "undefined" || id == "") {
             return SCS.err.showError(513, "transferAccept");
         }
         if (_container.length > 0) {
-            var $ft = $("#"+id);
+            var $ft = $("#" + id);
             if ($ft.length > 0) {
                 if (typeof index != "undefined" && typeof index == "number" && index >= 0) {
                     if (index == 0) {
                         $(".instance", $ft).addClass("running");
                         $(".progress", $ft).css("width", "auto");
                     } else {
-                        $(".instance:eq("+index+")", $ft).addClass("running");
-                        $(".progress:eq("+index+")", $ft).css("width", "auto");
+                        $(".instance:eq(" + index + ")", $ft).addClass("running");
+                        $(".progress:eq(" + index + ")", $ft).css("width", "auto");
                     }
                     return SCS.err.showError(200, "transferAccept");
                 } else {
@@ -629,18 +636,18 @@ SCS.Conversation = function() {
      * @type {String}
      * @see #transferAccept
      */
-    this.transferCancel = function(id, index) {
+    this.transferCancel = function (id, index) {
         if (typeof id == "undefined" || id == "") {
             return SCS.err.showError(513, "transferCancel");
         }
         if (_container.length > 0) {
-            var $ft = $("#"+id);
+            var $ft = $("#" + id);
             if ($ft.length > 0) {
                 if (typeof index != "undefined" && typeof index == "number" && index >= 0) {
                     if (index == 0) {
                         $(".instance", $ft).addClass("completed cancelled").removeClass("running waiting");
                     } else {
-                        $(".instance:eq("+index+")", $ft).addClass("completed cancelled").removeClass("running waiting");
+                        $(".instance:eq(" + index + ")", $ft).addClass("completed cancelled").removeClass("running waiting");
                     }
                     return SCS.err.showError(200, "transferCancel");
                 } else {
@@ -663,18 +670,18 @@ SCS.Conversation = function() {
      * @type {String}
      * @see #transferCancel
      */
-    this.transferReady = function(id, index) {
+    this.transferReady = function (id, index) {
         if (typeof id == "undefined" || id == "") {
             return SCS.err.showError(513, "transferReady");
         }
         if (_container.length > 0) {
-            var $ft = $("#"+id);
+            var $ft = $("#" + id);
             if ($ft.length > 0) {
                 if (typeof index != "undefined" && typeof index == "number" && index >= 0) {
                     if (index == 0) {
                         $(".instance", $ft).removeClass("waiting");
                     } else {
-                        $(".instance:eq("+index+")", $ft).removeClass("waiting");
+                        $(".instance:eq(" + index + ")", $ft).removeClass("waiting");
                     }
                     return SCS.err.showError(200, "transferReady");
                 } else {
@@ -699,7 +706,7 @@ SCS.Conversation = function() {
      * @return Response code with description
      * @type {String}
      */
-    this.transferPosition = function(id, index, percentage, text, connecting) {
+    this.transferPosition = function (id, index, percentage, text, connecting) {
         if (typeof id == "undefined" || id == "") {
             return SCS.err.showError(513, "transferPosition");
         }
@@ -714,15 +721,15 @@ SCS.Conversation = function() {
         } else if (percentage < 0) {
             percentage = 0;
         }
-        $ft = $("#"+id+"");
+        $ft = $("#" + id + "");
         if (_container.length > 0) {
-            if ($ft.length > 0 && $(".progress:eq("+index+")", $ft).length > 0 && $(".size:eq("+index+")", $ft).length > 0) {
+            if ($ft.length > 0 && $(".progress:eq(" + index + ")", $ft).length > 0 && $(".size:eq(" + index + ")", $ft).length > 0) {
                 if (typeof connecting == "undefined" || connecting == false) {
-                    $(".progress:eq("+index+")", $ft).removeClass("hidden").css("width", percentage+"%");
+                    $(".progress:eq(" + index + ")", $ft).removeClass("hidden").css("width", percentage + "%");
                 } else {
-                    $(".progress:eq("+index+")", $ft).addClass("hidden").css("width", "");
+                    $(".progress:eq(" + index + ")", $ft).addClass("hidden").css("width", "");
                 }
-                $(".size:eq("+index+")", $ft).html(text);
+                $(".size:eq(" + index + ")", $ft).html(text);
                 return SCS.err.showError(200, "transferPosition");
             } else {
                 return SCS.err.showError(511, "transferPosition");
@@ -740,15 +747,15 @@ SCS.Conversation = function() {
      * @return Response code with description
      * @type {String}
      */
-    this.transferComplete = function(id, index) {
+    this.transferComplete = function (id, index) {
         if (_container.length > 0) {
-            var $ft = $("#"+id);
+            var $ft = $("#" + id);
             if ($ft.length > 0) {
                 if (typeof index != "undefined" && typeof index == "number" && index >= 0) {
                     if (index == 0) {
                         $(".instance", $ft).addClass("completed").removeClass("running");
                     } else {
-                        $(".instance:eq("+index+")", $ft).addClass("completed").removeClass("running");
+                        $(".instance:eq(" + index + ")", $ft).addClass("completed").removeClass("running");
                     }
                     return SCS.err.showError(200, "transferComplete");
                 } else {
@@ -771,11 +778,11 @@ SCS.Conversation = function() {
      * @return Response code with description
      * @type {String}
      */
-    this.transferUpdateHead = function(id, index, status, text) {
+    this.transferUpdateHead = function (id, index, status, text) {
         if (typeof id == "undefined" || id == "") {
             return SCS.err.showError(513, "transferUpdateHead");
         }
-        var $ft = $("#"+id+"");
+        var $ft = $("#" + id + "");
         if (typeof text == "undefined") {
             text = "";
         }
@@ -783,8 +790,8 @@ SCS.Conversation = function() {
             return SCS.err.showError(512, "transferUpdateHead");
         }
         if (_container.length > 0) {
-            if ($ft.length > 0 && $(".time:eq("+index+")", $ft).length > 0) {
-                $(".time:eq("+index+")", $ft).removeClass("cancelled rejected sending sent missing").addClass(status).html(text);
+            if ($ft.length > 0 && $(".time:eq(" + index + ")", $ft).length > 0) {
+                $(".time:eq(" + index + ")", $ft).removeClass("cancelled rejected sending sent missing").addClass(status).html(text);
                 return SCS.err.showError(200, "transferUpdateHead");
             } else {
                 return SCS.err.showError(511, "transferUpdateHead");
@@ -802,11 +809,11 @@ SCS.Conversation = function() {
      * @return Response code with description
      * @type {String}
      */
-    this.transferUpdateStatus = function(id, index, status) {
+    this.transferUpdateStatus = function (id, index, status) {
         if (typeof id == "undefined" || id == "") {
             return SCS.err.showError(513, "transferUpdateStatus");
         }
-        var $ft = $("#"+id+"");
+        var $ft = $("#" + id + "");
         if (typeof text == "undefined") {
             text = "";
         }
@@ -814,8 +821,8 @@ SCS.Conversation = function() {
             return SCS.err.showError(512, "transferUpdateStatus");
         }
         if (_container.length > 0) {
-            if ($ft.length > 0 && $(".instance:eq("+index+")", $ft).length > 0) {
-                $(".instance:eq("+index+")", $ft).removeClass("waiting running connecting completed cancelled failed missing").addClass(status);
+            if ($ft.length > 0 && $(".instance:eq(" + index + ")", $ft).length > 0) {
+                $(".instance:eq(" + index + ")", $ft).removeClass("waiting running connecting completed cancelled failed missing").addClass(status);
                 return SCS.err.showError(200, "transferUpdateStatus");
             } else {
                 return SCS.err.showError(511, "transferUpdateStatus");
@@ -832,11 +839,11 @@ SCS.Conversation = function() {
      * @type {String}
      * @see #voicemailStop
      */
-    this.voicemailPlay = function(id) {
+    this.voicemailPlay = function (id) {
         if (typeof id == "undefined" || id == "") {
             return SCS.err.showError(513, "voicemailPlay");
         }
-        var $vm = $("#"+id+"");
+        var $vm = $("#" + id + "");
         if (_container.length > 0) {
             if ($vm.length > 0) {
                 $vm.removeClass("new");
@@ -858,15 +865,15 @@ SCS.Conversation = function() {
      * @type {String}
      * @see #voicemailPlay
      */
-    this.voicemailStop = function(id) {
+    this.voicemailStop = function (id) {
         if (typeof id == "undefined" || id == "") {
             return SCS.err.showError(513, "voicemailStop");
         }
-        var $vm = $("#"+id+"");
+        var $vm = $("#" + id + "");
         if (_container.length > 0) {
             if ($vm.length > 0) {
                 $(".control", $vm).removeClass("stop").addClass("play");
-                $(".progress", $vm).addClass("hidden").css("width","");
+                $(".progress", $vm).addClass("hidden").css("width", "");
                 return SCS.err.showError(200, "voicemailStop");
             } else {
                 return SCS.err.showError(511, "voicemailStop");
@@ -884,7 +891,7 @@ SCS.Conversation = function() {
      * @return Response code with description
      * @type {String}
      */
-    this.voicemailPosition = function(id, percentage, time) {
+    this.voicemailPosition = function (id, percentage, time) {
         if (typeof id == "undefined" || id == "") {
             return SCS.err.showError(513, "voicemailPosition");
         }
@@ -896,10 +903,10 @@ SCS.Conversation = function() {
         } else if (percentage < 0) {
             percentage = 0;
         }
-        var $vm = $("#"+id+"");
+        var $vm = $("#" + id + "");
         if (_container.length > 0) {
             if ($vm.length > 0 && $(".progress", $vm).length > 0 && $(".played", $vm).length > 0) {
-                $(".progress", $vm).removeClass("hidden").css("width", percentage+"%");
+                $(".progress", $vm).removeClass("hidden").css("width", percentage + "%");
                 $(".played", $vm).html(time);
                 return SCS.err.showError(200, "voicemailPosition");
             } else {
@@ -919,11 +926,11 @@ SCS.Conversation = function() {
      * @return Response code with description
      * @type {String}
      */
-    this.smsUpdateStatus = function(id, index, status, text) {
+    this.smsUpdateStatus = function (id, index, status, text) {
         if (typeof id == "undefined" || id == "") {
             return SCS.err.showError(513, "smsUpdateStatus");
         }
-        var $s = $("#"+id+"");
+        var $s = $("#" + id + "");
         if (typeof text == "undefined") {
             text = "";
         }
@@ -931,8 +938,8 @@ SCS.Conversation = function() {
             return SCS.err.showError(512, "smsUpdateStatus");
         }
         if (_container.length > 0) {
-            if ($s.length > 0 && $(".time:eq("+index+")", $s).length > 0) {
-                $(".time:eq("+index+")", $s).removeClass("failed sending sent").addClass(status).html(text);
+            if ($s.length > 0 && $(".time:eq(" + index + ")", $s).length > 0) {
+                $(".time:eq(" + index + ")", $s).removeClass("failed sending sent").addClass(status).html(text);
                 return SCS.err.showError(200, "smsUpdateStatus");
             } else {
                 return SCS.err.showError(511, "smsUpdateStatus");
@@ -949,11 +956,11 @@ SCS.Conversation = function() {
      * @return Response code with description
      * @type {String}
      */
-    this.messageMarkAs = function(id, status) {
+    this.messageMarkAs = function (id, status) {
         if (typeof id == "undefined" || id == "") {
             return SCS.err.showError(513, "messageMarkAs");
         }
-        var $m = $("#"+id+"");
+        var $m = $("#" + id + "");
         if (_container.length > 0) {
             if ($m.length > 0) {
                 if (status == "read") {
@@ -979,11 +986,11 @@ SCS.Conversation = function() {
      * @type {String}
      * @see #messageDisableEdit
      */
-    this.messageEnableEdit = function(id) {
+    this.messageEnableEdit = function (id) {
         if (typeof id == "undefined" || id == "") {
             return SCS.err.showError(513, "messageEnableEdit");
         }
-        var $m = $("#"+id+"");
+        var $m = $("#" + id + "");
         if (_container.length > 0) {
             if ($m.length > 0) {
                 $m.addClass("editable");
@@ -1003,11 +1010,11 @@ SCS.Conversation = function() {
      * @type {String}
      * @see #messageEnableEdit
      */
-    this.messageDisableEdit = function(id) {
+    this.messageDisableEdit = function (id) {
         if (typeof id == "undefined" || id == "") {
             return SCS.err.showError(513, "messageDisableEdit");
         }
-        var $m = $("#"+id+"");
+        var $m = $("#" + id + "");
         if (_container.length > 0) {
             if ($m.length > 0) {
                 $m.removeClass("editable");
@@ -1029,11 +1036,11 @@ SCS.Conversation = function() {
      * @return Response code with description
      * @type {String}
      */
-    this.messageUpdate = function(id, message, time, status) {
+    this.messageUpdate = function (id, message, time, status) {
         if (typeof id == "undefined" || id == "") {
             return SCS.err.showError(513, "messageUpdate");
         }
-        var $m = $("#"+id+"");
+        var $m = $("#" + id + "");
         if (_container.length > 0) {
             if ($m.length > 0 && $m.hasClass("message")) {
 
@@ -1047,8 +1054,7 @@ SCS.Conversation = function() {
                     $(".time", $m).html(time);
                 }
 
-                // Inject the embed items
-                $m = $(this._injectEmbedItems($m[0]));
+                Duedil.embed.handleMessage($m);
 
                 return SCS.err.showError(200, "messageUpdate");
             } else {
@@ -1066,11 +1072,11 @@ SCS.Conversation = function() {
      * @return Response code with description
      * @type {String}
      */
-    this.messageFollowupStatus = function(id, followup) {
+    this.messageFollowupStatus = function (id, followup) {
         if (typeof id == "undefined" || id == "") {
             return SCS.err.showError(513, "messageFollowupStatus");
         }
-        var $m = $("#"+id+"");
+        var $m = $("#" + id + "");
         if (_container.length > 0) {
             if ($m.length > 0 && $m.hasClass("message")) {
                 if (followup == false) {
@@ -1092,11 +1098,11 @@ SCS.Conversation = function() {
      * @param {String} id ID of item to select
      * @type {String}
      */
-    this.messageStartInlineEdit = function(id) {
+    this.messageStartInlineEdit = function (id) {
         if (typeof id == "undefined" || id == "") {
             return SCS.err.showError(513, "messageStartInlineEdit");
         }
-        var $m = $("#"+id+"");
+        var $m = $("#" + id + "");
         if (_container.length > 0) {
             if ($m.length > 0 && $m.hasClass("message")) {
                 $m.find(".body").attr("contentEditable", "true").addClass("editMode");
@@ -1114,11 +1120,11 @@ SCS.Conversation = function() {
      * @param {String} id ID of item to select
      * @type {String}
      */
-    this.messageEndInlineEdit = function(id) {
+    this.messageEndInlineEdit = function (id) {
         if (typeof id == "undefined" || id == "") {
             return SCS.err.showError(513, "messageEndInlineEdit");
         }
-        var $m = $("#"+id+"");
+        var $m = $("#" + id + "");
         if (_container.length > 0) {
             if ($m.length > 0 && $m.hasClass("message")) {
                 $m.find(".body").attr("contentEditable", "false").removeClass("editMode");
@@ -1136,7 +1142,7 @@ SCS.Conversation = function() {
      * @return Response code with description
      * @type {String}
      */
-    this.init = function() {
+    this.init = function () {
         _container = $("#conversation");
         self._dc();
         self._init();
@@ -1147,65 +1153,6 @@ SCS.Conversation = function() {
         self._transfer();
         return SCS.err.showError(200, "init");
     };
-
-    /**
-     * Custom Embed
-     */
-    this._injectEmbedItems = function(html) {
-
-        // Turn it into a jQuery object
-        var html = $(html);
-
-        // Grab all the links
-        var links = $(html).find(".body a");
-
-        // Collect all the link URLs up
-        links.each(function() {
-            var el = $(this),
-                href = $(el).attr("href"),
-                image_url = null,
-                embed_html = null;
-
-            // Check for image extention
-            var images = ["gif", "jpg", "jpeg", "tiff", "png"];
-            var parts = href.split("."), extention = parts[parts.length - 1].toLowerCase();
-            if (images.indexOf(extention) != -1) {
-                image_url = href;
-            }
-
-            // Check for cl.ly
-            var cloudapp = ["sha.gd", "cl.ly", "tfld.me"]; // Nasty.
-            $.each(cloudapp, function(i, domain) {
-                if (href.indexOf(domain) != -1 && href.indexOf("/image") != -1) { // We only care about images
-                    image_url = href + "/content";
-                }
-            });
-
-            // Check for imgurl
-            if (href.indexOf('imgur.com') != -1) {
-                image_url = href.replace(/^\/|\/$/g, '') + '.png'; // Might not be png, but webkit is clever.
-            }
-
-            if (image_url) {
-                embed_html = "<br /><a href='" + image_url + "'><img src='" + image_url + "' width='200px' onerror='this.parentNode.removeChild(this)' /></a>";
-            }
-
-            if (!embed_html) {
-                if (href.indexOf("?v=") != -1) {
-                    var matches = href.match(/\?v=([a-zA-Z0-9]+)/);
-                    if (matches.length > 1) {
-                        embed_html = "<br /><iframe type='text/html' width='300' height='180' src='http://www.youtube.com/embed/" + matches[1] + "' frameborder='0'></iframe>";
-                    }
-                }
-            }
-
-            if (embed_html) {
-                html.find(".body").append(embed_html);
-            }
-        });
-
-        return html[0];
-     };
 };
 
 /**
@@ -1226,6 +1173,90 @@ SCS.conv = new SCS.Conversation();
  */
 SCS.err = new SCS.ErrorHandler();
 
-$(document).ready(function() {
+/**
+ * Wrap all of the embed logic in a helpful object
+ * @private
+ */
+Duedil.embed = {
+
+    EMBED_TYPE_YT: 'youtube', // Youtube video
+    EMBED_TYPE_IMG: 'image', // Image
+
+    // Handle a message
+    handleMessage: function (message) {
+        message = $(message);
+
+        // Find any links
+        var links = $(".body a", message),
+            pending = 0;
+        if (links.length > 0) {
+            $(".loading", message).show();
+
+            links.each(function () {
+                var el = $(this),
+                    href = $(el).attr("href");
+
+                // Skip quotes
+                var start = $(el).parent().text().substr(0, 2);
+                if (start.substr(0, 1) == '>' || start == 'On') {
+                    return;
+                }
+
+                pending++;
+                Duedil.embed._embedLink(href, function (html) {
+                    pending--;
+
+                    $(".body", message).append(html);
+                    if (pending == 0) {
+                        $(".loading", message).hide();
+                    }
+                });
+            });
+        }
+    },
+
+    _embedLink: function (link, callback) {
+
+        // Get the file extention
+        var parts = link.split("."),
+            extention = parts[parts.length - 1];
+
+        // 1) Check for file extentions
+        var image_ext = ["jpg", "jpeg", "gif", "png"];
+        if (image_ext.indexOf(extention) != -1) {
+            callback("<br /><a href='" + link + "'><img src='" + link + "' width='300px' onerror='this.parentNode.removeChild(this)' /></a>");
+            return;
+        }
+
+        // 2) Cloudapp
+        var cloudapp_domains = ['sha.gd', 'cl.ly', 'tfld.me'];
+        for (var x = 0; x < cloudapp_domains.length; x++) {
+            if (link.indexOf(cloudapp_domains[x]) != -1) {
+                callback("<br /><a href='" + link + "'><img src='" + link + "/content' width='300px' onerror='this.parentNode.removeChild(this)' /></a>");
+                return;
+            }
+        }
+
+        // 3) Youtube?
+        if (link.indexOf("?v=") != -1) {
+            var matches = link.match(/\?v=([a-zA-Z0-9\-]+)/);
+            if (matches.length > 1) {
+                callback("<br /><iframe type='text/html' width='300' height='180' src='http://www.youtube.com/embed/" + matches[1] + "' frameborder='0'></iframe>");
+                return;
+            }
+        }
+
+        // 4) Imgur.com
+        if (link.indexOf("imgur.com") != -1) {
+            callback("<br /><a href='" + link + "'><img src='" + link + ".jpg' width='300px' onerror='this.parentNode.removeChild(this)' /></a>");
+            return;
+        }
+
+        // ...
+        callback(null);
+    }
+};
+
+$(document).ready(function () {
     SCS.conv.init();
 });
