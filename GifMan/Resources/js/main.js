@@ -1190,7 +1190,6 @@ Duedil.embed = {
         var links = $(".body a", message),
             pending = 0;
         if (links.length > 0) {
-            $(".loading", message).show();
 
             links.each(function () {
                 var el = $(this),
@@ -1201,6 +1200,8 @@ Duedil.embed = {
                 if (start.substr(0, 1) == '>' || start == 'On') {
                     return;
                 }
+                       
+                $(".loading", message).show();
 
                 pending++;
                 Duedil.embed._embedLink(href, function (html) {
