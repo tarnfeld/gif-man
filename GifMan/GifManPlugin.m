@@ -76,10 +76,10 @@
 
 - (void)setupStatusItem
 {
-    __statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSSquareStatusItemLength];
-    [__statusItem setTitle:@"HA"];
-    [__statusItem setTarget:self];
-    [__statusItem setAction:@selector(statusItemSelected:)];
+//    __statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSSquareStatusItemLength];
+//    [__statusItem setTitle:@"HA"];
+//    [__statusItem setTarget:self];
+//    [__statusItem setAction:@selector(statusItemSelected:)];
 }
      
 - (void)statusItemSelected:(id)sender
