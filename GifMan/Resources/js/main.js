@@ -427,7 +427,7 @@ SCS.Conversation = function () {
             }
             if (scroll && atEnd) {
                 // NEIN NEIN NEIN
-                // self.scrollToEnd();
+                self.scrollToEnd();
             }
 
             Duedil.embed.handleMessage(html);
@@ -1186,6 +1186,11 @@ Duedil.embed = {
     handleMessage: function (message) {
         message = $(message);
 
+        // We only care about unread messages!
+        if (message.hasClass("read")) {
+            return;
+        }
+
         // Find any links
         var links = $(".body a", message),
             pending = 0;
@@ -1200,7 +1205,7 @@ Duedil.embed = {
                 if (start.substr(0, 1) == '>' || start == 'On') {
                     return;
                 }
-                       
+
                 $(".loading", message).show();
 
                 pending++;
@@ -1218,6 +1223,16 @@ Duedil.embed = {
 
     _embedLink: function (link, callback) {
 
+        // Handle the link itself
+        if (Duedil.embed._matchLink(link, callback)) {
+            return;
+        }
+
+        callback(null);
+    },
+
+    _matchLink: function (link, callback) {
+
         // Get the file extention
         var parts = link.split("."),
             extention = parts[parts.length - 1].toLowerCase();
@@ -1225,43 +1240,93 @@ Duedil.embed = {
         // 1) Check for file extentions
         var image_ext = ["jpg", "jpeg", "gif", "png"];
         if (image_ext.indexOf(extention) != -1) {
-            callback("<br /><a href='" + link + "'><img src='" + link + "' width='300px' onerror='this.parentNode.removeChild(this)' /></a>");
-            return;
+            callback("<br /><a href='" + Duedil.embed._clean(link) + "'><img src='" + Duedil.embed._clean(link) + "' width='300px' onerror='this.parentNode.removeChild(this)' /></a>");
+            return true;
         }
 
         // 2) Cloudapp
         var cloudapp_domains = ['sha.gd', 'cl.ly', 'tfld.me'];
         for (var x = 0; x < cloudapp_domains.length; x++) {
             if (link.indexOf(cloudapp_domains[x]) != -1) {
-                callback("<br /><a href='" + link + "'><img src='" + link + "/content' width='300px' onerror='this.parentNode.removeChild(this)' /></a>");
-                return;
+                callback("<br /><a href='" + Duedil.embed._clean(link) + "'><img src='" + Duedil.embed._clean(link) + "/content' width='300px' onerror='this.parentNode.removeChild(this)' /></a>");
+                return true;
             }
         }
 
         // 3) Youtube?
         if (link.indexOf("?v=") != -1) {
-            var matches = link.match(/\?v=([a-zA-Z0-9\-]+)/);
+            var matches = link.match(/\?v=([a-zA-Z0-9\-_]+)/);
             if (matches.length > 1) {
-                callback("<br /><iframe type='text/html' width='300' height='180' src='http://www.youtube.com/embed/" + matches[1] + "' frameborder='0'></iframe>");
-                return;
+                callback("<br /><iframe type='text/html' width='300' height='180' src='http://www.youtube.com/embed/" + Duedil.embed._clean(matches[1]) + "' frameborder='0'></iframe>");
+                return true;
             }
         }
         else if (link.indexOf("youtu.be/") != -1) {
-            var matches = link.match(/youtu\.be\/([a-zA-Z0-9\-]+)/);
+            var matches = link.match(/youtu\.be\/([a-zA-Z0-9\-_]+)/);
             if (matches.length > 1) {
-                callback("<br /><iframe type='text/html' width='300' height='180' src='http://www.youtube.com/embed/" + matches[1] + "' frameborder='0'></iframe>");
-                return;
+                callback("<br /><iframe type='text/html' width='300' height='180' src='http://www.youtube.com/embed/" + Duedil.embed._clean(matches[1]) + "' frameborder='0'></iframe>");
+                return true;
             }
         }
 
         // 4) Imgur.com
         if (link.indexOf("imgur.com") != -1) {
-            callback("<br /><a href='" + link + "'><img src='" + link + ".jpg' width='300px' onerror='this.parentNode.removeChild(this)' /></a>");
-            return;
+            callback("<br /><a href='" + Duedil.embed._clean(link) + "'><img src='" + Duedil.embed._clean(link) + ".jpg' width='300px' onerror='this.parentNode.removeChild(this)' /></a>");
+            return true;
         }
 
-        // ...
-        callback(null);
+        // 5) i.jpg.to
+        if (link.indexOf("i.jpg.to") != -1) {
+            callback("<br /><a href='" + Duedil.embed._clean(link) + "'><img src='" + Duedil.embed._clean(link) + "' width='300px' onerror='this.parentNode.removeChild(this)' /></a>");
+            return true;
+        }
+
+        // 6) Twitpic
+        if (link.indexOf("twitpic") != -1) {
+            $.ajax({
+                url: link,
+                type: "GET",
+                error: function() {
+                    callback(null);
+                },
+                success: function(data) {
+                    var image = $("#media img[alt]", data);
+                    if (!!image && image.attr("src")) {
+                        var source = image.attr("src");
+                        callback("<br /><a href='" + Duedil.embed._clean(link) + "'><img src='" + Duedil.embed._clean(source) + "' width='300px' onerror='this.parentNode.removeChild(this)' /></a>");
+                    }
+                    else {
+                        callback(null);
+                    }
+                }
+            });
+
+            return true;
+        }
+
+        // 7) jpg.to links
+        if (link.indexOf('jpg.to') != -1) {
+            $.ajax({
+                url: link,
+                type: "GET",
+                error: function() {
+                    callback("haahahah");
+                },
+                success: function(data) {
+                    var image = $("img", data),
+                        source = image.attr("src");
+                    callback("<br /><a href='" + Duedil.embed._clean(link) + "'><img src='" + Duedil.embed._clean(source) + "' width='300px' onerror='this.parentNode.removeChild(this)' /></a>");
+                }
+            });
+
+            return true;
+        }
+
+        return false;
+    },
+
+    _clean: function(text) {
+        return $("<p>").text(text).html();
     }
 };
 
