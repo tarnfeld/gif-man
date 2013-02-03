@@ -17,8 +17,4 @@
 + (void)load;
 + (GifManPlugin *)sharedPlugin;
 
-- (void)swizzleRequestMethod;
-- (void)setupStatusItem;
-- (void)statusItemSelected:(id)sender;
-
 @end
