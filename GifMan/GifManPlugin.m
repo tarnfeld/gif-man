@@ -7,6 +7,7 @@
 //
 
 #import "GifManPlugin.h"
+#import "GifManKVStore.h"
 
 #import <objc/runtime.h>
 #import <objc/message.h>
@@ -81,6 +82,14 @@
 
 - (NSURLRequest *)webView:(WebView *)sender resource:(id)identifier willSendRequest:(NSURLRequest *)request redirectResponse:(NSURLResponse *)redirectResponse fromDataSource:(WebDataSource *)dataSource
 {
+    static GifManKVStore *store;
+    if (!store) {
+        store = [[GifManKVStore alloc] init];
+    }
+    
+    WebScriptObject *script = [sender windowScriptObject];
+    [script setValue:store forKey:@"GifManKVStore"];
+    
     return request;
 }
 

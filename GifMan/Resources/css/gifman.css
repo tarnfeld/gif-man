@@ -9,8 +9,9 @@
 
 .gifman-toggle-wrapper {
   position: fixed;
-  left: 10px;
-  bottom: 10px;
+  z-index: 100;
+  top: 10px;
+  right: 10px;
   width: 100px;
 
   padding: 5px 10px;

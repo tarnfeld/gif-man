@@ -11,7 +11,7 @@ if (typeof SCS == "undefined") {
 }
 
 // Conversation
-GifMan.Conversation = function (api) {
+GifMan.Conversation = function (api, kvStore) {
     var self = this,
         CHECK_INTERVAL = 100, // Time between checks for changes
         _container;
@@ -30,7 +30,7 @@ GifMan.Conversation = function (api) {
 
     // Parse a message and handle any embedding
     this._parseMessage = function (message) {
-      if ($(message).hasClass("loading") || $(message).hasClass("loaded")) return;
+      if ($(message).hasClass("loading") || $(message).hasClass("loaded") || !kvStore.get("embed_enabled")) return;
 
       var links = $(".body a", message);
       if (links.length > 0) {
@@ -155,6 +155,19 @@ GifMan.Conversation = function (api) {
       });
     };
 
+    // Enable
+    this._enableEmbed = function () {
+      kvStore.set(true, "embed_enabled");
+
+      $(".gifman-embed", _container).show();
+    };
+
+    this._disableEmbed = function () {
+      kvStore.set(false, "embed_enabled");
+
+      $(".gifman-embed", _container).hide();
+    }
+
     // Init Method
     this._init = function () {
         _container = $("#container");
@@ -166,8 +179,18 @@ GifMan.Conversation = function (api) {
        $(".gifman-toggle", _container)
           .switcher()
           .on("switch", function() {
-              alert("persist!");
+              if ($(this).data("switcher").isOn()) {
+                self._enableEmbed();
+              }
+              else {
+                self._disableEmbed();
+              }
           });
+
+        // Keep the toggle up to date
+        setInterval(function() {
+          $(".gifman-toggle", _container).data("switcher").update(!!kvStore.get("embed_enabled"), false);
+        }, 500);
     };
 
     // Fire away!
@@ -175,5 +198,5 @@ GifMan.Conversation = function (api) {
 };
 
 $(function() {
-  var conversation = new GifMan.Conversation(SCS.conv);
+  var conversation = new GifMan.Conversation(SCS.conv, window.GifManKVStore);
 });

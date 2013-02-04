@@ -117,6 +117,7 @@
 		E2F30C1D16BF0D2500D1A69D /* typing-16x16-white@2x.gif in Copy Graphics */ = {isa = PBXBuildFile; fileRef = E2F30B9E16BF0BA000D1A69D /* typing-16x16-white@2x.gif */; };
 		E2F30C2116BF287500D1A69D /* jquery-switcher.css in Copy CSS */ = {isa = PBXBuildFile; fileRef = E2F30C1E16BF192200D1A69D /* jquery-switcher.css */; };
 		E2F30C2216BF287E00D1A69D /* switcher.plugin.min.js in Copy Javascript */ = {isa = PBXBuildFile; fileRef = E2F30C1F16BF192B00D1A69D /* switcher.plugin.min.js */; };
+		E2F30C2516BF2B5100D1A69D /* GifManKVStore.m in Sources */ = {isa = PBXBuildFile; fileRef = E2F30C2416BF2B5100D1A69D /* GifManKVStore.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -361,6 +362,8 @@
 		E2F30C1E16BF192200D1A69D /* jquery-switcher.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = "jquery-switcher.css"; sourceTree = "<group>"; };
 		E2F30C1F16BF192B00D1A69D /* switcher.plugin.min.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = switcher.plugin.min.js; sourceTree = "<group>"; };
 		E2F30C2016BF1F1700D1A69D /* Example.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Example.html; sourceTree = "<group>"; };
+		E2F30C2316BF2B5100D1A69D /* GifManKVStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GifManKVStore.h; sourceTree = "<group>"; };
+		E2F30C2416BF2B5100D1A69D /* GifManKVStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GifManKVStore.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -383,6 +386,8 @@
 				E289B2571631F0AE00412023 /* Supporting Files */,
 				E289B2651631F0F600412023 /* GifManPlugin.h */,
 				E289B2661631F0F600412023 /* GifManPlugin.m */,
+				E2F30C2316BF2B5100D1A69D /* GifManKVStore.h */,
+				E2F30C2416BF2B5100D1A69D /* GifManKVStore.m */,
 			);
 			name = "SIMBL Bundle";
 			sourceTree = "<group>";
@@ -640,6 +645,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E289B2671631F0F600412023 /* GifManPlugin.m in Sources */,
+				E2F30C2516BF2B5100D1A69D /* GifManKVStore.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
