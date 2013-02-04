@@ -19,10 +19,19 @@
 @interface GifManPlugin ()
 
 - (void)swizzleWebkitMethods;
+- (NSArray *)_webView:(WebView *)webView contextMenuItemsForElement:(NSDictionary *)element defaultMenuItems:(NSArray *)defaultMenuItems;
+
+- (void)hideContent:(id)sender;
+- (void)loadContent:(id)sender;
+
+// SkypeChatClient Private Methods
+- (NSUInteger)SK_findMessageIDFromDOMNode:(DOMNode *)node;
 
 @end
 
 @implementation GifManPlugin
+
+static GifManKVStore *__KVStore;
 
 + (void)load
 {
@@ -75,6 +84,66 @@
     newMethod = class_getInstanceMethod(self.class, selector);
     implementation = method_getImplementation(newMethod);
     class_replaceMethod(display, selector, implementation, method_getTypeEncoding(originalMethod));
+    
+    // webView:contextMenuItemsForElement:defaultMenuItems:
+    selector = @selector(webView:contextMenuItemsForElement:defaultMenuItems:);
+    originalMethod = class_getInstanceMethod(display, selector);
+    newMethod = class_getInstanceMethod(self.class, selector);
+    implementation = method_getImplementation(newMethod);
+    
+    SEL _selector = @selector(_webView:contextMenuItemsForElement:defaultMenuItems:);
+    IMP _implementation = method_getImplementation(originalMethod);
+    
+    class_replaceMethod(display, selector, implementation, method_getTypeEncoding(originalMethod));
+    class_addMethod(display, _selector, _implementation, method_getTypeEncoding(originalMethod));
+    
+    // hideContent:
+    selector = @selector(hideContent:);
+    originalMethod = class_getInstanceMethod(self.class, selector);
+    implementation = method_getImplementation(originalMethod);
+    class_addMethod(display, selector, implementation, method_getTypeEncoding(originalMethod));
+    
+    // loadContent:
+    selector = @selector(loadContent:);
+    originalMethod = class_getInstanceMethod(self.class, selector);
+    implementation = method_getImplementation(originalMethod);
+    class_addMethod(display, selector, implementation, method_getTypeEncoding(originalMethod));
+    
+    // Add some custom iVars
+    NSUInteger size, alignment;
+    NSGetSizeAndAlignment(@encode(NSUInteger), &size, &alignment);
+    class_addIvar(display, "___selectedMessageId", size, alignment, @encode(NSUInteger));
+    
+    class_addIvar(display, "___selectedWebView", sizeof(id), log2(sizeof(id)), "@");
+
+    //
+    //  List the methods of the class instance "myClass"
+//    int methodCount = 0;
+//    Method * methods = class_copyMethodList(display, &methodCount);
+//    for (int i=0; i<methodCount; i++)
+//    {
+//        char buffer[256];
+//        SEL name = method_getName(methods[i]);
+//        NSLog(@"Method: %@", NSStringFromSelector(name));
+//        char *returnType = method_copyReturnType(methods[i]);
+//        NSLog(@"The return type is %s", returnType);
+//        free(returnType);
+//        // self, _cmd + any others
+//        unsigned int numberOfArguments = method_getNumberOfArguments(methods[i]);
+//        for(int j=0; j<numberOfArguments; j++)
+//        {
+//            method_getArgumentType(methods[i], j, buffer, 256);
+//            NSLog(@"The type of argument %d is %s", j, buffer);
+//        }
+//    }
+//    free(methods);
+    
+//    int i=0;
+//    unsigned int mc = 0;
+//    Method * mlist = class_copyMethodList(display, &mc);
+//    NSLog(@"%d methods", mc);
+//    for(i=0;i<mc;i++)
+//        NSLog(@"Method no #%d: %s", i, sel_getName(method_getName(mlist[i])));
 }
 
 #pragma mark -
@@ -82,13 +151,12 @@
 
 - (NSURLRequest *)webView:(WebView *)sender resource:(id)identifier willSendRequest:(NSURLRequest *)request redirectResponse:(NSURLResponse *)redirectResponse fromDataSource:(WebDataSource *)dataSource
 {
-    static GifManKVStore *store;
-    if (!store) {
-        store = [[GifManKVStore alloc] init];
+    if (!__KVStore) {
+        __KVStore = [[GifManKVStore alloc] init];
     }
     
     WebScriptObject *script = [sender windowScriptObject];
-    [script setValue:store forKey:@"GifManKVStore"];
+    [script setValue:__KVStore forKey:@"GifManKVStore"];
     
     return request;
 }
@@ -131,8 +199,67 @@
     [[NSWorkspace sharedWorkspace] openURL:url];
 }
 
+- (NSArray *)webView:(WebView *)webView contextMenuItemsForElement:(NSDictionary *)element defaultMenuItems:(NSArray *)defaultMenuItems
+{
+    DOMHTMLElement *clickedNode = [element objectForKey:WebElementDOMNodeKey];
+    NSMutableArray *items = [[NSMutableArray alloc] initWithArray:[self _webView:webView contextMenuItemsForElement:element defaultMenuItems:defaultMenuItems]];
+    
+    if (![clickedNode isKindOfClass:[DOMHTMLElement class]]) {
+        return items;
+    }
+    
+    ___selectedMessageId = (NSUInteger *) [self SK_findMessageIDFromDOMNode:clickedNode];
+    ___selectedWebView = webView;
+    
+    if (___selectedMessageId) {
+        [items addObject:[NSMenuItem separatorItem]];
+        
+        NSMenuItem *item = [[NSMenuItem alloc] initWithTitle:@"Hide Content" action:@selector(hideContent:) keyEquivalent:@""];
+        [item setTarget:self];
+        
+        WebScriptObject *window = [webView windowScriptObject];
+        NSString *hasContent = [window evaluateWebScript:[NSString stringWithFormat:@"GifMan.API.hasVisibleContent(%lu)", (unsigned long) ___selectedMessageId]];
+        
+        NSLog(@"%@", hasContent);
+        if (![hasContent boolValue]) {
+            [item setTitle:@"Load Content"];
+            [item setAction:@selector(loadContent:)];
+        }
+        
+        [items addObject:item];
+    }
+    
+    return items;
+}
+
+- (void)hideContent:(id)sender
+{
+    WebScriptObject *window = [___selectedWebView windowScriptObject];
+    [window evaluateWebScript:[NSString stringWithFormat:@"GifMan.API.hideContentInMessage(%lu)", (unsigned long) ___selectedMessageId]];
+}
+
+- (void)loadContent:(id)sender
+{
+    WebScriptObject *window = [___selectedWebView windowScriptObject];
+    [window evaluateWebScript:[NSString stringWithFormat:@"GifMan.API.loadContentInMessage(%lu)", (unsigned long) ___selectedMessageId]];
+}
+
+- (NSArray *)_webView:(WebView *)webView contextMenuItemsForElement:(NSDictionary *)element defaultMenuItems:(NSArray *)defaultMenuItems
+{
+    // This is an unused placeholder for the added method, just to play nice with xcode warnings.
+    
+    return nil;
+}
+
+- (NSUInteger)SK_findMessageIDFromDOMNode:(DOMNode *)node
+{
+    // This is an unused placeholder for the added method, just to play nice with xcode warnings.
+    
+    return 0;
+}
+
 #pragma mark -
-#pragma mark ;
+#pragma mark SkypeAPIDelegate
 
 - (NSString *)clientApplicationName
 {

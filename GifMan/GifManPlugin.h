@@ -8,10 +8,16 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class WebView;
+
 @interface GifManPlugin : NSObject <SkypeAPIDelegate> {
     
     NSOperationQueue *__skypeOperationQueue;
     NSStatusItem *__statusItem;
+    
+    // Fake iVars
+    NSUInteger *___selectedMessageId;
+    WebView *___selectedWebView;
 }
 
 + (void)load;

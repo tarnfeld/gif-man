@@ -23,14 +23,19 @@ GifMan.Conversation = function (api, kvStore) {
 
     // Check all messages in the page for changes
     this._checkMessages = function () {
-        $(".item:not(.read)", _container).each(function(i, e) {
+        $(".item:not(.read), .item.force-load", _container).each(function(i, e) {
             self._parseMessage(e);
         });
     };
 
     // Parse a message and handle any embedding
     this._parseMessage = function (message) {
-      if ($(message).hasClass("loading") || $(message).hasClass("loaded") || !kvStore.get("embed_enabled")) return;
+      if ($(message).hasClass("loading") || $(message).hasClass("loaded")) return;
+
+      if (!kvStore.get("embed_enabled")) {
+        $(message).addClass("loaded");
+        return;
+      }
 
       var links = $(".body a", message);
       if (links.length > 0) {
@@ -44,7 +49,7 @@ GifMan.Conversation = function (api, kvStore) {
             pending--;
 
             if (pending == 0) {
-              $(message).removeClass("loading").addClass("loaded");
+              $(message).removeClass("loading").addClass("loaded").removeClass("force-load");
             }
           });
         });
@@ -158,14 +163,10 @@ GifMan.Conversation = function (api, kvStore) {
     // Enable
     this._enableEmbed = function () {
       kvStore.set(true, "embed_enabled");
-
-      $(".gifman-embed", _container).show();
     };
 
     this._disableEmbed = function () {
       kvStore.set(false, "embed_enabled");
-
-      $(".gifman-embed", _container).hide();
     }
 
     // Init Method
@@ -195,6 +196,19 @@ GifMan.Conversation = function (api, kvStore) {
 
     // Fire away!
     this._init();
+};
+
+// Notification API
+GifMan.API = {
+  hideContentInMessage: function (message_id) {
+    $(".gifman-embed", $("#" + message_id)).remove();
+  },
+  loadContentInMessage: function (message_id) {
+    $("#" + message_id).removeClass("loading").removeClass("loaded").addClass("force-load");
+  },
+  hasVisibleContent: function (message_id) {
+    return $("#" + message_id).hasClass("loaded");
+  }
 };
 
 $(function() {
