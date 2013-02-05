@@ -66,9 +66,9 @@ clean-style:
 # Install Targets
 #
 
-install: install-bundle install-style
+install: simbl install-bundle install-style
 
-install-bundle: simbl bundle
+install-bundle: bundle
 	@echo "`tput setaf 6`Installing $(PRODUCTS_DIR)/GifMan.bundle to $(BUNDLE_INSTALL_DIR)/GifMan.bundle`tput sgr0`"
 	@mkdir -p $(BUNDLE_INSTALL_DIR)
 	@rm -rf $(BUNDLE_INSTALL_DIR)/GifMan.bundle
