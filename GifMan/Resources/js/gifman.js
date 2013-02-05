@@ -29,7 +29,7 @@ GifMan.Conversation = function (api, kvStore) {
 
     // Parse a message and handle any embedding
     this._parseMessage = function (message) {
-      if ($(message).hasClass("loading") || $(message).hasClass("loaded")) return;
+      if ($(message).hasClass("loading") || $(message).hasClass("loaded") || $(message).hasClass("force-hidden")) return;
 
       if (!kvStore.get("embed_enabled")) {
         $(message).addClass("loaded");
@@ -210,10 +210,10 @@ GifMan.Conversation = function (api, kvStore) {
 GifMan.API = {
   hideContentInMessage: function (message_id) {
     $(".gifman-embed", $("#" + message_id)).remove();
-    $("#" + message_id).removeClass("loaded").removeClass("loading").removeClass("force-load");
+    $("#" + message_id).removeClass("loaded").removeClass("loading").removeClass("force-load").addClass("force-hidden");
   },
   loadContentInMessage: function (message_id) {
-    $("#" + message_id).removeClass("loading").removeClass("loaded").addClass("force-load");
+    $("#" + message_id).removeClass("loading").removeClass("loaded").addClass("force-load").removeClass("force-hidden");
   },
   hasVisibleContent: function (message_id) {
     return $("#" + message_id).hasClass("loaded");
