@@ -23,9 +23,8 @@ GifMan.Conversation = function (api, kvStore) {
 
     // Check all messages in the page for changes
     this._checkMessages = function () {
-        $(".item:not(.read), .item.force-load", _container).each(function(i, e) {
-            self._parseMessage(e);
-        });
+        $(".item:not(.read)", _container).each(function(i, e) { self._parseMessage(e); });
+        $(".item.force-load", _container).each(function(i, e) { self._parseMessage(e); });
     };
 
     // Parse a message and handle any embedding
@@ -158,6 +157,10 @@ GifMan.Conversation = function (api, kvStore) {
           handler();
         }
       });
+
+      if (!matched) {
+        handler();
+      }
     };
 
     // Enable
@@ -189,9 +192,14 @@ GifMan.Conversation = function (api, kvStore) {
           });
 
         // Keep the toggle up to date
+        var _current = kvStore.get("embed_enabled");
+        $(".gifman-toggle", _container).data("switcher").update(!!_current, false);
+
         setInterval(function() {
-          $(".gifman-toggle", _container).data("switcher").update(!!kvStore.get("embed_enabled"), false);
-        }, 500);
+          if (kvStore.get("embed_enabled") != _current) {
+            $(".gifman-toggle", _container).data("switcher").update(!!current, false);
+          }
+        }, 300);
     };
 
     // Fire away!
@@ -202,6 +210,7 @@ GifMan.Conversation = function (api, kvStore) {
 GifMan.API = {
   hideContentInMessage: function (message_id) {
     $(".gifman-embed", $("#" + message_id)).remove();
+    $("#" + message_id).removeClass("loaded").removeClass("loading").removeClass("force-load");
   },
   loadContentInMessage: function (message_id) {
     $("#" + message_id).removeClass("loading").removeClass("loaded").addClass("force-load");

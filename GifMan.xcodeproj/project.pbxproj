@@ -40,6 +40,7 @@
 /* Begin PBXBuildFile section */
 		E23BD43C1633432B00D370EF /* Conversation.html in Copy Resources */ = {isa = PBXBuildFile; fileRef = E23BD3DC163342B900D370EF /* Conversation.html */; };
 		E23BD43F1633438300D370EF /* Info.plist in Copy Files */ = {isa = PBXBuildFile; fileRef = E23BD3DA163342AD00D370EF /* Info.plist */; };
+		E2692C9216C1916F002217BA /* GifManInspection.m in Sources */ = {isa = PBXBuildFile; fileRef = E2692C9016C19090002217BA /* GifManInspection.m */; };
 		E289B2511631F0AE00412023 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E289B2501631F0AE00412023 /* Cocoa.framework */; };
 		E289B25B1631F0AE00412023 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E289B2591631F0AE00412023 /* InfoPlist.strings */; };
 		E289B2671631F0F600412023 /* GifManPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = E289B2661631F0F600412023 /* GifManPlugin.m */; };
@@ -277,7 +278,11 @@
 /* Begin PBXFileReference section */
 		E23BD3DA163342AD00D370EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E23BD3DC163342B900D370EF /* Conversation.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Conversation.html; sourceTree = "<group>"; };
-		E289B24D1631F0AE00412023 /* GifMan.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GifMan.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		E2692C8F16C19090002217BA /* GifManInspection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GifManInspection.h; sourceTree = "<group>"; };
+		E2692C9016C19090002217BA /* GifManInspection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GifManInspection.m; sourceTree = "<group>"; };
+		E2692C9516C19CE8002217BA /* GifMan.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GifMan.bundle; path = Build/Products/Release/GifMan.bundle; sourceTree = "<group>"; };
+		E2692C9616C19CF1002217BA /* GifMan.SkypeChatStyle */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = GifMan.SkypeChatStyle; path = Build/Products/Release/GifMan.SkypeChatStyle; sourceTree = "<group>"; };
+		E289B24D1631F0AE00412023 /* GifMan.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = GifMan.bundle; path = "/Users/tom/Projects/gif-man/build/Release/GifMan.bundle"; sourceTree = "<absolute>"; };
 		E289B2501631F0AE00412023 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		E289B2531631F0AE00412023 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		E289B2541631F0AE00412023 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -388,6 +393,8 @@
 				E289B2661631F0F600412023 /* GifManPlugin.m */,
 				E2F30C2316BF2B5100D1A69D /* GifManKVStore.h */,
 				E2F30C2416BF2B5100D1A69D /* GifManKVStore.m */,
+				E2692C8F16C19090002217BA /* GifManInspection.h */,
+				E2692C9016C19090002217BA /* GifManInspection.m */,
 			);
 			name = "SIMBL Bundle";
 			sourceTree = "<group>";
@@ -522,21 +529,22 @@
 			path = templates;
 			sourceTree = "<group>";
 		};
+		E2692C9316C19CC4002217BA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E2692C9616C19CF1002217BA /* GifMan.SkypeChatStyle */,
+				E2692C9516C19CE8002217BA /* GifMan.bundle */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		E289B2421631F0AE00412023 = {
 			isa = PBXGroup;
 			children = (
 				E289B2561631F0AE00412023 /* GifMan */,
 				E289B24F1631F0AE00412023 /* Frameworks */,
-				E289B24E1631F0AE00412023 /* Products */,
+				E2692C9316C19CC4002217BA /* Products */,
 			);
-			sourceTree = "<group>";
-		};
-		E289B24E1631F0AE00412023 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				E289B24D1631F0AE00412023 /* GifMan.bundle */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		E289B24F1631F0AE00412023 /* Frameworks */ = {
@@ -617,7 +625,7 @@
 				en,
 			);
 			mainGroup = E289B2421631F0AE00412023;
-			productRefGroup = E289B24E1631F0AE00412023 /* Products */;
+			productRefGroup = E289B2421631F0AE00412023;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -644,6 +652,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E2692C9216C1916F002217BA /* GifManInspection.m in Sources */,
 				E289B2671631F0F600412023 /* GifManPlugin.m in Sources */,
 				E2F30C2516BF2B5100D1A69D /* GifManKVStore.m in Sources */,
 			);

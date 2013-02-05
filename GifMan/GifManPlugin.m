@@ -13,13 +13,19 @@
 #import <objc/message.h>
 #import <WebKit/WebKit.h>
 
+#import "GifManInspection.h"
+
 #define kGifManClientApplicationName @"GifMan"
 #define kGifManSkypeQueueName @"SkypeQueue"
+
+@interface SkypeChatWebView : WebView
+
+@end
 
 @interface GifManPlugin ()
 
 - (void)swizzleWebkitMethods;
-- (NSArray *)_webView:(WebView *)webView contextMenuItemsForElement:(NSDictionary *)element defaultMenuItems:(NSArray *)defaultMenuItems;
+- (NSArray *)_webView:(SkypeChatWebView *)webView contextMenuItemsForElement:(NSDictionary *)element defaultMenuItems:(NSArray *)defaultMenuItems;
 
 - (void)hideContent:(id)sender;
 - (void)loadContent:(id)sender;
@@ -32,6 +38,7 @@
 @implementation GifManPlugin
 
 static GifManKVStore *__KVStore;
+static NSUInteger selectedMessageId;
 
 + (void)load
 {
@@ -110,46 +117,17 @@ static GifManKVStore *__KVStore;
     class_addMethod(display, selector, implementation, method_getTypeEncoding(originalMethod));
     
     // Add some custom iVars
-    NSUInteger size, alignment;
-    NSGetSizeAndAlignment(@encode(NSUInteger), &size, &alignment);
-    class_addIvar(display, "___selectedMessageId", size, alignment, @encode(NSUInteger));
+//    NSUInteger size, alignment;
+//    NSGetSizeAndAlignment(@encode(NSUInteger), &size, &alignment);
+//    class_addIvar(display, "___selectedMessageId", size, alignment, @encode(NSUInteger));
     
-    class_addIvar(display, "___selectedWebView", sizeof(id), log2(sizeof(id)), "@");
-
-    //
-    //  List the methods of the class instance "myClass"
-//    int methodCount = 0;
-//    Method * methods = class_copyMethodList(display, &methodCount);
-//    for (int i=0; i<methodCount; i++)
-//    {
-//        char buffer[256];
-//        SEL name = method_getName(methods[i]);
-//        NSLog(@"Method: %@", NSStringFromSelector(name));
-//        char *returnType = method_copyReturnType(methods[i]);
-//        NSLog(@"The return type is %s", returnType);
-//        free(returnType);
-//        // self, _cmd + any others
-//        unsigned int numberOfArguments = method_getNumberOfArguments(methods[i]);
-//        for(int j=0; j<numberOfArguments; j++)
-//        {
-//            method_getArgumentType(methods[i], j, buffer, 256);
-//            NSLog(@"The type of argument %d is %s", j, buffer);
-//        }
-//    }
-//    free(methods);
-    
-//    int i=0;
-//    unsigned int mc = 0;
-//    Method * mlist = class_copyMethodList(display, &mc);
-//    NSLog(@"%d methods", mc);
-//    for(i=0;i<mc;i++)
-//        NSLog(@"Method no #%d: %s", i, sel_getName(method_getName(mlist[i])));
+    class_addIvar(display, "__GM_selectedWebView", sizeof([WebScriptObject class]), log2(sizeof([WebScriptObject class])), "@");
 }
 
 #pragma mark -
 #pragma mark Swizzled Webkit Methods
 
-- (NSURLRequest *)webView:(WebView *)sender resource:(id)identifier willSendRequest:(NSURLRequest *)request redirectResponse:(NSURLResponse *)redirectResponse fromDataSource:(WebDataSource *)dataSource
+- (NSURLRequest *)webView:(SkypeChatWebView *)sender resource:(id)identifier willSendRequest:(NSURLRequest *)request redirectResponse:(NSURLResponse *)redirectResponse fromDataSource:(WebDataSource *)dataSource
 {
     if (!__KVStore) {
         __KVStore = [[GifManKVStore alloc] init];
@@ -161,7 +139,7 @@ static GifManKVStore *__KVStore;
     return request;
 }
 
-- (void)webView:(WebView *)webView decidePolicyForNavigationAction:(NSDictionary *)actionInformation request:(NSURLRequest *)request frame:(WebFrame *)frame decisionListener:(id)listener
+- (void)webView:(SkypeChatWebView *)webView decidePolicyForNavigationAction:(NSDictionary *)actionInformation request:(NSURLRequest *)request frame:(WebFrame *)frame decisionListener:(id)listener
 {
     // If it's a file:/// URL we should allow it.
     // I don't know the exact implementation of the skype app's verison of this method...
@@ -199,28 +177,29 @@ static GifManKVStore *__KVStore;
     [[NSWorkspace sharedWorkspace] openURL:url];
 }
 
-- (NSArray *)webView:(WebView *)webView contextMenuItemsForElement:(NSDictionary *)element defaultMenuItems:(NSArray *)defaultMenuItems
+- (NSArray *)webView:(SkypeChatWebView *)webView contextMenuItemsForElement:(NSDictionary *)element defaultMenuItems:(NSArray *)defaultMenuItems
 {
     DOMHTMLElement *clickedNode = [element objectForKey:WebElementDOMNodeKey];
     NSMutableArray *items = [[NSMutableArray alloc] initWithArray:[self _webView:webView contextMenuItemsForElement:element defaultMenuItems:defaultMenuItems]];
     
-    if (![clickedNode isKindOfClass:[DOMHTMLElement class]]) {
+    if (![clickedNode isKindOfClass:[DOMHTMLDivElement class]]) {
         return items;
     }
     
-    ___selectedMessageId = (NSUInteger *) [self SK_findMessageIDFromDOMNode:clickedNode];
-    ___selectedWebView = webView;
+    if (!__GM_selectedWebView) {
+        __GM_selectedWebView = (WebScriptObject *) [webView retain];
+    }
     
-    if (___selectedMessageId) {
+    selectedMessageId = [self SK_findMessageIDFromDOMNode:clickedNode];
+    
+    if (selectedMessageId && [__KVStore getValueForKey:@"embed_enabled"]) {
         [items addObject:[NSMenuItem separatorItem]];
         
         NSMenuItem *item = [[NSMenuItem alloc] initWithTitle:@"Hide Content" action:@selector(hideContent:) keyEquivalent:@""];
         [item setTarget:self];
         
-        WebScriptObject *window = [webView windowScriptObject];
-        NSString *hasContent = [window evaluateWebScript:[NSString stringWithFormat:@"GifMan.API.hasVisibleContent(%lu)", (unsigned long) ___selectedMessageId]];
+        NSString *hasContent = [__GM_selectedWebView evaluateWebScript:[NSString stringWithFormat:@"GifMan.API.hasVisibleContent(%lu)", (unsigned long) selectedMessageId]];
         
-        NSLog(@"%@", hasContent);
         if (![hasContent boolValue]) {
             [item setTitle:@"Load Content"];
             [item setAction:@selector(loadContent:)];
@@ -234,14 +213,12 @@ static GifManKVStore *__KVStore;
 
 - (void)hideContent:(id)sender
 {
-    WebScriptObject *window = [___selectedWebView windowScriptObject];
-    [window evaluateWebScript:[NSString stringWithFormat:@"GifMan.API.hideContentInMessage(%lu)", (unsigned long) ___selectedMessageId]];
+    [__GM_selectedWebView evaluateWebScript:[NSString stringWithFormat:@"GifMan.API.hideContentInMessage(%lu)", (unsigned long) selectedMessageId]];
 }
 
 - (void)loadContent:(id)sender
 {
-    WebScriptObject *window = [___selectedWebView windowScriptObject];
-    [window evaluateWebScript:[NSString stringWithFormat:@"GifMan.API.loadContentInMessage(%lu)", (unsigned long) ___selectedMessageId]];
+    [__GM_selectedWebView evaluateWebScript:[NSString stringWithFormat:@"GifMan.API.loadContentInMessage(%lu)", (unsigned long) selectedMessageId]];
 }
 
 - (NSArray *)_webView:(WebView *)webView contextMenuItemsForElement:(NSDictionary *)element defaultMenuItems:(NSArray *)defaultMenuItems
@@ -277,16 +254,16 @@ static GifManKVStore *__KVStore;
 - (void)skypeAttachResponse:(unsigned)responseCode
 {
     if (responseCode == 1) {
-        NSLog(@"GIFMAN: Successfully connected to skype");
+//        NSLog(@"GIFMAN: Successfully connected to skype");
     }
     else {
-        NSLog(@"GIFMAN: Failed to connect to skype");
+//        NSLog(@"GIFMAN: Failed to connect to skype");
     }
 }
 
 - (void)skypeBecameAvailable:(NSNotification *)aNotification
 {
-    NSLog(@"GIFMAN: Skype became available");
+//    NSLog(@"GIFMAN: Skype became available");
 
     // @TODO: Do something with this...
 

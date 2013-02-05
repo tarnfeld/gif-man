@@ -4,7 +4,15 @@
 
 #ifdef __OBJC__
 
-    #import <Cocoa/Cocoa.h>
-    #import <Skype/Skype.h>
+#import <Cocoa/Cocoa.h>
+#import <Skype/Skype.h>
+
+#if !defined(GIFMAN_EXTERN)
+    #define GIFMAN_EXTERN extern
+#endif
+
+#if !defined(GIFMAN_EXPORT)
+    #define GIFMAN_EXPORT GIFMAN_EXTERN
+#endif
 
 #endif

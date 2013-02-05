@@ -8,7 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@class WebView;
+@class WebScriptObject;
 
 @interface GifManPlugin : NSObject <SkypeAPIDelegate> {
     
@@ -16,8 +16,7 @@
     NSStatusItem *__statusItem;
     
     // Fake iVars
-    NSUInteger *___selectedMessageId;
-    WebView *___selectedWebView;
+    WebScriptObject *__GM_selectedWebView;
 }
 
 + (void)load;
