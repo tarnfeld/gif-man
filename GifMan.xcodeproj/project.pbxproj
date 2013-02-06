@@ -38,106 +38,88 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		E23BD40E163342B900D370EF /* Conversation.html in Resources */ = {isa = PBXBuildFile; fileRef = E23BD3DC163342B900D370EF /* Conversation.html */; };
-		E23BD40F163342B900D370EF /* main.css in Resources */ = {isa = PBXBuildFile; fileRef = E23BD3DE163342B900D370EF /* main.css */; };
-		E23BD410163342B900D370EF /* icon_arrow_down.png in Resources */ = {isa = PBXBuildFile; fileRef = E23BD3E0163342B900D370EF /* icon_arrow_down.png */; };
-		E23BD411163342B900D370EF /* icon_arrow_right.png in Resources */ = {isa = PBXBuildFile; fileRef = E23BD3E1163342B900D370EF /* icon_arrow_right.png */; };
-		E23BD412163342B900D370EF /* icon_cancel.png in Resources */ = {isa = PBXBuildFile; fileRef = E23BD3E2163342B900D370EF /* icon_cancel.png */; };
-		E23BD413163342B900D370EF /* icon_edit.png in Resources */ = {isa = PBXBuildFile; fileRef = E23BD3E3163342B900D370EF /* icon_edit.png */; };
-		E23BD414163342B900D370EF /* icon_edited.png in Resources */ = {isa = PBXBuildFile; fileRef = E23BD3E4163342B900D370EF /* icon_edited.png */; };
-		E23BD415163342B900D370EF /* icon_pause.png in Resources */ = {isa = PBXBuildFile; fileRef = E23BD3E5163342B900D370EF /* icon_pause.png */; };
-		E23BD416163342B900D370EF /* icon_play.png in Resources */ = {isa = PBXBuildFile; fileRef = E23BD3E6163342B900D370EF /* icon_play.png */; };
-		E23BD417163342B900D370EF /* icon_quicklook.png in Resources */ = {isa = PBXBuildFile; fileRef = E23BD3E7163342B900D370EF /* icon_quicklook.png */; };
-		E23BD418163342B900D370EF /* icon_refresh.png in Resources */ = {isa = PBXBuildFile; fileRef = E23BD3E8163342B900D370EF /* icon_refresh.png */; };
-		E23BD419163342B900D370EF /* icon_reveal.png in Resources */ = {isa = PBXBuildFile; fileRef = E23BD3E9163342B900D370EF /* icon_reveal.png */; };
-		E23BD41A163342B900D370EF /* icon_stop.png in Resources */ = {isa = PBXBuildFile; fileRef = E23BD3EA163342B900D370EF /* icon_stop.png */; };
-		E23BD41B163342B900D370EF /* icon_sub.png in Resources */ = {isa = PBXBuildFile; fileRef = E23BD3EB163342B900D370EF /* icon_sub.png */; };
-		E23BD41C163342B900D370EF /* icon_warning.png in Resources */ = {isa = PBXBuildFile; fileRef = E23BD3EC163342B900D370EF /* icon_warning.png */; };
-		E23BD41D163342B900D370EF /* transfer-32.png in Resources */ = {isa = PBXBuildFile; fileRef = E23BD3ED163342B900D370EF /* transfer-32.png */; };
-		E23BD41E163342B900D370EF /* transfer-multiple-32.png in Resources */ = {isa = PBXBuildFile; fileRef = E23BD3EE163342B900D370EF /* transfer-multiple-32.png */; };
-		E23BD41F163342B900D370EF /* typing-16x16-white.gif in Resources */ = {isa = PBXBuildFile; fileRef = E23BD3EF163342B900D370EF /* typing-16x16-white.gif */; };
-		E23BD420163342B900D370EF /* jquery.min.js in Sources */ = {isa = PBXBuildFile; fileRef = E23BD3F1163342B900D370EF /* jquery.min.js */; };
-		E23BD421163342B900D370EF /* main.js in Sources */ = {isa = PBXBuildFile; fileRef = E23BD3F2163342B900D370EF /* main.js */; };
-		E23BD422163342B900D370EF /* Alert.html in Resources */ = {isa = PBXBuildFile; fileRef = E23BD3F4163342B900D370EF /* Alert.html */; };
-		E23BD423163342B900D370EF /* CallEnd.html in Resources */ = {isa = PBXBuildFile; fileRef = E23BD3F5163342B900D370EF /* CallEnd.html */; };
-		E23BD424163342B900D370EF /* CallStart.html in Resources */ = {isa = PBXBuildFile; fileRef = E23BD3F6163342B900D370EF /* CallStart.html */; };
-		E23BD425163342B900D370EF /* History.html in Resources */ = {isa = PBXBuildFile; fileRef = E23BD3F7163342B900D370EF /* History.html */; };
-		E23BD426163342B900D370EF /* InEmote.html in Resources */ = {isa = PBXBuildFile; fileRef = E23BD3F8163342B900D370EF /* InEmote.html */; };
-		E23BD427163342B900D370EF /* InFollowupMessage.html in Resources */ = {isa = PBXBuildFile; fileRef = E23BD3F9163342B900D370EF /* InFollowupMessage.html */; };
-		E23BD428163342B900D370EF /* InMessage.html in Resources */ = {isa = PBXBuildFile; fileRef = E23BD3FA163342B900D370EF /* InMessage.html */; };
-		E23BD429163342B900D370EF /* InSms.html in Resources */ = {isa = PBXBuildFile; fileRef = E23BD3FB163342B900D370EF /* InSms.html */; };
-		E23BD42A163342B900D370EF /* InSubTransfer.html in Resources */ = {isa = PBXBuildFile; fileRef = E23BD3FC163342B900D370EF /* InSubTransfer.html */; };
-		E23BD42B163342B900D370EF /* InTransfer.html in Resources */ = {isa = PBXBuildFile; fileRef = E23BD3FD163342B900D370EF /* InTransfer.html */; };
-		E23BD42C163342B900D370EF /* InVoicemail.html in Resources */ = {isa = PBXBuildFile; fileRef = E23BD3FE163342B900D370EF /* InVoicemail.html */; };
-		E23BD42D163342B900D370EF /* MoreHistory.html in Resources */ = {isa = PBXBuildFile; fileRef = E23BD3FF163342B900D370EF /* MoreHistory.html */; };
-		E23BD42E163342B900D370EF /* MoreHistoryLink.html in Resources */ = {isa = PBXBuildFile; fileRef = E23BD400163342B900D370EF /* MoreHistoryLink.html */; };
-		E23BD42F163342B900D370EF /* OutEmote.html in Resources */ = {isa = PBXBuildFile; fileRef = E23BD401163342B900D370EF /* OutEmote.html */; };
-		E23BD430163342B900D370EF /* OutFollowupMessage.html in Resources */ = {isa = PBXBuildFile; fileRef = E23BD402163342B900D370EF /* OutFollowupMessage.html */; };
-		E23BD431163342B900D370EF /* OutMessage.html in Resources */ = {isa = PBXBuildFile; fileRef = E23BD403163342B900D370EF /* OutMessage.html */; };
-		E23BD432163342B900D370EF /* OutSms.html in Resources */ = {isa = PBXBuildFile; fileRef = E23BD404163342B900D370EF /* OutSms.html */; };
-		E23BD433163342B900D370EF /* OutSubTransfer.html in Resources */ = {isa = PBXBuildFile; fileRef = E23BD405163342B900D370EF /* OutSubTransfer.html */; };
-		E23BD434163342B900D370EF /* OutTransfer.html in Resources */ = {isa = PBXBuildFile; fileRef = E23BD406163342B900D370EF /* OutTransfer.html */; };
-		E23BD435163342B900D370EF /* SkypeCallEnd.html in Resources */ = {isa = PBXBuildFile; fileRef = E23BD407163342B900D370EF /* SkypeCallEnd.html */; };
-		E23BD436163342B900D370EF /* SkypeCallStart.html in Resources */ = {isa = PBXBuildFile; fileRef = E23BD408163342B900D370EF /* SkypeCallStart.html */; };
-		E23BD437163342B900D370EF /* SkypeInVoicemail.html in Resources */ = {isa = PBXBuildFile; fileRef = E23BD409163342B900D370EF /* SkypeInVoicemail.html */; };
-		E23BD438163342B900D370EF /* SmsHead.html in Resources */ = {isa = PBXBuildFile; fileRef = E23BD40A163342B900D370EF /* SmsHead.html */; };
-		E23BD439163342B900D370EF /* Topic.html in Resources */ = {isa = PBXBuildFile; fileRef = E23BD40B163342B900D370EF /* Topic.html */; };
-		E23BD43A163342B900D370EF /* TransferHead.html in Resources */ = {isa = PBXBuildFile; fileRef = E23BD40C163342B900D370EF /* TransferHead.html */; };
-		E23BD43B163342B900D370EF /* Typing.html in Resources */ = {isa = PBXBuildFile; fileRef = E23BD40D163342B900D370EF /* Typing.html */; };
 		E23BD43C1633432B00D370EF /* Conversation.html in Copy Resources */ = {isa = PBXBuildFile; fileRef = E23BD3DC163342B900D370EF /* Conversation.html */; };
 		E23BD43F1633438300D370EF /* Info.plist in Copy Files */ = {isa = PBXBuildFile; fileRef = E23BD3DA163342AD00D370EF /* Info.plist */; };
-		E23BD4401633439B00D370EF /* main.css in Copy CSS */ = {isa = PBXBuildFile; fileRef = E23BD3DE163342B900D370EF /* main.css */; };
-		E23BD4491633445000D370EF /* icon_arrow_down.png in Copy Graphics */ = {isa = PBXBuildFile; fileRef = E23BD3E0163342B900D370EF /* icon_arrow_down.png */; };
-		E23BD44A1633445000D370EF /* icon_arrow_right.png in Copy Graphics */ = {isa = PBXBuildFile; fileRef = E23BD3E1163342B900D370EF /* icon_arrow_right.png */; };
-		E23BD44B1633445000D370EF /* icon_cancel.png in Copy Graphics */ = {isa = PBXBuildFile; fileRef = E23BD3E2163342B900D370EF /* icon_cancel.png */; };
-		E23BD44C1633445000D370EF /* icon_edit.png in Copy Graphics */ = {isa = PBXBuildFile; fileRef = E23BD3E3163342B900D370EF /* icon_edit.png */; };
-		E23BD44D1633445000D370EF /* icon_edited.png in Copy Graphics */ = {isa = PBXBuildFile; fileRef = E23BD3E4163342B900D370EF /* icon_edited.png */; };
-		E23BD44E1633445000D370EF /* icon_pause.png in Copy Graphics */ = {isa = PBXBuildFile; fileRef = E23BD3E5163342B900D370EF /* icon_pause.png */; };
-		E23BD44F1633445000D370EF /* icon_play.png in Copy Graphics */ = {isa = PBXBuildFile; fileRef = E23BD3E6163342B900D370EF /* icon_play.png */; };
-		E23BD4501633445000D370EF /* icon_quicklook.png in Copy Graphics */ = {isa = PBXBuildFile; fileRef = E23BD3E7163342B900D370EF /* icon_quicklook.png */; };
-		E23BD4511633445000D370EF /* icon_refresh.png in Copy Graphics */ = {isa = PBXBuildFile; fileRef = E23BD3E8163342B900D370EF /* icon_refresh.png */; };
-		E23BD4521633445000D370EF /* icon_reveal.png in Copy Graphics */ = {isa = PBXBuildFile; fileRef = E23BD3E9163342B900D370EF /* icon_reveal.png */; };
-		E23BD4531633445000D370EF /* icon_stop.png in Copy Graphics */ = {isa = PBXBuildFile; fileRef = E23BD3EA163342B900D370EF /* icon_stop.png */; };
-		E23BD4541633445000D370EF /* icon_sub.png in Copy Graphics */ = {isa = PBXBuildFile; fileRef = E23BD3EB163342B900D370EF /* icon_sub.png */; };
-		E23BD4551633445000D370EF /* icon_warning.png in Copy Graphics */ = {isa = PBXBuildFile; fileRef = E23BD3EC163342B900D370EF /* icon_warning.png */; };
-		E23BD4561633445000D370EF /* transfer-32.png in Copy Graphics */ = {isa = PBXBuildFile; fileRef = E23BD3ED163342B900D370EF /* transfer-32.png */; };
-		E23BD4571633445000D370EF /* transfer-multiple-32.png in Copy Graphics */ = {isa = PBXBuildFile; fileRef = E23BD3EE163342B900D370EF /* transfer-multiple-32.png */; };
-		E23BD4581633445000D370EF /* typing-16x16-white.gif in Copy Graphics */ = {isa = PBXBuildFile; fileRef = E23BD3EF163342B900D370EF /* typing-16x16-white.gif */; };
-		E23BD4591633445C00D370EF /* jquery.min.js in Copy Javascript */ = {isa = PBXBuildFile; fileRef = E23BD3F1163342B900D370EF /* jquery.min.js */; };
-		E23BD45A1633445C00D370EF /* main.js in Copy Javascript */ = {isa = PBXBuildFile; fileRef = E23BD3F2163342B900D370EF /* main.js */; };
-		E23BD45B1633446C00D370EF /* Alert.html in Copy Templates */ = {isa = PBXBuildFile; fileRef = E23BD3F4163342B900D370EF /* Alert.html */; };
-		E23BD45C1633446C00D370EF /* CallEnd.html in Copy Templates */ = {isa = PBXBuildFile; fileRef = E23BD3F5163342B900D370EF /* CallEnd.html */; };
-		E23BD45D1633446C00D370EF /* CallStart.html in Copy Templates */ = {isa = PBXBuildFile; fileRef = E23BD3F6163342B900D370EF /* CallStart.html */; };
-		E23BD45E1633446C00D370EF /* History.html in Copy Templates */ = {isa = PBXBuildFile; fileRef = E23BD3F7163342B900D370EF /* History.html */; };
-		E23BD45F1633446C00D370EF /* InEmote.html in Copy Templates */ = {isa = PBXBuildFile; fileRef = E23BD3F8163342B900D370EF /* InEmote.html */; };
-		E23BD4601633446C00D370EF /* InFollowupMessage.html in Copy Templates */ = {isa = PBXBuildFile; fileRef = E23BD3F9163342B900D370EF /* InFollowupMessage.html */; };
-		E23BD4611633446C00D370EF /* InMessage.html in Copy Templates */ = {isa = PBXBuildFile; fileRef = E23BD3FA163342B900D370EF /* InMessage.html */; };
-		E23BD4621633446C00D370EF /* InSms.html in Copy Templates */ = {isa = PBXBuildFile; fileRef = E23BD3FB163342B900D370EF /* InSms.html */; };
-		E23BD4631633446C00D370EF /* InSubTransfer.html in Copy Templates */ = {isa = PBXBuildFile; fileRef = E23BD3FC163342B900D370EF /* InSubTransfer.html */; };
-		E23BD4641633446C00D370EF /* InTransfer.html in Copy Templates */ = {isa = PBXBuildFile; fileRef = E23BD3FD163342B900D370EF /* InTransfer.html */; };
-		E23BD4651633446C00D370EF /* InVoicemail.html in Copy Templates */ = {isa = PBXBuildFile; fileRef = E23BD3FE163342B900D370EF /* InVoicemail.html */; };
-		E23BD4661633446C00D370EF /* MoreHistory.html in Copy Templates */ = {isa = PBXBuildFile; fileRef = E23BD3FF163342B900D370EF /* MoreHistory.html */; };
-		E23BD4671633446C00D370EF /* MoreHistoryLink.html in Copy Templates */ = {isa = PBXBuildFile; fileRef = E23BD400163342B900D370EF /* MoreHistoryLink.html */; };
-		E23BD4681633446C00D370EF /* OutEmote.html in Copy Templates */ = {isa = PBXBuildFile; fileRef = E23BD401163342B900D370EF /* OutEmote.html */; };
-		E23BD4691633446C00D370EF /* OutFollowupMessage.html in Copy Templates */ = {isa = PBXBuildFile; fileRef = E23BD402163342B900D370EF /* OutFollowupMessage.html */; };
-		E23BD46A1633446C00D370EF /* OutMessage.html in Copy Templates */ = {isa = PBXBuildFile; fileRef = E23BD403163342B900D370EF /* OutMessage.html */; };
-		E23BD46B1633446C00D370EF /* OutSms.html in Copy Templates */ = {isa = PBXBuildFile; fileRef = E23BD404163342B900D370EF /* OutSms.html */; };
-		E23BD46C1633446C00D370EF /* OutSubTransfer.html in Copy Templates */ = {isa = PBXBuildFile; fileRef = E23BD405163342B900D370EF /* OutSubTransfer.html */; };
-		E23BD46D1633446C00D370EF /* OutTransfer.html in Copy Templates */ = {isa = PBXBuildFile; fileRef = E23BD406163342B900D370EF /* OutTransfer.html */; };
-		E23BD46E1633446C00D370EF /* SkypeCallEnd.html in Copy Templates */ = {isa = PBXBuildFile; fileRef = E23BD407163342B900D370EF /* SkypeCallEnd.html */; };
-		E23BD46F1633446C00D370EF /* SkypeCallStart.html in Copy Templates */ = {isa = PBXBuildFile; fileRef = E23BD408163342B900D370EF /* SkypeCallStart.html */; };
-		E23BD4701633446C00D370EF /* SkypeInVoicemail.html in Copy Templates */ = {isa = PBXBuildFile; fileRef = E23BD409163342B900D370EF /* SkypeInVoicemail.html */; };
-		E23BD4711633446C00D370EF /* SmsHead.html in Copy Templates */ = {isa = PBXBuildFile; fileRef = E23BD40A163342B900D370EF /* SmsHead.html */; };
-		E23BD4721633446C00D370EF /* Topic.html in Copy Templates */ = {isa = PBXBuildFile; fileRef = E23BD40B163342B900D370EF /* Topic.html */; };
-		E23BD4731633446C00D370EF /* TransferHead.html in Copy Templates */ = {isa = PBXBuildFile; fileRef = E23BD40C163342B900D370EF /* TransferHead.html */; };
-		E23BD4741633446C00D370EF /* Typing.html in Copy Templates */ = {isa = PBXBuildFile; fileRef = E23BD40D163342B900D370EF /* Typing.html */; };
+		E2692C9216C1916F002217BA /* GifManInspection.m in Sources */ = {isa = PBXBuildFile; fileRef = E2692C9016C19090002217BA /* GifManInspection.m */; };
+		E2692C9A16C1CC85002217BA /* GifManConsole.m in Sources */ = {isa = PBXBuildFile; fileRef = E2692C9916C1CC85002217BA /* GifManConsole.m */; };
 		E289B2511631F0AE00412023 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E289B2501631F0AE00412023 /* Cocoa.framework */; };
 		E289B25B1631F0AE00412023 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E289B2591631F0AE00412023 /* InfoPlist.strings */; };
 		E289B2671631F0F600412023 /* GifManPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = E289B2661631F0F600412023 /* GifManPlugin.m */; };
 		E289B26D1631F32200412023 /* Skype.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E289B26C1631F32200412023 /* Skype.framework */; };
 		E28BF4ED16344B7F00162986 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E28BF4EC16344B7F00162986 /* WebKit.framework */; };
-		E28BF4F71634516100162986 /* loading.gif in Resources */ = {isa = PBXBuildFile; fileRef = E28BF4F61634516100162986 /* loading.gif */; };
-		E28BF4FA1634529E00162986 /* loading.gif in Copy Graphics */ = {isa = PBXBuildFile; fileRef = E28BF4F61634516100162986 /* loading.gif */; };
+		E2F30BC816BF0CAC00D1A69D /* emoticons.css in Copy CSS */ = {isa = PBXBuildFile; fileRef = E2F30BA416BF0BB300D1A69D /* emoticons.css */; };
+		E2F30BC916BF0CAC00D1A69D /* main.css in Copy CSS */ = {isa = PBXBuildFile; fileRef = E2F30BA516BF0BB300D1A69D /* main.css */; };
+		E2F30BCA16BF0CAC00D1A69D /* gifman.css in Copy CSS */ = {isa = PBXBuildFile; fileRef = E2F30BC616BF0BEC00D1A69D /* gifman.css */; };
+		E2F30BCB16BF0CB600D1A69D /* icon_arrow_down.png in Copy Graphics */ = {isa = PBXBuildFile; fileRef = E2F30B7E16BF0BA000D1A69D /* icon_arrow_down.png */; };
+		E2F30BCD16BF0CB600D1A69D /* icon_arrow_right.png in Copy Graphics */ = {isa = PBXBuildFile; fileRef = E2F30B8016BF0BA000D1A69D /* icon_arrow_right.png */; };
+		E2F30BCF16BF0CB600D1A69D /* icon_cancel.png in Copy Graphics */ = {isa = PBXBuildFile; fileRef = E2F30B8216BF0BA000D1A69D /* icon_cancel.png */; };
+		E2F30BD116BF0CB600D1A69D /* icon_edit.png in Copy Graphics */ = {isa = PBXBuildFile; fileRef = E2F30B8416BF0BA000D1A69D /* icon_edit.png */; };
+		E2F30BD316BF0CB600D1A69D /* icon_edited.png in Copy Graphics */ = {isa = PBXBuildFile; fileRef = E2F30B8616BF0BA000D1A69D /* icon_edited.png */; };
+		E2F30BD516BF0CB600D1A69D /* icon_pause.png in Copy Graphics */ = {isa = PBXBuildFile; fileRef = E2F30B8816BF0BA000D1A69D /* icon_pause.png */; };
+		E2F30BD716BF0CB600D1A69D /* icon_play.png in Copy Graphics */ = {isa = PBXBuildFile; fileRef = E2F30B8A16BF0BA000D1A69D /* icon_play.png */; };
+		E2F30BD916BF0CB600D1A69D /* icon_quicklook.png in Copy Graphics */ = {isa = PBXBuildFile; fileRef = E2F30B8C16BF0BA000D1A69D /* icon_quicklook.png */; };
+		E2F30BDB16BF0CB600D1A69D /* icon_refresh.png in Copy Graphics */ = {isa = PBXBuildFile; fileRef = E2F30B8E16BF0BA000D1A69D /* icon_refresh.png */; };
+		E2F30BDD16BF0CB600D1A69D /* icon_reveal.png in Copy Graphics */ = {isa = PBXBuildFile; fileRef = E2F30B9016BF0BA000D1A69D /* icon_reveal.png */; };
+		E2F30BDF16BF0CB600D1A69D /* icon_stop.png in Copy Graphics */ = {isa = PBXBuildFile; fileRef = E2F30B9216BF0BA000D1A69D /* icon_stop.png */; };
+		E2F30BE116BF0CB600D1A69D /* icon_sub.png in Copy Graphics */ = {isa = PBXBuildFile; fileRef = E2F30B9416BF0BA000D1A69D /* icon_sub.png */; };
+		E2F30BE316BF0CB600D1A69D /* icon_warning.png in Copy Graphics */ = {isa = PBXBuildFile; fileRef = E2F30B9616BF0BA000D1A69D /* icon_warning.png */; };
+		E2F30BE516BF0CB600D1A69D /* loading.gif in Copy Graphics */ = {isa = PBXBuildFile; fileRef = E2F30B9816BF0BA000D1A69D /* loading.gif */; };
+		E2F30BE616BF0CB600D1A69D /* transfer-32.png in Copy Graphics */ = {isa = PBXBuildFile; fileRef = E2F30B9916BF0BA000D1A69D /* transfer-32.png */; };
+		E2F30BE816BF0CB600D1A69D /* transfer-multiple-32.png in Copy Graphics */ = {isa = PBXBuildFile; fileRef = E2F30B9B16BF0BA000D1A69D /* transfer-multiple-32.png */; };
+		E2F30BEA16BF0CB600D1A69D /* typing-16x16-white.gif in Copy Graphics */ = {isa = PBXBuildFile; fileRef = E2F30B9D16BF0BA000D1A69D /* typing-16x16-white.gif */; };
+		E2F30BEC16BF0CC000D1A69D /* emoticons.js in Copy Javascript */ = {isa = PBXBuildFile; fileRef = E2F30B9F16BF0BAA00D1A69D /* emoticons.js */; };
+		E2F30BED16BF0CC000D1A69D /* jquery.min.js in Copy Javascript */ = {isa = PBXBuildFile; fileRef = E2F30BA016BF0BAA00D1A69D /* jquery.min.js */; };
+		E2F30BEE16BF0CC000D1A69D /* jquery.sprite.js in Copy Javascript */ = {isa = PBXBuildFile; fileRef = E2F30BA116BF0BAA00D1A69D /* jquery.sprite.js */; };
+		E2F30BEF16BF0CC000D1A69D /* main.js in Copy Javascript */ = {isa = PBXBuildFile; fileRef = E2F30BA216BF0BAA00D1A69D /* main.js */; };
+		E2F30BF016BF0CC000D1A69D /* retina.js in Copy Javascript */ = {isa = PBXBuildFile; fileRef = E2F30BA316BF0BAA00D1A69D /* retina.js */; };
+		E2F30BF116BF0CC000D1A69D /* gifman.js in Copy Javascript */ = {isa = PBXBuildFile; fileRef = E2F30BC716BF0BF400D1A69D /* gifman.js */; };
+		E2F30BF216BF0CC800D1A69D /* Alert.html in Copy Templates */ = {isa = PBXBuildFile; fileRef = E2F30BA616BF0BBC00D1A69D /* Alert.html */; };
+		E2F30BF316BF0CC800D1A69D /* CallEnd.html in Copy Templates */ = {isa = PBXBuildFile; fileRef = E2F30BA716BF0BBC00D1A69D /* CallEnd.html */; };
+		E2F30BF416BF0CC800D1A69D /* CallStart.html in Copy Templates */ = {isa = PBXBuildFile; fileRef = E2F30BA816BF0BBC00D1A69D /* CallStart.html */; };
+		E2F30BF516BF0CC800D1A69D /* History.html in Copy Templates */ = {isa = PBXBuildFile; fileRef = E2F30BA916BF0BBC00D1A69D /* History.html */; };
+		E2F30BF616BF0CC800D1A69D /* InEmote.html in Copy Templates */ = {isa = PBXBuildFile; fileRef = E2F30BAA16BF0BBC00D1A69D /* InEmote.html */; };
+		E2F30BF716BF0CC800D1A69D /* InFollowupMessage.html in Copy Templates */ = {isa = PBXBuildFile; fileRef = E2F30BAB16BF0BBC00D1A69D /* InFollowupMessage.html */; };
+		E2F30BF816BF0CC800D1A69D /* InMessage.html in Copy Templates */ = {isa = PBXBuildFile; fileRef = E2F30BAC16BF0BBC00D1A69D /* InMessage.html */; };
+		E2F30BF916BF0CC800D1A69D /* InSms.html in Copy Templates */ = {isa = PBXBuildFile; fileRef = E2F30BAD16BF0BBC00D1A69D /* InSms.html */; };
+		E2F30BFA16BF0CC800D1A69D /* InSubTransfer.html in Copy Templates */ = {isa = PBXBuildFile; fileRef = E2F30BAE16BF0BBC00D1A69D /* InSubTransfer.html */; };
+		E2F30BFB16BF0CC800D1A69D /* InTransfer.html in Copy Templates */ = {isa = PBXBuildFile; fileRef = E2F30BAF16BF0BBC00D1A69D /* InTransfer.html */; };
+		E2F30BFC16BF0CC800D1A69D /* InVideoMessage.html in Copy Templates */ = {isa = PBXBuildFile; fileRef = E2F30BB016BF0BBC00D1A69D /* InVideoMessage.html */; };
+		E2F30BFD16BF0CC800D1A69D /* InVoicemail.html in Copy Templates */ = {isa = PBXBuildFile; fileRef = E2F30BB116BF0BBC00D1A69D /* InVoicemail.html */; };
+		E2F30BFE16BF0CC800D1A69D /* MoreHistory.html in Copy Templates */ = {isa = PBXBuildFile; fileRef = E2F30BB216BF0BBC00D1A69D /* MoreHistory.html */; };
+		E2F30BFF16BF0CC800D1A69D /* MoreHistoryLink.html in Copy Templates */ = {isa = PBXBuildFile; fileRef = E2F30BB316BF0BBC00D1A69D /* MoreHistoryLink.html */; };
+		E2F30C0016BF0CC800D1A69D /* OutEmote.html in Copy Templates */ = {isa = PBXBuildFile; fileRef = E2F30BB416BF0BBC00D1A69D /* OutEmote.html */; };
+		E2F30C0116BF0CC800D1A69D /* OutFollowupMessage.html in Copy Templates */ = {isa = PBXBuildFile; fileRef = E2F30BB516BF0BBC00D1A69D /* OutFollowupMessage.html */; };
+		E2F30C0216BF0CC800D1A69D /* OutMessage.html in Copy Templates */ = {isa = PBXBuildFile; fileRef = E2F30BB616BF0BBC00D1A69D /* OutMessage.html */; };
+		E2F30C0316BF0CC800D1A69D /* OutSms.html in Copy Templates */ = {isa = PBXBuildFile; fileRef = E2F30BB716BF0BBC00D1A69D /* OutSms.html */; };
+		E2F30C0416BF0CC800D1A69D /* OutSubTransfer.html in Copy Templates */ = {isa = PBXBuildFile; fileRef = E2F30BB816BF0BBC00D1A69D /* OutSubTransfer.html */; };
+		E2F30C0516BF0CC800D1A69D /* OutTransfer.html in Copy Templates */ = {isa = PBXBuildFile; fileRef = E2F30BB916BF0BBC00D1A69D /* OutTransfer.html */; };
+		E2F30C0616BF0CC800D1A69D /* OutVideoMessage.html in Copy Templates */ = {isa = PBXBuildFile; fileRef = E2F30BBA16BF0BBC00D1A69D /* OutVideoMessage.html */; };
+		E2F30C0716BF0CC800D1A69D /* SkypeCallEnd.html in Copy Templates */ = {isa = PBXBuildFile; fileRef = E2F30BBB16BF0BBC00D1A69D /* SkypeCallEnd.html */; };
+		E2F30C0816BF0CC800D1A69D /* SkypeCallStart.html in Copy Templates */ = {isa = PBXBuildFile; fileRef = E2F30BBC16BF0BBC00D1A69D /* SkypeCallStart.html */; };
+		E2F30C0916BF0CC800D1A69D /* SkypeInVoicemail.html in Copy Templates */ = {isa = PBXBuildFile; fileRef = E2F30BBD16BF0BBC00D1A69D /* SkypeInVoicemail.html */; };
+		E2F30C0A16BF0CC800D1A69D /* SmsHead.html in Copy Templates */ = {isa = PBXBuildFile; fileRef = E2F30BBE16BF0BBC00D1A69D /* SmsHead.html */; };
+		E2F30C0B16BF0CC800D1A69D /* Topic.html in Copy Templates */ = {isa = PBXBuildFile; fileRef = E2F30BBF16BF0BBC00D1A69D /* Topic.html */; };
+		E2F30C0C16BF0CC800D1A69D /* TransferHead.html in Copy Templates */ = {isa = PBXBuildFile; fileRef = E2F30BC016BF0BBC00D1A69D /* TransferHead.html */; };
+		E2F30C0D16BF0CC800D1A69D /* Typing.html in Copy Templates */ = {isa = PBXBuildFile; fileRef = E2F30BC116BF0BBC00D1A69D /* Typing.html */; };
+		E2F30C0E16BF0D2500D1A69D /* icon_arrow_down@2x.png in Copy Graphics */ = {isa = PBXBuildFile; fileRef = E2F30B7F16BF0BA000D1A69D /* icon_arrow_down@2x.png */; };
+		E2F30C0F16BF0D2500D1A69D /* icon_arrow_right@2x.png in Copy Graphics */ = {isa = PBXBuildFile; fileRef = E2F30B8116BF0BA000D1A69D /* icon_arrow_right@2x.png */; };
+		E2F30C1016BF0D2500D1A69D /* icon_cancel@2x.png in Copy Graphics */ = {isa = PBXBuildFile; fileRef = E2F30B8316BF0BA000D1A69D /* icon_cancel@2x.png */; };
+		E2F30C1116BF0D2500D1A69D /* icon_edit@2x.png in Copy Graphics */ = {isa = PBXBuildFile; fileRef = E2F30B8516BF0BA000D1A69D /* icon_edit@2x.png */; };
+		E2F30C1216BF0D2500D1A69D /* icon_edited@2x.png in Copy Graphics */ = {isa = PBXBuildFile; fileRef = E2F30B8716BF0BA000D1A69D /* icon_edited@2x.png */; };
+		E2F30C1316BF0D2500D1A69D /* icon_pause@2x.png in Copy Graphics */ = {isa = PBXBuildFile; fileRef = E2F30B8916BF0BA000D1A69D /* icon_pause@2x.png */; };
+		E2F30C1416BF0D2500D1A69D /* icon_play@2x.png in Copy Graphics */ = {isa = PBXBuildFile; fileRef = E2F30B8B16BF0BA000D1A69D /* icon_play@2x.png */; };
+		E2F30C1516BF0D2500D1A69D /* icon_quicklook@2x.png in Copy Graphics */ = {isa = PBXBuildFile; fileRef = E2F30B8D16BF0BA000D1A69D /* icon_quicklook@2x.png */; };
+		E2F30C1616BF0D2500D1A69D /* icon_refresh@2x.png in Copy Graphics */ = {isa = PBXBuildFile; fileRef = E2F30B8F16BF0BA000D1A69D /* icon_refresh@2x.png */; };
+		E2F30C1716BF0D2500D1A69D /* icon_reveal@2x.png in Copy Graphics */ = {isa = PBXBuildFile; fileRef = E2F30B9116BF0BA000D1A69D /* icon_reveal@2x.png */; };
+		E2F30C1816BF0D2500D1A69D /* icon_stop@2x.png in Copy Graphics */ = {isa = PBXBuildFile; fileRef = E2F30B9316BF0BA000D1A69D /* icon_stop@2x.png */; };
+		E2F30C1916BF0D2500D1A69D /* icon_sub@2x.png in Copy Graphics */ = {isa = PBXBuildFile; fileRef = E2F30B9516BF0BA000D1A69D /* icon_sub@2x.png */; };
+		E2F30C1A16BF0D2500D1A69D /* icon_warning@2x.png in Copy Graphics */ = {isa = PBXBuildFile; fileRef = E2F30B9716BF0BA000D1A69D /* icon_warning@2x.png */; };
+		E2F30C1B16BF0D2500D1A69D /* transfer-32@2x.png in Copy Graphics */ = {isa = PBXBuildFile; fileRef = E2F30B9A16BF0BA000D1A69D /* transfer-32@2x.png */; };
+		E2F30C1C16BF0D2500D1A69D /* transfer-multiple-32@2x.png in Copy Graphics */ = {isa = PBXBuildFile; fileRef = E2F30B9C16BF0BA000D1A69D /* transfer-multiple-32@2x.png */; };
+		E2F30C1D16BF0D2500D1A69D /* typing-16x16-white@2x.gif in Copy Graphics */ = {isa = PBXBuildFile; fileRef = E2F30B9E16BF0BA000D1A69D /* typing-16x16-white@2x.gif */; };
+		E2F30C2116BF287500D1A69D /* jquery-switcher.css in Copy CSS */ = {isa = PBXBuildFile; fileRef = E2F30C1E16BF192200D1A69D /* jquery-switcher.css */; };
+		E2F30C2216BF287E00D1A69D /* switcher.plugin.min.js in Copy Javascript */ = {isa = PBXBuildFile; fileRef = E2F30C1F16BF192B00D1A69D /* switcher.plugin.min.js */; };
+		E2F30C2516BF2B5100D1A69D /* GifManKVStore.m in Sources */ = {isa = PBXBuildFile; fileRef = E2F30C2416BF2B5100D1A69D /* GifManKVStore.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -175,7 +157,10 @@
 			dstPath = GifMan.SkypeChatStyle/Contents/Resources/css;
 			dstSubfolderSpec = 16;
 			files = (
-				E23BD4401633439B00D370EF /* main.css in Copy CSS */,
+				E2F30C2116BF287500D1A69D /* jquery-switcher.css in Copy CSS */,
+				E2F30BC816BF0CAC00D1A69D /* emoticons.css in Copy CSS */,
+				E2F30BC916BF0CAC00D1A69D /* main.css in Copy CSS */,
+				E2F30BCA16BF0CAC00D1A69D /* gifman.css in Copy CSS */,
 			);
 			name = "Copy CSS";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -197,23 +182,39 @@
 			dstPath = GifMan.SkypeChatStyle/Contents/Resources/gfx;
 			dstSubfolderSpec = 16;
 			files = (
-				E23BD4491633445000D370EF /* icon_arrow_down.png in Copy Graphics */,
-				E23BD44A1633445000D370EF /* icon_arrow_right.png in Copy Graphics */,
-				E23BD44B1633445000D370EF /* icon_cancel.png in Copy Graphics */,
-				E23BD44C1633445000D370EF /* icon_edit.png in Copy Graphics */,
-				E23BD44D1633445000D370EF /* icon_edited.png in Copy Graphics */,
-				E23BD44E1633445000D370EF /* icon_pause.png in Copy Graphics */,
-				E23BD44F1633445000D370EF /* icon_play.png in Copy Graphics */,
-				E23BD4501633445000D370EF /* icon_quicklook.png in Copy Graphics */,
-				E23BD4511633445000D370EF /* icon_refresh.png in Copy Graphics */,
-				E23BD4521633445000D370EF /* icon_reveal.png in Copy Graphics */,
-				E23BD4531633445000D370EF /* icon_stop.png in Copy Graphics */,
-				E23BD4541633445000D370EF /* icon_sub.png in Copy Graphics */,
-				E23BD4551633445000D370EF /* icon_warning.png in Copy Graphics */,
-				E23BD4561633445000D370EF /* transfer-32.png in Copy Graphics */,
-				E23BD4571633445000D370EF /* transfer-multiple-32.png in Copy Graphics */,
-				E23BD4581633445000D370EF /* typing-16x16-white.gif in Copy Graphics */,
-				E28BF4FA1634529E00162986 /* loading.gif in Copy Graphics */,
+				E2F30C0E16BF0D2500D1A69D /* icon_arrow_down@2x.png in Copy Graphics */,
+				E2F30C0F16BF0D2500D1A69D /* icon_arrow_right@2x.png in Copy Graphics */,
+				E2F30C1016BF0D2500D1A69D /* icon_cancel@2x.png in Copy Graphics */,
+				E2F30C1116BF0D2500D1A69D /* icon_edit@2x.png in Copy Graphics */,
+				E2F30C1216BF0D2500D1A69D /* icon_edited@2x.png in Copy Graphics */,
+				E2F30C1316BF0D2500D1A69D /* icon_pause@2x.png in Copy Graphics */,
+				E2F30C1416BF0D2500D1A69D /* icon_play@2x.png in Copy Graphics */,
+				E2F30C1516BF0D2500D1A69D /* icon_quicklook@2x.png in Copy Graphics */,
+				E2F30C1616BF0D2500D1A69D /* icon_refresh@2x.png in Copy Graphics */,
+				E2F30C1716BF0D2500D1A69D /* icon_reveal@2x.png in Copy Graphics */,
+				E2F30C1816BF0D2500D1A69D /* icon_stop@2x.png in Copy Graphics */,
+				E2F30C1916BF0D2500D1A69D /* icon_sub@2x.png in Copy Graphics */,
+				E2F30C1A16BF0D2500D1A69D /* icon_warning@2x.png in Copy Graphics */,
+				E2F30C1B16BF0D2500D1A69D /* transfer-32@2x.png in Copy Graphics */,
+				E2F30C1C16BF0D2500D1A69D /* transfer-multiple-32@2x.png in Copy Graphics */,
+				E2F30C1D16BF0D2500D1A69D /* typing-16x16-white@2x.gif in Copy Graphics */,
+				E2F30BCB16BF0CB600D1A69D /* icon_arrow_down.png in Copy Graphics */,
+				E2F30BCD16BF0CB600D1A69D /* icon_arrow_right.png in Copy Graphics */,
+				E2F30BCF16BF0CB600D1A69D /* icon_cancel.png in Copy Graphics */,
+				E2F30BD116BF0CB600D1A69D /* icon_edit.png in Copy Graphics */,
+				E2F30BD316BF0CB600D1A69D /* icon_edited.png in Copy Graphics */,
+				E2F30BD516BF0CB600D1A69D /* icon_pause.png in Copy Graphics */,
+				E2F30BD716BF0CB600D1A69D /* icon_play.png in Copy Graphics */,
+				E2F30BD916BF0CB600D1A69D /* icon_quicklook.png in Copy Graphics */,
+				E2F30BDB16BF0CB600D1A69D /* icon_refresh.png in Copy Graphics */,
+				E2F30BDD16BF0CB600D1A69D /* icon_reveal.png in Copy Graphics */,
+				E2F30BDF16BF0CB600D1A69D /* icon_stop.png in Copy Graphics */,
+				E2F30BE116BF0CB600D1A69D /* icon_sub.png in Copy Graphics */,
+				E2F30BE316BF0CB600D1A69D /* icon_warning.png in Copy Graphics */,
+				E2F30BE516BF0CB600D1A69D /* loading.gif in Copy Graphics */,
+				E2F30BE616BF0CB600D1A69D /* transfer-32.png in Copy Graphics */,
+				E2F30BE816BF0CB600D1A69D /* transfer-multiple-32.png in Copy Graphics */,
+				E2F30BEA16BF0CB600D1A69D /* typing-16x16-white.gif in Copy Graphics */,
 			);
 			name = "Copy Graphics";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -224,8 +225,13 @@
 			dstPath = GifMan.SkypeChatStyle/Contents/Resources/js;
 			dstSubfolderSpec = 16;
 			files = (
-				E23BD4591633445C00D370EF /* jquery.min.js in Copy Javascript */,
-				E23BD45A1633445C00D370EF /* main.js in Copy Javascript */,
+				E2F30C2216BF287E00D1A69D /* switcher.plugin.min.js in Copy Javascript */,
+				E2F30BEC16BF0CC000D1A69D /* emoticons.js in Copy Javascript */,
+				E2F30BED16BF0CC000D1A69D /* jquery.min.js in Copy Javascript */,
+				E2F30BEE16BF0CC000D1A69D /* jquery.sprite.js in Copy Javascript */,
+				E2F30BEF16BF0CC000D1A69D /* main.js in Copy Javascript */,
+				E2F30BF016BF0CC000D1A69D /* retina.js in Copy Javascript */,
+				E2F30BF116BF0CC000D1A69D /* gifman.js in Copy Javascript */,
 			);
 			name = "Copy Javascript";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -236,32 +242,34 @@
 			dstPath = GifMan.SkypeChatStyle/Contents/Resources/templates;
 			dstSubfolderSpec = 16;
 			files = (
-				E23BD45B1633446C00D370EF /* Alert.html in Copy Templates */,
-				E23BD45C1633446C00D370EF /* CallEnd.html in Copy Templates */,
-				E23BD45D1633446C00D370EF /* CallStart.html in Copy Templates */,
-				E23BD45E1633446C00D370EF /* History.html in Copy Templates */,
-				E23BD45F1633446C00D370EF /* InEmote.html in Copy Templates */,
-				E23BD4601633446C00D370EF /* InFollowupMessage.html in Copy Templates */,
-				E23BD4611633446C00D370EF /* InMessage.html in Copy Templates */,
-				E23BD4621633446C00D370EF /* InSms.html in Copy Templates */,
-				E23BD4631633446C00D370EF /* InSubTransfer.html in Copy Templates */,
-				E23BD4641633446C00D370EF /* InTransfer.html in Copy Templates */,
-				E23BD4651633446C00D370EF /* InVoicemail.html in Copy Templates */,
-				E23BD4661633446C00D370EF /* MoreHistory.html in Copy Templates */,
-				E23BD4671633446C00D370EF /* MoreHistoryLink.html in Copy Templates */,
-				E23BD4681633446C00D370EF /* OutEmote.html in Copy Templates */,
-				E23BD4691633446C00D370EF /* OutFollowupMessage.html in Copy Templates */,
-				E23BD46A1633446C00D370EF /* OutMessage.html in Copy Templates */,
-				E23BD46B1633446C00D370EF /* OutSms.html in Copy Templates */,
-				E23BD46C1633446C00D370EF /* OutSubTransfer.html in Copy Templates */,
-				E23BD46D1633446C00D370EF /* OutTransfer.html in Copy Templates */,
-				E23BD46E1633446C00D370EF /* SkypeCallEnd.html in Copy Templates */,
-				E23BD46F1633446C00D370EF /* SkypeCallStart.html in Copy Templates */,
-				E23BD4701633446C00D370EF /* SkypeInVoicemail.html in Copy Templates */,
-				E23BD4711633446C00D370EF /* SmsHead.html in Copy Templates */,
-				E23BD4721633446C00D370EF /* Topic.html in Copy Templates */,
-				E23BD4731633446C00D370EF /* TransferHead.html in Copy Templates */,
-				E23BD4741633446C00D370EF /* Typing.html in Copy Templates */,
+				E2F30BF216BF0CC800D1A69D /* Alert.html in Copy Templates */,
+				E2F30BF316BF0CC800D1A69D /* CallEnd.html in Copy Templates */,
+				E2F30BF416BF0CC800D1A69D /* CallStart.html in Copy Templates */,
+				E2F30BF516BF0CC800D1A69D /* History.html in Copy Templates */,
+				E2F30BF616BF0CC800D1A69D /* InEmote.html in Copy Templates */,
+				E2F30BF716BF0CC800D1A69D /* InFollowupMessage.html in Copy Templates */,
+				E2F30BF816BF0CC800D1A69D /* InMessage.html in Copy Templates */,
+				E2F30BF916BF0CC800D1A69D /* InSms.html in Copy Templates */,
+				E2F30BFA16BF0CC800D1A69D /* InSubTransfer.html in Copy Templates */,
+				E2F30BFB16BF0CC800D1A69D /* InTransfer.html in Copy Templates */,
+				E2F30BFC16BF0CC800D1A69D /* InVideoMessage.html in Copy Templates */,
+				E2F30BFD16BF0CC800D1A69D /* InVoicemail.html in Copy Templates */,
+				E2F30BFE16BF0CC800D1A69D /* MoreHistory.html in Copy Templates */,
+				E2F30BFF16BF0CC800D1A69D /* MoreHistoryLink.html in Copy Templates */,
+				E2F30C0016BF0CC800D1A69D /* OutEmote.html in Copy Templates */,
+				E2F30C0116BF0CC800D1A69D /* OutFollowupMessage.html in Copy Templates */,
+				E2F30C0216BF0CC800D1A69D /* OutMessage.html in Copy Templates */,
+				E2F30C0316BF0CC800D1A69D /* OutSms.html in Copy Templates */,
+				E2F30C0416BF0CC800D1A69D /* OutSubTransfer.html in Copy Templates */,
+				E2F30C0516BF0CC800D1A69D /* OutTransfer.html in Copy Templates */,
+				E2F30C0616BF0CC800D1A69D /* OutVideoMessage.html in Copy Templates */,
+				E2F30C0716BF0CC800D1A69D /* SkypeCallEnd.html in Copy Templates */,
+				E2F30C0816BF0CC800D1A69D /* SkypeCallStart.html in Copy Templates */,
+				E2F30C0916BF0CC800D1A69D /* SkypeInVoicemail.html in Copy Templates */,
+				E2F30C0A16BF0CC800D1A69D /* SmsHead.html in Copy Templates */,
+				E2F30C0B16BF0CC800D1A69D /* Topic.html in Copy Templates */,
+				E2F30C0C16BF0CC800D1A69D /* TransferHead.html in Copy Templates */,
+				E2F30C0D16BF0CC800D1A69D /* Typing.html in Copy Templates */,
 			);
 			name = "Copy Templates";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -271,52 +279,13 @@
 /* Begin PBXFileReference section */
 		E23BD3DA163342AD00D370EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E23BD3DC163342B900D370EF /* Conversation.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Conversation.html; sourceTree = "<group>"; };
-		E23BD3DE163342B900D370EF /* main.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = main.css; sourceTree = "<group>"; };
-		E23BD3E0163342B900D370EF /* icon_arrow_down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_arrow_down.png; sourceTree = "<group>"; };
-		E23BD3E1163342B900D370EF /* icon_arrow_right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_arrow_right.png; sourceTree = "<group>"; };
-		E23BD3E2163342B900D370EF /* icon_cancel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_cancel.png; sourceTree = "<group>"; };
-		E23BD3E3163342B900D370EF /* icon_edit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_edit.png; sourceTree = "<group>"; };
-		E23BD3E4163342B900D370EF /* icon_edited.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_edited.png; sourceTree = "<group>"; };
-		E23BD3E5163342B900D370EF /* icon_pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_pause.png; sourceTree = "<group>"; };
-		E23BD3E6163342B900D370EF /* icon_play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_play.png; sourceTree = "<group>"; };
-		E23BD3E7163342B900D370EF /* icon_quicklook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_quicklook.png; sourceTree = "<group>"; };
-		E23BD3E8163342B900D370EF /* icon_refresh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_refresh.png; sourceTree = "<group>"; };
-		E23BD3E9163342B900D370EF /* icon_reveal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_reveal.png; sourceTree = "<group>"; };
-		E23BD3EA163342B900D370EF /* icon_stop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_stop.png; sourceTree = "<group>"; };
-		E23BD3EB163342B900D370EF /* icon_sub.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_sub.png; sourceTree = "<group>"; };
-		E23BD3EC163342B900D370EF /* icon_warning.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_warning.png; sourceTree = "<group>"; };
-		E23BD3ED163342B900D370EF /* transfer-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "transfer-32.png"; sourceTree = "<group>"; };
-		E23BD3EE163342B900D370EF /* transfer-multiple-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "transfer-multiple-32.png"; sourceTree = "<group>"; };
-		E23BD3EF163342B900D370EF /* typing-16x16-white.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "typing-16x16-white.gif"; sourceTree = "<group>"; };
-		E23BD3F1163342B900D370EF /* jquery.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = jquery.min.js; sourceTree = "<group>"; };
-		E23BD3F2163342B900D370EF /* main.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = main.js; sourceTree = "<group>"; };
-		E23BD3F4163342B900D370EF /* Alert.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Alert.html; sourceTree = "<group>"; };
-		E23BD3F5163342B900D370EF /* CallEnd.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = CallEnd.html; sourceTree = "<group>"; };
-		E23BD3F6163342B900D370EF /* CallStart.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = CallStart.html; sourceTree = "<group>"; };
-		E23BD3F7163342B900D370EF /* History.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = History.html; sourceTree = "<group>"; };
-		E23BD3F8163342B900D370EF /* InEmote.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = InEmote.html; sourceTree = "<group>"; };
-		E23BD3F9163342B900D370EF /* InFollowupMessage.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = InFollowupMessage.html; sourceTree = "<group>"; };
-		E23BD3FA163342B900D370EF /* InMessage.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = InMessage.html; sourceTree = "<group>"; };
-		E23BD3FB163342B900D370EF /* InSms.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = InSms.html; sourceTree = "<group>"; };
-		E23BD3FC163342B900D370EF /* InSubTransfer.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = InSubTransfer.html; sourceTree = "<group>"; };
-		E23BD3FD163342B900D370EF /* InTransfer.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = InTransfer.html; sourceTree = "<group>"; };
-		E23BD3FE163342B900D370EF /* InVoicemail.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = InVoicemail.html; sourceTree = "<group>"; };
-		E23BD3FF163342B900D370EF /* MoreHistory.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = MoreHistory.html; sourceTree = "<group>"; };
-		E23BD400163342B900D370EF /* MoreHistoryLink.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = MoreHistoryLink.html; sourceTree = "<group>"; };
-		E23BD401163342B900D370EF /* OutEmote.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = OutEmote.html; sourceTree = "<group>"; };
-		E23BD402163342B900D370EF /* OutFollowupMessage.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = OutFollowupMessage.html; sourceTree = "<group>"; };
-		E23BD403163342B900D370EF /* OutMessage.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = OutMessage.html; sourceTree = "<group>"; };
-		E23BD404163342B900D370EF /* OutSms.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = OutSms.html; sourceTree = "<group>"; };
-		E23BD405163342B900D370EF /* OutSubTransfer.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = OutSubTransfer.html; sourceTree = "<group>"; };
-		E23BD406163342B900D370EF /* OutTransfer.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = OutTransfer.html; sourceTree = "<group>"; };
-		E23BD407163342B900D370EF /* SkypeCallEnd.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = SkypeCallEnd.html; sourceTree = "<group>"; };
-		E23BD408163342B900D370EF /* SkypeCallStart.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = SkypeCallStart.html; sourceTree = "<group>"; };
-		E23BD409163342B900D370EF /* SkypeInVoicemail.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = SkypeInVoicemail.html; sourceTree = "<group>"; };
-		E23BD40A163342B900D370EF /* SmsHead.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = SmsHead.html; sourceTree = "<group>"; };
-		E23BD40B163342B900D370EF /* Topic.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Topic.html; sourceTree = "<group>"; };
-		E23BD40C163342B900D370EF /* TransferHead.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = TransferHead.html; sourceTree = "<group>"; };
-		E23BD40D163342B900D370EF /* Typing.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Typing.html; sourceTree = "<group>"; };
-		E289B24D1631F0AE00412023 /* GifMan.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GifMan.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		E2692C8F16C19090002217BA /* GifManInspection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GifManInspection.h; sourceTree = "<group>"; };
+		E2692C9016C19090002217BA /* GifManInspection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GifManInspection.m; sourceTree = "<group>"; };
+		E2692C9516C19CE8002217BA /* GifMan.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GifMan.bundle; path = Build/Products/Release/GifMan.bundle; sourceTree = "<group>"; };
+		E2692C9616C19CF1002217BA /* GifMan.SkypeChatStyle */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = GifMan.SkypeChatStyle; path = Build/Products/Release/GifMan.SkypeChatStyle; sourceTree = "<group>"; };
+		E2692C9816C1CC85002217BA /* GifManConsole.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GifManConsole.h; sourceTree = "<group>"; };
+		E2692C9916C1CC85002217BA /* GifManConsole.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GifManConsole.m; sourceTree = "<group>"; };
+		E289B24D1631F0AE00412023 /* GifMan.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = GifMan.bundle; path = "/Users/tom/Projects/gif-man/build/Release/GifMan.bundle"; sourceTree = "<absolute>"; };
 		E289B2501631F0AE00412023 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		E289B2531631F0AE00412023 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		E289B2541631F0AE00412023 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -328,7 +297,81 @@
 		E289B2661631F0F600412023 /* GifManPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GifManPlugin.m; sourceTree = "<group>"; };
 		E289B26C1631F32200412023 /* Skype.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Skype.framework; path = GifMan/Skype.framework; sourceTree = "<group>"; };
 		E28BF4EC16344B7F00162986 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
-		E28BF4F61634516100162986 /* loading.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = loading.gif; sourceTree = "<group>"; };
+		E2F30B7E16BF0BA000D1A69D /* icon_arrow_down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_arrow_down.png; sourceTree = "<group>"; };
+		E2F30B7F16BF0BA000D1A69D /* icon_arrow_down@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_arrow_down@2x.png"; sourceTree = "<group>"; };
+		E2F30B8016BF0BA000D1A69D /* icon_arrow_right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_arrow_right.png; sourceTree = "<group>"; };
+		E2F30B8116BF0BA000D1A69D /* icon_arrow_right@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_arrow_right@2x.png"; sourceTree = "<group>"; };
+		E2F30B8216BF0BA000D1A69D /* icon_cancel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_cancel.png; sourceTree = "<group>"; };
+		E2F30B8316BF0BA000D1A69D /* icon_cancel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_cancel@2x.png"; sourceTree = "<group>"; };
+		E2F30B8416BF0BA000D1A69D /* icon_edit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_edit.png; sourceTree = "<group>"; };
+		E2F30B8516BF0BA000D1A69D /* icon_edit@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_edit@2x.png"; sourceTree = "<group>"; };
+		E2F30B8616BF0BA000D1A69D /* icon_edited.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_edited.png; sourceTree = "<group>"; };
+		E2F30B8716BF0BA000D1A69D /* icon_edited@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_edited@2x.png"; sourceTree = "<group>"; };
+		E2F30B8816BF0BA000D1A69D /* icon_pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_pause.png; sourceTree = "<group>"; };
+		E2F30B8916BF0BA000D1A69D /* icon_pause@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_pause@2x.png"; sourceTree = "<group>"; };
+		E2F30B8A16BF0BA000D1A69D /* icon_play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_play.png; sourceTree = "<group>"; };
+		E2F30B8B16BF0BA000D1A69D /* icon_play@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_play@2x.png"; sourceTree = "<group>"; };
+		E2F30B8C16BF0BA000D1A69D /* icon_quicklook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_quicklook.png; sourceTree = "<group>"; };
+		E2F30B8D16BF0BA000D1A69D /* icon_quicklook@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_quicklook@2x.png"; sourceTree = "<group>"; };
+		E2F30B8E16BF0BA000D1A69D /* icon_refresh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_refresh.png; sourceTree = "<group>"; };
+		E2F30B8F16BF0BA000D1A69D /* icon_refresh@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_refresh@2x.png"; sourceTree = "<group>"; };
+		E2F30B9016BF0BA000D1A69D /* icon_reveal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_reveal.png; sourceTree = "<group>"; };
+		E2F30B9116BF0BA000D1A69D /* icon_reveal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_reveal@2x.png"; sourceTree = "<group>"; };
+		E2F30B9216BF0BA000D1A69D /* icon_stop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_stop.png; sourceTree = "<group>"; };
+		E2F30B9316BF0BA000D1A69D /* icon_stop@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_stop@2x.png"; sourceTree = "<group>"; };
+		E2F30B9416BF0BA000D1A69D /* icon_sub.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_sub.png; sourceTree = "<group>"; };
+		E2F30B9516BF0BA000D1A69D /* icon_sub@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_sub@2x.png"; sourceTree = "<group>"; };
+		E2F30B9616BF0BA000D1A69D /* icon_warning.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_warning.png; sourceTree = "<group>"; };
+		E2F30B9716BF0BA000D1A69D /* icon_warning@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_warning@2x.png"; sourceTree = "<group>"; };
+		E2F30B9816BF0BA000D1A69D /* loading.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = loading.gif; sourceTree = "<group>"; };
+		E2F30B9916BF0BA000D1A69D /* transfer-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "transfer-32.png"; sourceTree = "<group>"; };
+		E2F30B9A16BF0BA000D1A69D /* transfer-32@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "transfer-32@2x.png"; sourceTree = "<group>"; };
+		E2F30B9B16BF0BA000D1A69D /* transfer-multiple-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "transfer-multiple-32.png"; sourceTree = "<group>"; };
+		E2F30B9C16BF0BA000D1A69D /* transfer-multiple-32@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "transfer-multiple-32@2x.png"; sourceTree = "<group>"; };
+		E2F30B9D16BF0BA000D1A69D /* typing-16x16-white.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "typing-16x16-white.gif"; sourceTree = "<group>"; };
+		E2F30B9E16BF0BA000D1A69D /* typing-16x16-white@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "typing-16x16-white@2x.gif"; sourceTree = "<group>"; };
+		E2F30B9F16BF0BAA00D1A69D /* emoticons.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = emoticons.js; sourceTree = "<group>"; };
+		E2F30BA016BF0BAA00D1A69D /* jquery.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = jquery.min.js; sourceTree = "<group>"; };
+		E2F30BA116BF0BAA00D1A69D /* jquery.sprite.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = jquery.sprite.js; sourceTree = "<group>"; };
+		E2F30BA216BF0BAA00D1A69D /* main.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = main.js; sourceTree = "<group>"; };
+		E2F30BA316BF0BAA00D1A69D /* retina.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = retina.js; sourceTree = "<group>"; };
+		E2F30BA416BF0BB300D1A69D /* emoticons.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = emoticons.css; sourceTree = "<group>"; };
+		E2F30BA516BF0BB300D1A69D /* main.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = main.css; sourceTree = "<group>"; };
+		E2F30BA616BF0BBC00D1A69D /* Alert.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Alert.html; sourceTree = "<group>"; };
+		E2F30BA716BF0BBC00D1A69D /* CallEnd.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = CallEnd.html; sourceTree = "<group>"; };
+		E2F30BA816BF0BBC00D1A69D /* CallStart.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = CallStart.html; sourceTree = "<group>"; };
+		E2F30BA916BF0BBC00D1A69D /* History.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = History.html; sourceTree = "<group>"; };
+		E2F30BAA16BF0BBC00D1A69D /* InEmote.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = InEmote.html; sourceTree = "<group>"; };
+		E2F30BAB16BF0BBC00D1A69D /* InFollowupMessage.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = InFollowupMessage.html; sourceTree = "<group>"; };
+		E2F30BAC16BF0BBC00D1A69D /* InMessage.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = InMessage.html; sourceTree = "<group>"; };
+		E2F30BAD16BF0BBC00D1A69D /* InSms.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = InSms.html; sourceTree = "<group>"; };
+		E2F30BAE16BF0BBC00D1A69D /* InSubTransfer.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = InSubTransfer.html; sourceTree = "<group>"; };
+		E2F30BAF16BF0BBC00D1A69D /* InTransfer.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = InTransfer.html; sourceTree = "<group>"; };
+		E2F30BB016BF0BBC00D1A69D /* InVideoMessage.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = InVideoMessage.html; sourceTree = "<group>"; };
+		E2F30BB116BF0BBC00D1A69D /* InVoicemail.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = InVoicemail.html; sourceTree = "<group>"; };
+		E2F30BB216BF0BBC00D1A69D /* MoreHistory.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = MoreHistory.html; sourceTree = "<group>"; };
+		E2F30BB316BF0BBC00D1A69D /* MoreHistoryLink.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = MoreHistoryLink.html; sourceTree = "<group>"; };
+		E2F30BB416BF0BBC00D1A69D /* OutEmote.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = OutEmote.html; sourceTree = "<group>"; };
+		E2F30BB516BF0BBC00D1A69D /* OutFollowupMessage.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = OutFollowupMessage.html; sourceTree = "<group>"; };
+		E2F30BB616BF0BBC00D1A69D /* OutMessage.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = OutMessage.html; sourceTree = "<group>"; };
+		E2F30BB716BF0BBC00D1A69D /* OutSms.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = OutSms.html; sourceTree = "<group>"; };
+		E2F30BB816BF0BBC00D1A69D /* OutSubTransfer.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = OutSubTransfer.html; sourceTree = "<group>"; };
+		E2F30BB916BF0BBC00D1A69D /* OutTransfer.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = OutTransfer.html; sourceTree = "<group>"; };
+		E2F30BBA16BF0BBC00D1A69D /* OutVideoMessage.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = OutVideoMessage.html; sourceTree = "<group>"; };
+		E2F30BBB16BF0BBC00D1A69D /* SkypeCallEnd.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = SkypeCallEnd.html; sourceTree = "<group>"; };
+		E2F30BBC16BF0BBC00D1A69D /* SkypeCallStart.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = SkypeCallStart.html; sourceTree = "<group>"; };
+		E2F30BBD16BF0BBC00D1A69D /* SkypeInVoicemail.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = SkypeInVoicemail.html; sourceTree = "<group>"; };
+		E2F30BBE16BF0BBC00D1A69D /* SmsHead.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = SmsHead.html; sourceTree = "<group>"; };
+		E2F30BBF16BF0BBC00D1A69D /* Topic.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Topic.html; sourceTree = "<group>"; };
+		E2F30BC016BF0BBC00D1A69D /* TransferHead.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = TransferHead.html; sourceTree = "<group>"; };
+		E2F30BC116BF0BBC00D1A69D /* Typing.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Typing.html; sourceTree = "<group>"; };
+		E2F30BC616BF0BEC00D1A69D /* gifman.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = gifman.css; sourceTree = "<group>"; };
+		E2F30BC716BF0BF400D1A69D /* gifman.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = gifman.js; sourceTree = "<group>"; };
+		E2F30C1E16BF192200D1A69D /* jquery-switcher.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = "jquery-switcher.css"; sourceTree = "<group>"; };
+		E2F30C1F16BF192B00D1A69D /* switcher.plugin.min.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = switcher.plugin.min.js; sourceTree = "<group>"; };
+		E2F30C2016BF1F1700D1A69D /* Example.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Example.html; sourceTree = "<group>"; };
+		E2F30C2316BF2B5100D1A69D /* GifManKVStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GifManKVStore.h; sourceTree = "<group>"; };
+		E2F30C2416BF2B5100D1A69D /* GifManKVStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GifManKVStore.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -351,6 +394,12 @@
 				E289B2571631F0AE00412023 /* Supporting Files */,
 				E289B2651631F0F600412023 /* GifManPlugin.h */,
 				E289B2661631F0F600412023 /* GifManPlugin.m */,
+				E2F30C2316BF2B5100D1A69D /* GifManKVStore.h */,
+				E2F30C2416BF2B5100D1A69D /* GifManKVStore.m */,
+				E2692C8F16C19090002217BA /* GifManInspection.h */,
+				E2692C9016C19090002217BA /* GifManInspection.m */,
+				E2692C9816C1CC85002217BA /* GifManConsole.h */,
+				E2692C9916C1CC85002217BA /* GifManConsole.m */,
 			);
 			name = "SIMBL Bundle";
 			sourceTree = "<group>";
@@ -360,6 +409,7 @@
 			children = (
 				E23BD3DB163342B900D370EF /* Resources */,
 				E23BD3D1163341F800D370EF /* Supporting Files */,
+				E2F30C2016BF1F1700D1A69D /* Example.html */,
 			);
 			name = "Chat Style";
 			sourceTree = "<group>";
@@ -387,7 +437,10 @@
 		E23BD3DD163342B900D370EF /* css */ = {
 			isa = PBXGroup;
 			children = (
-				E23BD3DE163342B900D370EF /* main.css */,
+				E2F30C1E16BF192200D1A69D /* jquery-switcher.css */,
+				E2F30BA416BF0BB300D1A69D /* emoticons.css */,
+				E2F30BA516BF0BB300D1A69D /* main.css */,
+				E2F30BC616BF0BEC00D1A69D /* gifman.css */,
 			);
 			path = css;
 			sourceTree = "<group>";
@@ -395,23 +448,39 @@
 		E23BD3DF163342B900D370EF /* gfx */ = {
 			isa = PBXGroup;
 			children = (
-				E28BF4F61634516100162986 /* loading.gif */,
-				E23BD3E0163342B900D370EF /* icon_arrow_down.png */,
-				E23BD3E1163342B900D370EF /* icon_arrow_right.png */,
-				E23BD3E2163342B900D370EF /* icon_cancel.png */,
-				E23BD3E3163342B900D370EF /* icon_edit.png */,
-				E23BD3E4163342B900D370EF /* icon_edited.png */,
-				E23BD3E5163342B900D370EF /* icon_pause.png */,
-				E23BD3E6163342B900D370EF /* icon_play.png */,
-				E23BD3E7163342B900D370EF /* icon_quicklook.png */,
-				E23BD3E8163342B900D370EF /* icon_refresh.png */,
-				E23BD3E9163342B900D370EF /* icon_reveal.png */,
-				E23BD3EA163342B900D370EF /* icon_stop.png */,
-				E23BD3EB163342B900D370EF /* icon_sub.png */,
-				E23BD3EC163342B900D370EF /* icon_warning.png */,
-				E23BD3ED163342B900D370EF /* transfer-32.png */,
-				E23BD3EE163342B900D370EF /* transfer-multiple-32.png */,
-				E23BD3EF163342B900D370EF /* typing-16x16-white.gif */,
+				E2F30B7E16BF0BA000D1A69D /* icon_arrow_down.png */,
+				E2F30B7F16BF0BA000D1A69D /* icon_arrow_down@2x.png */,
+				E2F30B8016BF0BA000D1A69D /* icon_arrow_right.png */,
+				E2F30B8116BF0BA000D1A69D /* icon_arrow_right@2x.png */,
+				E2F30B8216BF0BA000D1A69D /* icon_cancel.png */,
+				E2F30B8316BF0BA000D1A69D /* icon_cancel@2x.png */,
+				E2F30B8416BF0BA000D1A69D /* icon_edit.png */,
+				E2F30B8516BF0BA000D1A69D /* icon_edit@2x.png */,
+				E2F30B8616BF0BA000D1A69D /* icon_edited.png */,
+				E2F30B8716BF0BA000D1A69D /* icon_edited@2x.png */,
+				E2F30B8816BF0BA000D1A69D /* icon_pause.png */,
+				E2F30B8916BF0BA000D1A69D /* icon_pause@2x.png */,
+				E2F30B8A16BF0BA000D1A69D /* icon_play.png */,
+				E2F30B8B16BF0BA000D1A69D /* icon_play@2x.png */,
+				E2F30B8C16BF0BA000D1A69D /* icon_quicklook.png */,
+				E2F30B8D16BF0BA000D1A69D /* icon_quicklook@2x.png */,
+				E2F30B8E16BF0BA000D1A69D /* icon_refresh.png */,
+				E2F30B8F16BF0BA000D1A69D /* icon_refresh@2x.png */,
+				E2F30B9016BF0BA000D1A69D /* icon_reveal.png */,
+				E2F30B9116BF0BA000D1A69D /* icon_reveal@2x.png */,
+				E2F30B9216BF0BA000D1A69D /* icon_stop.png */,
+				E2F30B9316BF0BA000D1A69D /* icon_stop@2x.png */,
+				E2F30B9416BF0BA000D1A69D /* icon_sub.png */,
+				E2F30B9516BF0BA000D1A69D /* icon_sub@2x.png */,
+				E2F30B9616BF0BA000D1A69D /* icon_warning.png */,
+				E2F30B9716BF0BA000D1A69D /* icon_warning@2x.png */,
+				E2F30B9816BF0BA000D1A69D /* loading.gif */,
+				E2F30B9916BF0BA000D1A69D /* transfer-32.png */,
+				E2F30B9A16BF0BA000D1A69D /* transfer-32@2x.png */,
+				E2F30B9B16BF0BA000D1A69D /* transfer-multiple-32.png */,
+				E2F30B9C16BF0BA000D1A69D /* transfer-multiple-32@2x.png */,
+				E2F30B9D16BF0BA000D1A69D /* typing-16x16-white.gif */,
+				E2F30B9E16BF0BA000D1A69D /* typing-16x16-white@2x.gif */,
 			);
 			path = gfx;
 			sourceTree = "<group>";
@@ -419,8 +488,13 @@
 		E23BD3F0163342B900D370EF /* js */ = {
 			isa = PBXGroup;
 			children = (
-				E23BD3F1163342B900D370EF /* jquery.min.js */,
-				E23BD3F2163342B900D370EF /* main.js */,
+				E2F30C1F16BF192B00D1A69D /* switcher.plugin.min.js */,
+				E2F30B9F16BF0BAA00D1A69D /* emoticons.js */,
+				E2F30BA016BF0BAA00D1A69D /* jquery.min.js */,
+				E2F30BA116BF0BAA00D1A69D /* jquery.sprite.js */,
+				E2F30BA216BF0BAA00D1A69D /* main.js */,
+				E2F30BA316BF0BAA00D1A69D /* retina.js */,
+				E2F30BC716BF0BF400D1A69D /* gifman.js */,
 			);
 			path = js;
 			sourceTree = "<group>";
@@ -428,34 +502,45 @@
 		E23BD3F3163342B900D370EF /* templates */ = {
 			isa = PBXGroup;
 			children = (
-				E23BD3F4163342B900D370EF /* Alert.html */,
-				E23BD3F5163342B900D370EF /* CallEnd.html */,
-				E23BD3F6163342B900D370EF /* CallStart.html */,
-				E23BD3F7163342B900D370EF /* History.html */,
-				E23BD3F8163342B900D370EF /* InEmote.html */,
-				E23BD3F9163342B900D370EF /* InFollowupMessage.html */,
-				E23BD3FA163342B900D370EF /* InMessage.html */,
-				E23BD3FB163342B900D370EF /* InSms.html */,
-				E23BD3FC163342B900D370EF /* InSubTransfer.html */,
-				E23BD3FD163342B900D370EF /* InTransfer.html */,
-				E23BD3FE163342B900D370EF /* InVoicemail.html */,
-				E23BD3FF163342B900D370EF /* MoreHistory.html */,
-				E23BD400163342B900D370EF /* MoreHistoryLink.html */,
-				E23BD401163342B900D370EF /* OutEmote.html */,
-				E23BD402163342B900D370EF /* OutFollowupMessage.html */,
-				E23BD403163342B900D370EF /* OutMessage.html */,
-				E23BD404163342B900D370EF /* OutSms.html */,
-				E23BD405163342B900D370EF /* OutSubTransfer.html */,
-				E23BD406163342B900D370EF /* OutTransfer.html */,
-				E23BD407163342B900D370EF /* SkypeCallEnd.html */,
-				E23BD408163342B900D370EF /* SkypeCallStart.html */,
-				E23BD409163342B900D370EF /* SkypeInVoicemail.html */,
-				E23BD40A163342B900D370EF /* SmsHead.html */,
-				E23BD40B163342B900D370EF /* Topic.html */,
-				E23BD40C163342B900D370EF /* TransferHead.html */,
-				E23BD40D163342B900D370EF /* Typing.html */,
+				E2F30BA616BF0BBC00D1A69D /* Alert.html */,
+				E2F30BA716BF0BBC00D1A69D /* CallEnd.html */,
+				E2F30BA816BF0BBC00D1A69D /* CallStart.html */,
+				E2F30BA916BF0BBC00D1A69D /* History.html */,
+				E2F30BAA16BF0BBC00D1A69D /* InEmote.html */,
+				E2F30BAB16BF0BBC00D1A69D /* InFollowupMessage.html */,
+				E2F30BAC16BF0BBC00D1A69D /* InMessage.html */,
+				E2F30BAD16BF0BBC00D1A69D /* InSms.html */,
+				E2F30BAE16BF0BBC00D1A69D /* InSubTransfer.html */,
+				E2F30BAF16BF0BBC00D1A69D /* InTransfer.html */,
+				E2F30BB016BF0BBC00D1A69D /* InVideoMessage.html */,
+				E2F30BB116BF0BBC00D1A69D /* InVoicemail.html */,
+				E2F30BB216BF0BBC00D1A69D /* MoreHistory.html */,
+				E2F30BB316BF0BBC00D1A69D /* MoreHistoryLink.html */,
+				E2F30BB416BF0BBC00D1A69D /* OutEmote.html */,
+				E2F30BB516BF0BBC00D1A69D /* OutFollowupMessage.html */,
+				E2F30BB616BF0BBC00D1A69D /* OutMessage.html */,
+				E2F30BB716BF0BBC00D1A69D /* OutSms.html */,
+				E2F30BB816BF0BBC00D1A69D /* OutSubTransfer.html */,
+				E2F30BB916BF0BBC00D1A69D /* OutTransfer.html */,
+				E2F30BBA16BF0BBC00D1A69D /* OutVideoMessage.html */,
+				E2F30BBB16BF0BBC00D1A69D /* SkypeCallEnd.html */,
+				E2F30BBC16BF0BBC00D1A69D /* SkypeCallStart.html */,
+				E2F30BBD16BF0BBC00D1A69D /* SkypeInVoicemail.html */,
+				E2F30BBE16BF0BBC00D1A69D /* SmsHead.html */,
+				E2F30BBF16BF0BBC00D1A69D /* Topic.html */,
+				E2F30BC016BF0BBC00D1A69D /* TransferHead.html */,
+				E2F30BC116BF0BBC00D1A69D /* Typing.html */,
 			);
 			path = templates;
+			sourceTree = "<group>";
+		};
+		E2692C9316C19CC4002217BA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E2692C9616C19CF1002217BA /* GifMan.SkypeChatStyle */,
+				E2692C9516C19CE8002217BA /* GifMan.bundle */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		E289B2421631F0AE00412023 = {
@@ -463,16 +548,8 @@
 			children = (
 				E289B2561631F0AE00412023 /* GifMan */,
 				E289B24F1631F0AE00412023 /* Frameworks */,
-				E289B24E1631F0AE00412023 /* Products */,
+				E2692C9316C19CC4002217BA /* Products */,
 			);
-			sourceTree = "<group>";
-		};
-		E289B24E1631F0AE00412023 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				E289B24D1631F0AE00412023 /* GifMan.bundle */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		E289B24F1631F0AE00412023 /* Frameworks */ = {
@@ -553,7 +630,7 @@
 				en,
 			);
 			mainGroup = E289B2421631F0AE00412023;
-			productRefGroup = E289B24E1631F0AE00412023 /* Products */;
+			productRefGroup = E289B2421631F0AE00412023;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -570,51 +647,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E289B25B1631F0AE00412023 /* InfoPlist.strings in Resources */,
-				E23BD40E163342B900D370EF /* Conversation.html in Resources */,
-				E23BD40F163342B900D370EF /* main.css in Resources */,
-				E23BD410163342B900D370EF /* icon_arrow_down.png in Resources */,
-				E23BD411163342B900D370EF /* icon_arrow_right.png in Resources */,
-				E23BD412163342B900D370EF /* icon_cancel.png in Resources */,
-				E23BD413163342B900D370EF /* icon_edit.png in Resources */,
-				E23BD414163342B900D370EF /* icon_edited.png in Resources */,
-				E23BD415163342B900D370EF /* icon_pause.png in Resources */,
-				E23BD416163342B900D370EF /* icon_play.png in Resources */,
-				E23BD417163342B900D370EF /* icon_quicklook.png in Resources */,
-				E23BD418163342B900D370EF /* icon_refresh.png in Resources */,
-				E23BD419163342B900D370EF /* icon_reveal.png in Resources */,
-				E23BD41A163342B900D370EF /* icon_stop.png in Resources */,
-				E23BD41B163342B900D370EF /* icon_sub.png in Resources */,
-				E23BD41C163342B900D370EF /* icon_warning.png in Resources */,
-				E23BD41D163342B900D370EF /* transfer-32.png in Resources */,
-				E23BD41E163342B900D370EF /* transfer-multiple-32.png in Resources */,
-				E23BD41F163342B900D370EF /* typing-16x16-white.gif in Resources */,
-				E23BD422163342B900D370EF /* Alert.html in Resources */,
-				E23BD423163342B900D370EF /* CallEnd.html in Resources */,
-				E23BD424163342B900D370EF /* CallStart.html in Resources */,
-				E23BD425163342B900D370EF /* History.html in Resources */,
-				E23BD426163342B900D370EF /* InEmote.html in Resources */,
-				E23BD427163342B900D370EF /* InFollowupMessage.html in Resources */,
-				E23BD428163342B900D370EF /* InMessage.html in Resources */,
-				E23BD429163342B900D370EF /* InSms.html in Resources */,
-				E23BD42A163342B900D370EF /* InSubTransfer.html in Resources */,
-				E23BD42B163342B900D370EF /* InTransfer.html in Resources */,
-				E23BD42C163342B900D370EF /* InVoicemail.html in Resources */,
-				E23BD42D163342B900D370EF /* MoreHistory.html in Resources */,
-				E23BD42E163342B900D370EF /* MoreHistoryLink.html in Resources */,
-				E23BD42F163342B900D370EF /* OutEmote.html in Resources */,
-				E23BD430163342B900D370EF /* OutFollowupMessage.html in Resources */,
-				E23BD431163342B900D370EF /* OutMessage.html in Resources */,
-				E23BD432163342B900D370EF /* OutSms.html in Resources */,
-				E23BD433163342B900D370EF /* OutSubTransfer.html in Resources */,
-				E23BD434163342B900D370EF /* OutTransfer.html in Resources */,
-				E23BD435163342B900D370EF /* SkypeCallEnd.html in Resources */,
-				E23BD436163342B900D370EF /* SkypeCallStart.html in Resources */,
-				E23BD437163342B900D370EF /* SkypeInVoicemail.html in Resources */,
-				E23BD438163342B900D370EF /* SmsHead.html in Resources */,
-				E23BD439163342B900D370EF /* Topic.html in Resources */,
-				E23BD43A163342B900D370EF /* TransferHead.html in Resources */,
-				E23BD43B163342B900D370EF /* Typing.html in Resources */,
-				E28BF4F71634516100162986 /* loading.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -625,9 +657,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E2692C9216C1916F002217BA /* GifManInspection.m in Sources */,
 				E289B2671631F0F600412023 /* GifManPlugin.m in Sources */,
-				E23BD420163342B900D370EF /* jquery.min.js in Sources */,
-				E23BD421163342B900D370EF /* main.js in Sources */,
+				E2F30C2516BF2B5100D1A69D /* GifManKVStore.m in Sources */,
+				E2692C9A16C1CC85002217BA /* GifManConsole.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -661,7 +694,7 @@
 		E23BD3A0163341A700D370EF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
+				COMBINE_HIDPI_IMAGES = NO;
 				INFOPLIST_FILE = GifMan.SkypeChatStyle/Info.plist;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -670,7 +703,7 @@
 		E23BD3A1163341A700D370EF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
+				COMBINE_HIDPI_IMAGES = NO;
 				INFOPLIST_FILE = GifMan.SkypeChatStyle/Info.plist;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -750,6 +783,7 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_WARN_OBJCPP_ARC_ABI = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -772,6 +806,7 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_WARN_OBJCPP_ARC_ABI = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

@@ -8,17 +8,18 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class WebScriptObject;
+
 @interface GifManPlugin : NSObject <SkypeAPIDelegate> {
     
     NSOperationQueue *__skypeOperationQueue;
     NSStatusItem *__statusItem;
+    
+    // Fake iVars
+    WebScriptObject *__GM_selectedWebView;
 }
 
 + (void)load;
 + (GifManPlugin *)sharedPlugin;
-
-- (void)swizzleRequestMethod;
-- (void)setupStatusItem;
-- (void)statusItemSelected:(id)sender;
 
 @end

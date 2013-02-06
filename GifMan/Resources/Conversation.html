@@ -1,16 +1,26 @@
 <!DOCTYPE html>
 <html xml:lang="en" lang="en">
 <head>
-	
+
 	<meta charset="utf-8" />
-	<title>Brief 1.5 (+ GifMan) &mdash; Skype 5 Chat Style</title>
-	
+	<title>Brief 1.6 &mdash; Skype 5 Chat Style + (GifMan Integration)</title>
+
 	<link rel="stylesheet" href="css/main.css" type="text/css" media="screen" />
-	
+	<link rel="stylesheet" href="css/emoticons.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="css/jquery-switcher.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="css/gifman.css" type="text/css" media="screen" />
+
 	<script src="js/jquery.min.js"></script>
 	<script src="js/main.js"></script>
+	<script src="js/emoticons.js"></script>
+	<script src="js/jquery.sprite.js"></script>
+	<script src="js/retina.js"></script>
+
+    <script src="js/switcher.plugin.min.js"></script>
+    <script src="js/gifman.js"></script>
+
 	<script>
-		var debug = true;
+		var debug = false;
 	</script>
 
 </head>
@@ -25,6 +35,18 @@
 				</div>
 			</div>
 		</div>
+
+		<div class="gifman-toggle-wrapper">
+            <p>Auto Embed</p>
+            <div class="gifman-toggle on">
+                <div class="inner">
+                    <span class="handle">X</span>
+
+                    <span class="on label">On</span>
+                    <span class="off label">Off</span>
+                </div>
+            </div>
+        </div>
 	</div>
 </body>
 </html>

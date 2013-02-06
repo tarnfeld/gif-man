@@ -3,10 +3,10 @@
 <plist version="1.0">
 <dict>
 	<key>Label</key>
-	<string>com.tomarnfeld.gif-man.simble-agent</string>
+	<string>com.tomarnfeld.gifman.simble-agent</string>
 	<key>ProgramArguments</key>
 	<array>
-		<string>~/Library/Application\ Support/SIMBL/SIMBLAgent.app/Contents/MacOS/SIMBL\ Agent</string>
+		<string>SIMBL_APP_PLACEHOLDER.app/Contents/MacOS/SIMBL\ Agent</string>
 	</array>
   <key>EnableGlobbing</key>
   <true/>
