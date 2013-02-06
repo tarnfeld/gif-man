@@ -7,16 +7,19 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "GifManSocket.h"
 
 @class WebScriptObject;
 
-@interface GifManPlugin : NSObject <SkypeAPIDelegate> {
+@interface GifManPlugin : NSObject <SkypeAPIDelegate, GifManSocketDelegate> {
     
     NSOperationQueue *__skypeOperationQueue;
     NSStatusItem *__statusItem;
     
     // Fake iVars
     WebScriptObject *__GM_selectedWebView;
+    
+    GifManSocket *__socket;
 }
 
 + (void)load;

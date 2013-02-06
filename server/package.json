@@ -1,0 +1,12 @@
+{
+  "name": "gifman",
+  "version": "0.0.1",
+  "description": "Secondary message transport system for skype chats using GifMan",
+  "homepage": "http://github.com/tarnfeld/gif-man",
+  "author": "Tom Arnfeld <tom@duedil.com>",
+  "dependencies": {
+    "socket.io": "0.9.13",
+    "commander": "1.1.1",
+    "winston": "0.6.2"
+  }
+}
