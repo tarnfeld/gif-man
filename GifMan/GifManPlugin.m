@@ -19,6 +19,9 @@
 #define kGifManClientApplicationName @"GifMan"
 #define kGifManSkypeQueueName @"SkypeQueue"
 
+static GifManKVStore *__KVStore;
+static NSUInteger __selectedMessageID;
+
 @interface SkypeChatWebView : WebView
 
 @end
@@ -39,9 +42,6 @@
 @end
 
 @implementation GifManPlugin
-
-static GifManKVStore *__KVStore;
-static NSUInteger __selectedMessageID;
 
 + (void)load
 {
@@ -154,13 +154,10 @@ static NSUInteger __selectedMessageID;
 
 - (void)webView:(WebView *)webView addMessageToConsole:(NSDictionary *)message
 {
-    NSLog(@"%@", message);
-    return;
-    
     NSLog(@"GifMan Console:");
     NSLog(@"  Message: %@", [message objectForKey:@"message"]);
     NSLog(@"     Line: %@", [message objectForKey:@"lineNumber"]);
-    NSLog(@"     File: %@", [message objectForKey:@"sourceURL"]);
+    NSLog(@"     File: %@", [[message objectForKey:@"sourceURL"] lastPathComponent]);
 }
 
 - (void)webView:(WebView *)sender didFinishLoadForFrame:(WebFrame *)frame

@@ -176,11 +176,11 @@ GifMan.Conversation = function (api, kvStore) {
     self._init = function () {
       _container = $("#container");
 
-     // Parser
-     setInterval(self._checkMessages, CHECK_INTERVAL);
+      // Parser
+      setInterval(self._checkMessages, CHECK_INTERVAL);
 
-     // Toggle
-     $(".gifman-toggle", _container)
+      // Toggle
+      $(".gifman-toggle", _container)
         .switcher()
         .on("switch", function() {
           if ($(this).data("switcher").isOn()) {
@@ -192,16 +192,22 @@ GifMan.Conversation = function (api, kvStore) {
         });
 
       // Keep the toggle up to date
-      // var _current = kvStore.get("embed_enabled");
-      // $(".gifman-toggle", _container).data("switcher").update(!!_current, false);
+      var _current = kvStore.get("embed_enabled");
+      $(".gifman-toggle", _container).data("switcher").update(!!_current, false);
 
-      // setInterval(function() {
-      //   if ((v = kvStore.get("embed_enabled")) != _current) {
-      //     $(".gifman-toggle", _container).data("switcher").update(!!current, false);
-      //     _current = v;
-      //   }
+      setInterval(function() {
+        if ((v = kvStore.get("embed_enabled")) != _current) {
+          _current = v;
 
-      // }, 200);
+          if (_current) {
+            $(".gifman-toggle", _container).removeClass("off").addClass("on");
+          }
+          else {
+            $(".gifman-toggle", _container).removeClass("on").addClass("off");
+          }
+        }
+
+      }, 2000);
     };
 
     // Fire away!
