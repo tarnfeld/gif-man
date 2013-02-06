@@ -6,7 +6,7 @@ BUNDLE_TARGET = GifMan SIMBL Bundle
 STYLE_TARGET = GifMan Chat Style
 
 STYLE_INSTALL_DIR = ~/Library/Application\ Support/Skype/ChatStyles
-SIMBLE_INSTALL_DIR = ~/Library/Application\\\ Support/SIMBL
+SIMBLE_INSTALL_DIR = ~/Library/Application\ Support/SIMBL
 BUNDLE_INSTALL_DIR = $(SIMBLE_INSTALL_DIR)/Plugins
 
 LAUNCH_AGENT_INSTALL_DIR = ~/Library/LaunchAgents
@@ -38,7 +38,7 @@ simbl:
 		echo "`tput setaf 6`Installing SIMBL`tput sgr0`"; \
 		mkdir -p $(SIMBLE_INSTALL_DIR); \
 		cp -r SIMBLAgent.app $(SIMBLE_INSTALL_DIR)/SIMBLAgent.app; \
-		cat launch-agent.plist | sed 's|SIMBL_APP_PLACEHOLDER|$(SIMBLE_INSTALL_DIR)/SIMBLAgent|g' > $(LAUNCH_AGENT_INSTALL_DIR)/$(LAUNCH_AGENT_PLIST_FILE); \
+		cat launch-agent.plist | sed 's|SIMBL_APP_PLACEHOLDER|~/Library/Application\\ Support/SIMBL/SIMBLAgent|g' > $(LAUNCH_AGENT_INSTALL_DIR)/$(LAUNCH_AGENT_PLIST_FILE); \
 		launchctl load $(LAUNCH_AGENT_INSTALL_DIR)/$(LAUNCH_AGENT_PLIST_FILE); \
 		echo "`tput setaf 2`✔ SIMBL Loaded`tput sgr0`"; \
 	else \

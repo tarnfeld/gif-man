@@ -22,13 +22,13 @@ GifMan.Conversation = function (api, kvStore) {
     }
 
     // Check all messages in the page for changes
-    this._checkMessages = function () {
+    self._checkMessages = function () {
         $(".item:not(.read)", _container).each(function(i, e) { self._parseMessage(e); });
         $(".item.force-load", _container).each(function(i, e) { self._parseMessage(e); });
     };
 
     // Parse a message and handle any embedding
-    this._parseMessage = function (message) {
+    self._parseMessage = function (message) {
       if ($(message).hasClass("loading") || $(message).hasClass("loaded") || $(message).hasClass("force-hidden")) return;
 
       if (!kvStore.get("embed_enabled")) {
@@ -56,7 +56,7 @@ GifMan.Conversation = function (api, kvStore) {
     };
 
     // Match a link to a string of HTML for embedding
-    this._matchLink = function (link, callback) {
+    self._matchLink = function (link, callback) {
       var parts = link.split("."),
           extention = parts[parts.length - 1].toLowerCase();
 
@@ -149,7 +149,7 @@ GifMan.Conversation = function (api, kvStore) {
     }
 
     // Handle a specific link within a message
-    this._handleLink = function (link, message, handler) {
+    self._handleLink = function (link, message, handler) {
       var matched = self._matchLink($(link).attr("href"), function (html) {
         if (html != null) {
           $(".gifman-embed", message).append(html);
@@ -164,42 +164,44 @@ GifMan.Conversation = function (api, kvStore) {
     };
 
     // Enable
-    this._enableEmbed = function () {
+    self._enableEmbed = function () {
       kvStore.set(true, "embed_enabled");
     };
 
-    this._disableEmbed = function () {
+    self._disableEmbed = function () {
       kvStore.set(false, "embed_enabled");
     }
 
     // Init Method
-    this._init = function () {
-        _container = $("#container");
+    self._init = function () {
+      _container = $("#container");
 
-       // Parser
-       setInterval(self._checkMessages, CHECK_INTERVAL);
+     // Parser
+     setInterval(self._checkMessages, CHECK_INTERVAL);
 
-       // Toggle
-       $(".gifman-toggle", _container)
-          .switcher()
-          .on("switch", function() {
-              if ($(this).data("switcher").isOn()) {
-                self._enableEmbed();
-              }
-              else {
-                self._disableEmbed();
-              }
-          });
-
-        // Keep the toggle up to date
-        var _current = kvStore.get("embed_enabled");
-        $(".gifman-toggle", _container).data("switcher").update(!!_current, false);
-
-        setInterval(function() {
-          if (kvStore.get("embed_enabled") != _current) {
-            $(".gifman-toggle", _container).data("switcher").update(!!current, false);
+     // Toggle
+     $(".gifman-toggle", _container)
+        .switcher()
+        .on("switch", function() {
+          if ($(this).data("switcher").isOn()) {
+            self._enableEmbed();
           }
-        }, 300);
+          else {
+            self._disableEmbed();
+          }
+        });
+
+      // Keep the toggle up to date
+      // var _current = kvStore.get("embed_enabled");
+      // $(".gifman-toggle", _container).data("switcher").update(!!_current, false);
+
+      // setInterval(function() {
+      //   if ((v = kvStore.get("embed_enabled")) != _current) {
+      //     $(".gifman-toggle", _container).data("switcher").update(!!current, false);
+      //     _current = v;
+      //   }
+
+      // }, 200);
     };
 
     // Fire away!

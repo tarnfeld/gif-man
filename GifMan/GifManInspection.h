@@ -27,3 +27,8 @@ GIFMAN_EXPORT void GMPrintPropertiesOfClass(Class aClass);
 // Print out the protocols a class conforms to
 //
 GIFMAN_EXPORT void GMPrintProtocolsOfClass(Class aClass);
+
+//
+// Print out the protocols a protocol conforms to
+//
+GIFMAN_EXPORT void GMPrintProtocolsOfProtocol(Protocol *aProtocol);

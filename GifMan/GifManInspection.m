@@ -68,9 +68,24 @@ void GMPrintProtocolsOfClass(Class aClass)
     Protocol **protocols = class_copyProtocolList(aClass, &protocolCount);
     
     for (int i = 0; i < protocolCount; i++) {
+        GMPrintProtocolsOfProtocol(protocols[i]);
+    }
+    
+    free(protocols);
+}
+
+void GMPrintProtocolsOfProtocol(Protocol *aProtocol)
+{
+    unsigned int protocolCount = 0;
+    Protocol **protocols = protocol_copyProtocolList(aProtocol, &protocolCount);
+    
+    const char *topName = protocol_getName(aProtocol);
+    NSLog(@"%s", topName);
+    
+    for (int i = 0; i < protocolCount; i++) {
         
         const char *name = protocol_getName(protocols[i]);
-        NSLog(@"%s", name);
+        NSLog(@"  %s", name);
     }
     
     free(protocols);
