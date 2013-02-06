@@ -1,6 +1,6 @@
 
 PROJECT = GifMan.xcodeproj
-PRODUCTS_DIR = Build/Release
+PRODUCTS_DIR = build/Release
 
 BUNDLE_TARGET = GifMan SIMBL Bundle
 STYLE_TARGET = GifMan Chat Style
