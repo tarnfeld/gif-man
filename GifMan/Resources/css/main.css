@@ -1,3 +1,4 @@
+@import url(emoticons.css);
 /*
 $l__: #444;
 $l_l_: #666;
@@ -13,14 +14,14 @@ $r_l_d_: 	rgba(0,0,0,1);
 	-------------
 	Contains many resets, browser fixes and defaults to make life a bit easier.
 	Inspired by the likes of Eric Meyer et al.
-
-
+	
+	
 	Version:	1.8 (a.k.a. Green II)
 	Created:	October 13th, 2010
 	Author:		Maykel Loomans - www.maykelloomans.com
-
-
-	Changes:
+	
+	
+	Changes:	
 	 Since 1.0	Font-shorthand for basic fonts.
 	 Since 1.1	Added input[type=image], input.image
 	 Since 1.2	Added input[type=radio], input.radio
@@ -244,7 +245,6 @@ button::-moz-focus-inner {
   html {
     -webkit-text-size-adjust: none;
     -ms-text-size-adjust: none; } }
-
 @-webkit-keyframes typing-slide-in {
   0% {
     opacity: 0;
@@ -357,10 +357,10 @@ p {
   -moz-border-radius: 15px;
   -khtml-border-radius: 15px;
   border-radius: 15px;
-  -webkit-box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.9) inset, 0px -1px 0px rgba(255, 255, 255, 0.3) inset, -1px 0px 0px rgba(255, 255, 255, 0.3) inset, 1px 0px 0px rgba(255, 255, 255, 0.3) inset, 0px 1px 1px rgba(0, 0, 0, 0.1);
-  -moz-box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.9) inset, 0px -1px 0px rgba(255, 255, 255, 0.3) inset, -1px 0px 0px rgba(255, 255, 255, 0.3) inset, 1px 0px 0px rgba(255, 255, 255, 0.3) inset, 0px 1px 1px rgba(0, 0, 0, 0.1);
-  -o-box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.9) inset, 0px -1px 0px rgba(255, 255, 255, 0.3) inset, -1px 0px 0px rgba(255, 255, 255, 0.3) inset, 1px 0px 0px rgba(255, 255, 255, 0.3) inset, 0px 1px 1px rgba(0, 0, 0, 0.1);
-  box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.9) inset, 0px -1px 0px rgba(255, 255, 255, 0.3) inset, -1px 0px 0px rgba(255, 255, 255, 0.3) inset, 1px 0px 0px rgba(255, 255, 255, 0.3) inset, 0px 1px 1px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: "0px 1px 0px rgba(255, 255, 255, 0.9) inset, 0px -1px 0px rgba(255, 255, 255, 0.3) inset, -1px 0px 0px rgba(255, 255, 255, 0.3) inset, 1px 0px 0px rgba(255, 255, 255, 0.3) inset, 0px 1px 1px rgba(0, 0, 0, 0.1)";
+  -moz-box-shadow: "0px 1px 0px rgba(255, 255, 255, 0.9) inset, 0px -1px 0px rgba(255, 255, 255, 0.3) inset, -1px 0px 0px rgba(255, 255, 255, 0.3) inset, 1px 0px 0px rgba(255, 255, 255, 0.3) inset, 0px 1px 1px rgba(0, 0, 0, 0.1)";
+  -o-box-shadow: "0px 1px 0px rgba(255, 255, 255, 0.9) inset, 0px -1px 0px rgba(255, 255, 255, 0.3) inset, -1px 0px 0px rgba(255, 255, 255, 0.3) inset, 1px 0px 0px rgba(255, 255, 255, 0.3) inset, 0px 1px 1px rgba(0, 0, 0, 0.1)";
+  box-shadow: "0px 1px 0px rgba(255, 255, 255, 0.9) inset, 0px -1px 0px rgba(255, 255, 255, 0.3) inset, -1px 0px 0px rgba(255, 255, 255, 0.3) inset, 1px 0px 0px rgba(255, 255, 255, 0.3) inset, 0px 1px 1px rgba(0, 0, 0, 0.1)";
   -webkit-background-clip: padding-box; }
 
 .playhead:hover {
@@ -381,10 +381,10 @@ button {
   -moz-border-radius: 15px;
   -khtml-border-radius: 15px;
   border-radius: 15px;
-  -webkit-box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.9) inset, 0px -1px 0px rgba(255, 255, 255, 0.3) inset, -1px 0px 0px rgba(255, 255, 255, 0.3) inset, 1px 0px 0px rgba(255, 255, 255, 0.3) inset, 0px 1px 1px rgba(0, 0, 0, 0.1);
-  -moz-box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.9) inset, 0px -1px 0px rgba(255, 255, 255, 0.3) inset, -1px 0px 0px rgba(255, 255, 255, 0.3) inset, 1px 0px 0px rgba(255, 255, 255, 0.3) inset, 0px 1px 1px rgba(0, 0, 0, 0.1);
-  -o-box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.9) inset, 0px -1px 0px rgba(255, 255, 255, 0.3) inset, -1px 0px 0px rgba(255, 255, 255, 0.3) inset, 1px 0px 0px rgba(255, 255, 255, 0.3) inset, 0px 1px 1px rgba(0, 0, 0, 0.1);
-  box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.9) inset, 0px -1px 0px rgba(255, 255, 255, 0.3) inset, -1px 0px 0px rgba(255, 255, 255, 0.3) inset, 1px 0px 0px rgba(255, 255, 255, 0.3) inset, 0px 1px 1px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: "0px 1px 0px rgba(255, 255, 255, 0.9) inset, 0px -1px 0px rgba(255, 255, 255, 0.3) inset, -1px 0px 0px rgba(255, 255, 255, 0.3) inset, 1px 0px 0px rgba(255, 255, 255, 0.3) inset, 0px 1px 1px rgba(0, 0, 0, 0.1)";
+  -moz-box-shadow: "0px 1px 0px rgba(255, 255, 255, 0.9) inset, 0px -1px 0px rgba(255, 255, 255, 0.3) inset, -1px 0px 0px rgba(255, 255, 255, 0.3) inset, 1px 0px 0px rgba(255, 255, 255, 0.3) inset, 0px 1px 1px rgba(0, 0, 0, 0.1)";
+  -o-box-shadow: "0px 1px 0px rgba(255, 255, 255, 0.9) inset, 0px -1px 0px rgba(255, 255, 255, 0.3) inset, -1px 0px 0px rgba(255, 255, 255, 0.3) inset, 1px 0px 0px rgba(255, 255, 255, 0.3) inset, 0px 1px 1px rgba(0, 0, 0, 0.1)";
+  box-shadow: "0px 1px 0px rgba(255, 255, 255, 0.9) inset, 0px -1px 0px rgba(255, 255, 255, 0.3) inset, -1px 0px 0px rgba(255, 255, 255, 0.3) inset, 1px 0px 0px rgba(255, 255, 255, 0.3) inset, 0px 1px 1px rgba(0, 0, 0, 0.1)";
   -webkit-background-clip: padding-box;
   font-size: 11px;
   font-weight: bold;
@@ -394,10 +394,10 @@ button {
     background-color: #e6e6e6; }
   button:active {
     background-color: #d0d0d0;
-    -webkit-box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.95), 0px 1px 0px rgba(0, 0, 0, 0.15) inset;
-    -moz-box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.95), 0px 1px 0px rgba(0, 0, 0, 0.15) inset;
-    -o-box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.95), 0px 1px 0px rgba(0, 0, 0, 0.15) inset;
-    box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.95), 0px 1px 0px rgba(0, 0, 0, 0.15) inset; }
+    -webkit-box-shadow: "0px 1px 0px rgba(255, 255, 255, 0.95), 0px 1px 0px rgba(0, 0, 0, 0.15) inset";
+    -moz-box-shadow: "0px 1px 0px rgba(255, 255, 255, 0.95), 0px 1px 0px rgba(0, 0, 0, 0.15) inset";
+    -o-box-shadow: "0px 1px 0px rgba(255, 255, 255, 0.95), 0px 1px 0px rgba(0, 0, 0, 0.15) inset";
+    box-shadow: "0px 1px 0px rgba(255, 255, 255, 0.95), 0px 1px 0px rgba(0, 0, 0, 0.15) inset"; }
 
 button.pill {
   padding: 3px 10px; }
@@ -534,7 +534,6 @@ body {
 
 .item {
   clear: left;
-  position: relative;
   border-top: 1px solid #e6e6e6;
   -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.8) inset; }
   .item .container {
@@ -550,7 +549,7 @@ body {
       zoom: 1; }
   .item .head,
   .item .body {
-    padding: 0 0 0 10px; }
+    padding: 0 0 0 30px; }
   .item .head {
     margin: 0 0 5px; }
   .item .avatar {
@@ -568,14 +567,6 @@ body {
     margin-bottom: -4px; }
   .item .icon {
     width: 16px; }
-  .item .loading {
-    width: 16px;
-    height: 16px;
-    background: url(../gfx/loading.gif);
-    display: block;
-    float: right;
-    margin: -18px 4px 0 8px;
-    display: none; }
 
 .message .actions {
   display: none; }
@@ -688,10 +679,10 @@ body {
     top: 1px;
     padding-bottom: 0px;
     background: rgba(0, 0, 0, 0.05);
-    -webkit-box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.9), 0px -1px 0px rgba(0, 0, 0, 0.05) inset, 0px 1px 2px rgba(0, 0, 0, 0.15) inset;
-    -moz-box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.9), 0px -1px 0px rgba(0, 0, 0, 0.05) inset, 0px 1px 2px rgba(0, 0, 0, 0.15) inset;
-    -o-box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.9), 0px -1px 0px rgba(0, 0, 0, 0.05) inset, 0px 1px 2px rgba(0, 0, 0, 0.15) inset;
-    box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.9), 0px -1px 0px rgba(0, 0, 0, 0.05) inset, 0px 1px 2px rgba(0, 0, 0, 0.15) inset; }
+    -webkit-box-shadow: "0px 1px 0px rgba(255, 255, 255, 0.9), 0px -1px 0px rgba(0, 0, 0, 0.05) inset, 0px 1px 2px rgba(0, 0, 0, 0.15) inset";
+    -moz-box-shadow: "0px 1px 0px rgba(255, 255, 255, 0.9), 0px -1px 0px rgba(0, 0, 0, 0.05) inset, 0px 1px 2px rgba(0, 0, 0, 0.15) inset";
+    -o-box-shadow: "0px 1px 0px rgba(255, 255, 255, 0.9), 0px -1px 0px rgba(0, 0, 0, 0.05) inset, 0px 1px 2px rgba(0, 0, 0, 0.15) inset";
+    box-shadow: "0px 1px 0px rgba(255, 255, 255, 0.9), 0px -1px 0px rgba(0, 0, 0, 0.05) inset, 0px 1px 2px rgba(0, 0, 0, 0.15) inset"; }
 
 .alert .head,
 .emote .head,
@@ -811,20 +802,20 @@ body {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  /*
-  &:hover {
-  	width: auto !important;
-  	overflow: visible;
-
-  	background: rgba(255,255,255,0.9);
-
-  	margin: 0 -5px 0 -2px;
-  	padding: 0 5px;
-
-  	@include border-radius(10px);
-
-  	z-index: 30;
-  }*/ }
+  			/*
+  			&:hover {
+  				width: auto !important;
+  				overflow: visible;
+  
+  				background: rgba(255,255,255,0.9);
+  
+  				margin: 0 -5px 0 -2px;
+  				padding: 0 5px;
+  
+  				@include border-radius(10px);
+  
+  				z-index: 30;
+  			}*/ }
 .transfer .progressbar {
   -webkit-box-flex: 2;
   -moz-box-flex: 2;
@@ -1011,7 +1002,6 @@ body {
   #conversation .message.read + .followup:not(.read) .edit,
   #conversation .message.read + .followup:not(.read) .delete {
     top: 19px; } }
-
 @media screen and (max-width: 480px) {
   #conversation .message .head,
   #conversation .message .body,
@@ -1042,3 +1032,44 @@ body {
   #conversation .alert .body:before,
   #conversation .emote .body:before {
     left: 3px; } }
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5) {
+  .quicklook:after {
+    background-image: url(../gfx/icon_quicklook@2x.png);
+    background-size: 30px 30px; }
+
+  .reveal:after {
+    background-image: url(../gfx/icon_reveal@2x.png);
+    background-size: 30px 30px; }
+
+  .delete:after,
+  .cancel:after {
+    background-image: url(../gfx/icon_cancel@2x.png);
+    background-size: 30px 30px; }
+
+  .edit:after {
+    background-image: url(../gfx/icon_edit@2x.png);
+    background-size: 30px 30px; }
+
+  .play:after {
+    background-image: url(../gfx/icon_play@2x.png);
+    background-size: 30px 30px; }
+
+  .pause:after {
+    background-image: url(../gfx/icon_pause@2x.png);
+    background-size: 30px 30px; }
+
+  .stop:after {
+    background-image: url(../gfx/icon_stop@2x.png);
+    background-size: 30px 30px; }
+
+  .sub:before {
+    background-image: url(../gfx/icon_sub@2x.png);
+    background-size: 30px 30px; }
+
+  .instance:not(:last-child) img[src*="multiple"] ~ .name {
+    background-image: url(../gfx/icon_arrow_right@2x.png);
+    background-size: 30px 30px; }
+
+  .instance:not(:last-child) img[src*="multiple"] ~ .name.open {
+    background-image: url(../gfx/icon_arrow_down@2x.png);
+    background-size: 30px 30px; } }
