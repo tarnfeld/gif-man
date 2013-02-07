@@ -49,7 +49,7 @@
 - (void)setupDefaults
 {
     if ([__data objectForKey:@"embed_enabled"] == nil) {
-        [__data setObject:@"1" forKey:@"embed_enabled"];
+        [__data setObject:[NSNumber numberWithBool:YES] forKey:@"embed_enabled"];
     }
     
     [self save];

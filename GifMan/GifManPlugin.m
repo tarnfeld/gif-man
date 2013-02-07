@@ -70,8 +70,12 @@ static NSUInteger __selectedMessageID;
     self = [super init];
     if (self) {
         
+        // Skype message queue
         __skypeOperationQueue = [[NSOperationQueue alloc] init];
         [__skypeOperationQueue setName:kGifManSkypeQueueName];
+        
+        // Create the socket
+        __socket = [[GifManSocket alloc] initWithDelegate:self host:@"localhost" port:1337];
     }
 
     return self;
@@ -279,6 +283,37 @@ static NSUInteger __selectedMessageID;
     // This is an unused placeholder for the added method, just to play nice with xcode warnings.
     
     return 0;
+}
+
+#pragma mark -
+#pragma mark GifManSocketDelegate
+
+- (void)socketConnected:(GifManSocket *)socket
+{
+    NSLog(@"Connected: %@", socket);
+    
+    GifManSocketMessage *message = [[GifManSocketMessage alloc] initWithType:kGifManSocketMessageTypePing];
+    [message setResponseHandler:^(GifManSocketMessage *message, GifManSocketMessage *responseMessage) {
+        NSLog(@"Type: %@", [responseMessage type]);
+        NSLog(@"Payload: %@", [responseMessage payload]);
+    }];
+    
+    [socket sendMessage:message];
+}
+
+- (void)socketDisconnected:(GifManSocket *)socket
+{
+    NSLog(@"Disconnected: %@", socket);    
+}
+
+- (void)socketFailedToConnect:(GifManSocket *)socket
+{
+    NSLog(@"Failed to connect: %@", socket);
+}
+
+- (void)socketReceivedUnboundMessage:(GifManSocket *)socket message:(GifManSocketMessage *)message
+{
+    NSLog(@"Unbound message: %@, %@", socket, message);
 }
 
 #pragma mark -

@@ -225,6 +225,9 @@ GifMan.API = {
   },
   hasVisibleContent: function (message_id) {
     return $("#" + message_id).hasClass("loaded");
+  },
+  hasContent: function(message_id) {
+    return $("#" + message_id).find(".body a").length > 0;
   }
 };
 
