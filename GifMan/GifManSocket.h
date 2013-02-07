@@ -27,7 +27,11 @@
     
     SocketIO *__socket;
     
+    NSString *__connectionHost;
+    NSUInteger __connectionPort;
+    
     NSUInteger __retryLimit;
+    NSUInteger __retryCount;
     NSTimeInterval __retryInterval;
     
     id __delegate;

@@ -10,16 +10,17 @@
 #import "GifManSocket.h"
 
 @class WebScriptObject;
+@class SkypeChat;
 
 @interface GifManPlugin : NSObject <SkypeAPIDelegate, GifManSocketDelegate> {
     
     NSOperationQueue *__skypeOperationQueue;
     NSStatusItem *__statusItem;
+    GifManSocket *__socket;
     
     // Fake iVars
     WebScriptObject *__GM_selectedWebView;
-    
-    GifManSocket *__socket;
+    id _lastMessage;
 }
 
 + (void)load;

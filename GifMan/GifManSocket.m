@@ -8,10 +8,12 @@
 
 #import "GifManSocket.h"
 
-@interface GifManSocketMessage ()
-
+@interface GifManSocketMessage (FP_Private)
 - (void)callHandlerWithResponseMessage:(GifManSocketMessage *)responseMessage;
+@end
 
+@interface SocketIO (FP_Private)
+- (void)send:(SocketIOPacket *)packet;
 @end
 
 @implementation GifManSocket
@@ -26,10 +28,18 @@
         
         __delegate = delegate;
         
-        __socket = [[SocketIO alloc] initWithDelegate:self];
-        [__socket connectToHost:host onPort:port];
+        __retryInterval = 2;
+        __retryLimit = 100;
+        __retryCount = 0;
         
+        __connectionHost = [host retain];
+        __connectionPort = port;
+        
+        __socket = [[SocketIO alloc] initWithDelegate:self];
         __boundMessages = [[NSMutableDictionary alloc] init];
+        
+        // Make the first attempt to connect
+        [__socket connectToHost:__connectionHost onPort:__connectionPort];
     }
     
     return self;
@@ -49,7 +59,12 @@
     }
     
     NSString *messageString = [message JSONRepresentation];
-    [__socket sendMessage:messageString];
+    
+    SocketIOPacket *packet = [[SocketIOPacket alloc] initWithType:@"message"];
+    [packet setData:messageString];
+    
+    [__socket send:packet];
+    [packet release];
 }
 
 - (void)disconnect
@@ -59,12 +74,27 @@
     }
 }
 
+- (void)reconnect
+{
+    if (__retryCount >= __retryLimit) {
+        return;
+    }
+    
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, __retryInterval * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        NSLog(@"Retrying");
+        
+        [__socket connectToHost:__connectionHost onPort:__connectionPort];
+        __retryCount++;
+    });
+}
+
 - (void)dealloc
 {
     [super dealloc];
     
     if (__socket) {
-        [__socket dealloc];
+        [__socket release];
     }
     
     if (__boundMessages) {
@@ -88,6 +118,8 @@
 
 - (void)socketIODidDisconnect:(SocketIO *)socket
 {
+    [self reconnect];
+    
     if ([__delegate respondsToSelector:@selector(socketDisconnected:)]) {
         [__delegate socketDisconnected:self];
     }
@@ -96,6 +128,8 @@
 - (void)socketIO:(SocketIO *)socket didReceiveEvent:(SocketIOPacket *)packet
 {
     NSDictionary *packetPayload = [packet dataAsJSON];
+    
+    // Handle bound messages
     if ([[packetPayload objectForKey:@"name"] isEqualToString:@"message"]) {
         
         NSDictionary *response = [[packetPayload objectForKey:@"args"] objectAtIndex:0];
@@ -108,11 +142,15 @@
         if (message && responseMessage) {
             [message callHandlerWithResponseMessage:responseMessage];
         }
+        
+        [__boundMessages removeObjectForKey:identifier];
     }
 }
 
 - (void)socketIOHandshakeFailed:(SocketIO *)socket
 {
+    [self reconnect];
+    
     if ([__delegate respondsToSelector:@selector(socketFailedToConnect:)]) {
         [__delegate socketFailedToConnect:self];
     }

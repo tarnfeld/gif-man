@@ -1,10 +1,11 @@
-/*
+/**
  *
  */
 
 var commander = require('commander')
   , http = require('http')
   , winston = require('winston')
+  , endpoints = require('./socket-endpoints')
   , io;
 
 /**
@@ -12,8 +13,8 @@ var commander = require('commander')
  */
 commander
   .version("0.0.1")
-  .option("v, --verbose [verbose]", "Verbose logging", false)
-  .option("p, --port [port]", "Socket port", "1337")
+  .option("-v, --verbose", "Verbose logging", false)
+  .option("-p, --port [port]", "Socket port", "1337")
   .parse(process.argv);
 
 
@@ -26,58 +27,80 @@ logger = new (winston.Logger)({
       level: "verbose",
       timestamp: true,
       json: false,
-      silent: !commander.verbose
+      silent: commander.verbose,
+      colorize: true
     })
   ]
 });
 
 winston.addColors({
-  info: "blue",
-  debug: "yellow",
-  error: "red"
+  error: "red",
+  warn: "yellow",
+  info: "cyan",
+  debug: "grey",
 });
 
 /**
  * Configure Socket.IO
  */
-io = require('socket.io').listen(parseInt(commander.port));
-io.configure(function() {
-  io.set("transports", ["websocket"]);
+io = require('socket.io').listen(parseInt(commander.port), {
+  logger: {
+    debug: logger.debug,
+    info: logger.info,
+    error: logger.error,
+    warn: logger.warn
+  },
+  transports: ["websocket"]
 });
+
+logger.info("socket.io listening on " + commander.port);
 
 /**
  * Bind to Socket.IO
  */
 io.sockets.on("connection", function(socket) {
-  logger.info("Client connected");
+  logger.log("info", "client connected");
 
-  // Simple ping/pong response
-  socket.on("message", function(data) {
+  // Handle messages
+  socket.on("message", function(raw_data) {
+    var data = JSON.parse(raw_data), payload;
 
-    data = JSON.parse(data);
+    logger.debug("message received: " + raw_data);
+
+    if (!data) {
+      logger.error("invalid message data: " + raw_data);
+    }
 
     if (typeof data.type == 'undefined') {
-      console.log("Undefined type!");
+      logger.error("message type is undefined: " + raw_data);
       return;
     }
 
     if (typeof data.identifier == 'undefined') {
-      console.log("Undefined identifier!");
+      logger.error("message identifier is undefined: " + raw_data);
       return;
     }
 
-    if (data.type == 'GifMan::ping') {
+    if (typeof endpoints[data.type] == 'undefined') {
+      logger.error("unknown endpoint " + data.type);
+      return;
+    }
+
+    payload = endpoints[data.type]({
+      socket: socket,
+      logger: logger
+    }, data.payload);
+
+    if (payload) {
       socket.emit("message", {
         type: data.type,
         identifier: data.identifier,
-        payload: {
-          pong: true
-        }
+        payload: payload
       });
     }
   });
 
   socket.on("disconnect", function() {
-    logger.info("Client disconnected");
+    logger.info("client disconnected");
   });
 });
