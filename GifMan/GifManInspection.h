@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ClassDisplay.h"
 
 //
 // Print out the methods (including types) for a given class
@@ -32,3 +33,23 @@ GIFMAN_EXPORT void GMPrintProtocolsOfClass(Class aClass);
 // Print out the protocols a protocol conforms to
 //
 GIFMAN_EXPORT void GMPrintProtocolsOfProtocol(Protocol *aProtocol);
+
+//
+// Print all classes
+//
+GIFMAN_EXPORT void GMPrintClasses();
+
+//
+// List all classes
+//
+GIFMAN_EXPORT NSArray *GMListClasses();
+
+//
+// Render out a class
+//
+GIFMAN_EXPORT NSString *GMRenderClass(Class aClass);
+
+//
+// Dump all runtime class headers to a folder
+//
+GIFMAN_EXPORT void GMDumpHeaders(NSString *folderPath);

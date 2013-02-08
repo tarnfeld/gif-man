@@ -14,7 +14,8 @@
 typedef void(^GifManSocketMessageResponseHandler)(GifManSocketMessage *message, GifManSocketMessage *responseMessage);
 
 #define kGifManSocketMessageTypePing        @"GifMan::ping"
-#define kGifManSocketMessageTypeBowerCheck  @"GifMan::bowerCheck"
+//#define kGifManSocketMessageTypeBowerCheck  @"GifMan::bowerCheck"
+#define kGIfManSocketMessageHubotProxy      @"GifMan::hubotProxy"
 
 @interface GifManSocketMessage : NSObject {
     

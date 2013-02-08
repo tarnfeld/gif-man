@@ -91,6 +91,8 @@
 		E289B2671631F0F600412023 /* GifManPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = E289B2661631F0F600412023 /* GifManPlugin.m */; };
 		E289B26D1631F32200412023 /* Skype.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E289B26C1631F32200412023 /* Skype.framework */; };
 		E28BF4ED16344B7F00162986 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E28BF4EC16344B7F00162986 /* WebKit.framework */; };
+		E2A6318A16C4752B00EF6BCF /* ClassDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = E2A6318916C4752B00EF6BCF /* ClassDisplay.m */; };
+		E2A6319B16C4F35700EF6BCF /* GifManGenericChat.m in Sources */ = {isa = PBXBuildFile; fileRef = E2A6319A16C4F35700EF6BCF /* GifManGenericChat.m */; };
 		E2F30BC816BF0CAC00D1A69D /* emoticons.css in Copy CSS */ = {isa = PBXBuildFile; fileRef = E2F30BA416BF0BB300D1A69D /* emoticons.css */; };
 		E2F30BC916BF0CAC00D1A69D /* main.css in Copy CSS */ = {isa = PBXBuildFile; fileRef = E2F30BA516BF0BB300D1A69D /* main.css */; };
 		E2F30BCA16BF0CAC00D1A69D /* gifman.css in Copy CSS */ = {isa = PBXBuildFile; fileRef = E2F30BC616BF0BEC00D1A69D /* gifman.css */; };
@@ -432,6 +434,21 @@
 		E289B2661631F0F600412023 /* GifManPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GifManPlugin.m; sourceTree = "<group>"; };
 		E289B26C1631F32200412023 /* Skype.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Skype.framework; path = GifMan/Skype.framework; sourceTree = "<group>"; };
 		E28BF4EC16344B7F00162986 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		E2A6318816C4752B00EF6BCF /* ClassDisplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassDisplay.h; sourceTree = "<group>"; };
+		E2A6318916C4752B00EF6BCF /* ClassDisplay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassDisplay.m; sourceTree = "<group>"; };
+		E2A6318C16C4F19E00EF6BCF /* GenericChat.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GenericChat.h; sourceTree = "<group>"; };
+		E2A6318D16C4F19E00EF6BCF /* GenericChatMessage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GenericChatMessage.h; sourceTree = "<group>"; };
+		E2A6318E16C4F19E00EF6BCF /* GenericChatView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GenericChatView.h; sourceTree = "<group>"; };
+		E2A6318F16C4F19E00EF6BCF /* GenericWebView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GenericWebView.h; sourceTree = "<group>"; };
+		E2A6319016C4F19E00EF6BCF /* GenericWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GenericWebViewController.h; sourceTree = "<group>"; };
+		E2A6319116C4F19E00EF6BCF /* SkypeChat.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SkypeChat.h; sourceTree = "<group>"; };
+		E2A6319216C4F19E00EF6BCF /* SkypeChatDisplay.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SkypeChatDisplay.h; sourceTree = "<group>"; };
+		E2A6319316C4F19E00EF6BCF /* SkypeChatStyle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SkypeChatStyle.h; sourceTree = "<group>"; };
+		E2A6319416C4F19E00EF6BCF /* SkypeChatWebView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SkypeChatWebView.h; sourceTree = "<group>"; };
+		E2A6319916C4F35700EF6BCF /* GifManGenericChat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GifManGenericChat.h; sourceTree = "<group>"; };
+		E2A6319A16C4F35700EF6BCF /* GifManGenericChat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GifManGenericChat.m; sourceTree = "<group>"; };
+		E2A6319C16C4F47900EF6BCF /* IMTextInputView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IMTextInputView.h; sourceTree = "<group>"; };
+		E2A6319D16C4F49B00EF6BCF /* DragDestinationTextView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DragDestinationTextView.h; sourceTree = "<group>"; };
 		E2F30B7E16BF0BA000D1A69D /* icon_arrow_down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_arrow_down.png; sourceTree = "<group>"; };
 		E2F30B7F16BF0BA000D1A69D /* icon_arrow_down@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_arrow_down@2x.png"; sourceTree = "<group>"; };
 		E2F30B8016BF0BA000D1A69D /* icon_arrow_right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_arrow_right.png; sourceTree = "<group>"; };
@@ -672,6 +689,8 @@
 		E23BD39C1633418900D370EF /* SIMBL Bundle */ = {
 			isa = PBXGroup;
 			children = (
+				E2A6318B16C4F16F00EF6BCF /* SkypeClasses */,
+				E2A6318616C4751E00EF6BCF /* RunTimeBrowser */,
 				E2353C1116C2664A005BAB05 /* CocoaWebSocket */,
 				E2353B9916C2660D005BAB05 /* ASIHTTPRequest */,
 				E2353B7316C2659C005BAB05 /* SBJSON */,
@@ -887,6 +906,35 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		E2A6318616C4751E00EF6BCF /* RunTimeBrowser */ = {
+			isa = PBXGroup;
+			children = (
+				E2A6318816C4752B00EF6BCF /* ClassDisplay.h */,
+				E2A6318916C4752B00EF6BCF /* ClassDisplay.m */,
+			);
+			name = RunTimeBrowser;
+			sourceTree = "<group>";
+		};
+		E2A6318B16C4F16F00EF6BCF /* SkypeClasses */ = {
+			isa = PBXGroup;
+			children = (
+				E2A6319D16C4F49B00EF6BCF /* DragDestinationTextView.h */,
+				E2A6319C16C4F47900EF6BCF /* IMTextInputView.h */,
+				E2A6318C16C4F19E00EF6BCF /* GenericChat.h */,
+				E2A6318D16C4F19E00EF6BCF /* GenericChatMessage.h */,
+				E2A6318E16C4F19E00EF6BCF /* GenericChatView.h */,
+				E2A6318F16C4F19E00EF6BCF /* GenericWebView.h */,
+				E2A6319016C4F19E00EF6BCF /* GenericWebViewController.h */,
+				E2A6319116C4F19E00EF6BCF /* SkypeChat.h */,
+				E2A6319216C4F19E00EF6BCF /* SkypeChatDisplay.h */,
+				E2A6319316C4F19E00EF6BCF /* SkypeChatStyle.h */,
+				E2A6319416C4F19E00EF6BCF /* SkypeChatWebView.h */,
+				E2A6319916C4F35700EF6BCF /* GifManGenericChat.h */,
+				E2A6319A16C4F35700EF6BCF /* GifManGenericChat.m */,
+			);
+			name = SkypeClasses;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -996,6 +1044,8 @@
 				E2353C1716C26656005BAB05 /* AsyncUdpSocket.m in Sources */,
 				E2353C1A16C26667005BAB05 /* WebSocket.m in Sources */,
 				E257128C16C2E0AF000D87E4 /* GifManSocketMessage.m in Sources */,
+				E2A6318A16C4752B00EF6BCF /* ClassDisplay.m in Sources */,
+				E2A6319B16C4F35700EF6BCF /* GifManGenericChat.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

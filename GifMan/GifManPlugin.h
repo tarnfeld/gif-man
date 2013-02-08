@@ -17,11 +17,9 @@
     NSOperationQueue *__skypeOperationQueue;
     NSStatusItem *__statusItem;
     GifManSocket *__socket;
-    
-    // Fake iVars
-    WebScriptObject *__GM_selectedWebView;
-    id _lastMessage;
 }
+
+@property (nonatomic, readonly) GifManSocket *socket;
 
 + (void)load;
 + (GifManPlugin *)sharedPlugin;

@@ -90,3 +90,83 @@ void GMPrintProtocolsOfProtocol(Protocol *aProtocol)
     
     free(protocols);
 }
+
+void GMPrintClasses()
+{
+    int numClasses;
+    Class * classes = NULL;
+    
+    classes = NULL;
+    numClasses = objc_getClassList(NULL, 0);
+    
+    if (numClasses > 0 )
+    {
+        classes = malloc(sizeof(Class) * numClasses);
+        numClasses = objc_getClassList(classes, numClasses);
+        
+        for (int i = 0; i < numClasses; i++) {
+            const char *name = class_getName(classes[i]);
+            
+            NSLog(@"%s", name);
+        }
+        
+        free(classes);
+    }
+}
+
+NSArray *GMListClasses()
+{
+    NSMutableArray *classList = [[NSMutableArray alloc] init];
+    
+    int numClasses;
+    Class * classes = NULL;
+    
+    classes = NULL;
+    numClasses = objc_getClassList(NULL, 0);
+    
+    if (numClasses > 0 )
+    {
+        classes = malloc(sizeof(Class) * numClasses);
+        numClasses = objc_getClassList(classes, numClasses);
+        
+        for (int i = 0; i < numClasses; i++) {
+            const char *name = class_getName(classes[i]);
+            
+            [classList addObject:[NSString stringWithFormat:@"%s", name]];
+        }
+        
+        free(classes);
+    }
+    
+    [classList autorelease];
+    return classList;
+}
+
+NSString *GMRenderClass(Class aClass)
+{
+    ClassDisplay *cd = [ClassDisplay classDisplayWithClass:aClass];
+    return [cd header];
+}
+
+void GMDumpHeaders(NSString *folderPath)
+{
+    [folderPath retain];
+    NSArray *classes = [GMListClasses() retain];
+    
+    [classes enumerateObjectsUsingBlock:^(NSString *className, NSUInteger idx, BOOL *stop) {
+        NSString *header = GMRenderClass(NSClassFromString(className));
+        
+        NSError *error;
+        NSString *file = [NSString stringWithFormat:@"%@/%@.h", folderPath, className];
+        if ([header writeToFile:file atomically:YES encoding:NSUTF8StringEncoding error:&error]) {
+            NSLog(@"[SUCCES] %@", className);
+        }
+        else {
+            NSLog(@"[FAILED] %@", className);
+        }
+        
+    }];
+    
+    [classes release];
+    [folderPath release];
+}

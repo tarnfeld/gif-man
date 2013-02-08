@@ -88,7 +88,9 @@ io.sockets.on("connection", function(socket) {
 
     payload = endpoints[data.type]({
       socket: socket,
-      logger: logger
+      logger: logger,
+      identifier: data.identifier,
+      type: data.type,
     }, data.payload);
 
     if (payload) {
