@@ -87,9 +87,7 @@ static NSUInteger __selectedMessageID;
         [__skypeOperationQueue setName:kGifManSkypeQueueName];
         
         // Create the socket
-        NSLog(@"%@", GIFMAN_SOCKET_HOST);
-        NSLog(@"%i", GIFMAN_SOCKET_PORT);
-//        __socket = [[GifManSocket alloc] initWithDelegate:self host:GIFMAN_SOCKET_HOST port:GIFMAN_SOCKET_PORT];
+        __socket = [[GifManSocket alloc] initWithDelegate:self host:GIFMAN_SOCKET_HOST port:GIFMAN_SOCKET_PORT];
     }
 
     return self;
