@@ -21,6 +21,14 @@
 #define kGifManClientApplicationName @"GifMan"
 #define kGifManSkypeQueueName @"SkypeQueue"
 
+#if !defined(GIFMAN_SOCKET_HOST)
+    #define GIFMAN_SOCKET_HOST @"127.0.0.1"
+#endif
+
+#if !defined(GIFMAN_SOCKET_PORT)
+    #define GIFMAN_SOCKET_PORT 1337
+#endif
+
 static GifManKVStore *__KVStore;
 static NSUInteger __selectedMessageID;
 
@@ -79,7 +87,9 @@ static NSUInteger __selectedMessageID;
         [__skypeOperationQueue setName:kGifManSkypeQueueName];
         
         // Create the socket
-        __socket = [[GifManSocket alloc] initWithDelegate:self host:@"localhost" port:1337];
+        NSLog(@"%@", GIFMAN_SOCKET_HOST);
+        NSLog(@"%i", GIFMAN_SOCKET_PORT);
+//        __socket = [[GifManSocket alloc] initWithDelegate:self host:GIFMAN_SOCKET_HOST port:GIFMAN_SOCKET_PORT];
     }
 
     return self;
