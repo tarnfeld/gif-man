@@ -257,7 +257,7 @@ GifMan.API = {
     return $("#" + message_id).find(".body a").length > 0;
   },
   addHubotMessage: function(message_id, messages) {
-    var div = $("<div class=\"item message out hubot\"><div class=\"container\"><div class=\"head\"><span class=\"sender\">Hubot</span><span class=\"time\"></span><button class=\"delete\" title=\"Remove Message\"></button></div><div class=\"body\"></div></div></div>"),
+    var div = $("<div class=\"item hubot emote\"><div class=\"container\"><div class=\"head\"><span class=\"sender\">Hubot</span><span class=\"time\"></span><button class=\"delete\" title=\"Remove Message\"></button></div><div class=\"body\"></div></div></div>"),
         d = new Date();
 
     $(".time", div).text(d.getHours() + ':' + d.getMinutes());

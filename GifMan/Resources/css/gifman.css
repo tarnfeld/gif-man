@@ -40,28 +40,33 @@
 /**
  * Hubot
  */
-.message.hubot {
+.item.hubot {
   background: #fafafa;
+  /*border-top: 1px solid #e6e6e6 !important;*/
 }
 
-.message.hubot .container {
+.item.hubot ~ .message.hubot {
+  border-top: 0 !important;
+}
+
+.item.hubot .container {
   font-style: italic;
 }
 
-.message.hubot .delete {
+/*.item.hubot .delete {
   right: -15px;
 }
-
-.message.hubot:hover .time {
+*/
+./*item.hubot:hover .time {
   right: 35px!important;
 }
-
-.message.hubot .body p {
+*/
+.item.hubot .body p {
   margin: 0;
   padding: 0;
 }
 
-.message.hubot ~ .message:not(.hubot) .container {
+/*.item.hubot ~ .item:not(.hubot) .container {
+  padding-top: 9px;
   margin-top: 0;
-}
-
+}*/
