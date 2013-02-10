@@ -232,7 +232,12 @@ GifMan.Helpers = {
 
   // Format a string
   format: function (text) {
-    return text.replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1<br />$2');
+    return text;
+
+    // WIP
+    return text
+            .replace(/\s/g, '&nbsp;')
+            .replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1<br />$2');
   }
 }
 
