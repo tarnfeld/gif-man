@@ -10,13 +10,14 @@
 #import "GifManKVStore.h"
 
 #import <objc/runtime.h>
-#import <objc/message.h>
 #import <WebKit/WebKit.h>
 
 #import "GifManInspection.h"
 #import "GifManConsole.h"
 
 #import "GifManGenericChat.h"
+#import "SkypeChatContact.h"
+#import "SkypeChat.h"
 
 #define kGifManClientApplicationName @"GifMan"
 #define kGifManSkypeQueueName @"SkypeQueue"
@@ -48,6 +49,7 @@ static NSUInteger __selectedMessageID;
 
 // SkypeChatClient Private Methods
 - (NSUInteger)SK_findMessageIDFromDOMNode:(DOMNode *)node;
+- (SkypeChat *)chat;
 
 @end
 
@@ -198,6 +200,24 @@ static NSUInteger __selectedMessageID;
 - (void)webView:(WebView *)sender didFinishLoadForFrame:(WebFrame *)frame
 {
     [self _webView:sender didFinishLoadForFrame:frame];
+    
+    SkypeChat *chat = [self chat];
+    SkypeChatContact *contact = nil;
+    
+    object_getInstanceVariable(chat, "_meMemberContact", (void **) &contact);
+    
+    // Register with hubot
+    GifManPlugin *plugin = [GifManPlugin sharedPlugin];
+//    GifManSocket *socket = [plugin socket];
+    
+    GifManSocketMessage *message = [[GifManSocketMessage alloc] initWithType:kGifManSocketMessageHubotPresenceJoin];
+    [message setPayload:@{
+        @"chat": [chat identity],
+        @"username": [contact identity],
+        @"nickname": [contact displayName]
+    }];
+    
+//    [socket sendMessage:message];
 }
 
 - (void)webView:(WebView *)sender didStartProvisionalLoadForFrame:(WebFrame *)frame
@@ -273,7 +293,7 @@ static NSUInteger __selectedMessageID;
         NSMenuItem *item = [[NSMenuItem alloc] initWithTitle:@"Hide Content" action:@selector(hideContent:) keyEquivalent:@""];
         [item setTarget:self];
         
-        NSString *hasContent = [windowScriptObject evaluateWebScript:[NSString stringWithFormat:@"GifMan.API.hasVisibleContent(%lu)", (unsigned long) __selectedMessageID]];
+        NSString *hasContent = [windowScriptObject evaluateWebScript:[NSString stringWithFormat:@"GifMan.API.messageHasVisibleContent(%lu)", (unsigned long) __selectedMessageID]];
         
         if (![hasContent boolValue]) {
             [item setTitle:@"Load Content"];
@@ -296,9 +316,6 @@ static NSUInteger __selectedMessageID;
 
 - (void)loadContent:(id)sender
 {
-    NSView *view = nil;
-    object_getInstanceVariable(self, "_messageView", (void**) &view);
-    
     WebScriptObject *windowScriptObject = nil;
     object_getInstanceVariable(self, "_windowScriptObject", (void**) &windowScriptObject);
     
@@ -324,30 +341,26 @@ static NSUInteger __selectedMessageID;
     return 0;
 }
 
+- (SkypeChat *)chat
+{
+    // This is an unused placeholder for the added method, just to play nice with xcode warnings.
+    
+    return nil;
+}
+
 #pragma mark -
 #pragma mark GifManSocketDelegate
 
 - (void)socketConnected:(GifManSocket *)socket
 {
-    NSLog(@"Connected: %@", socket);
+    NSLog(@"Connected to socket");
     
     GifManSocketMessage *message = [[GifManSocketMessage alloc] initWithType:kGifManSocketMessageTypePing];
     [message setResponseHandler:^(GifManSocketMessage *message, GifManSocketMessage *responseMessage) {
-        NSLog(@"Type: %@", [responseMessage type]);
-        NSLog(@"Payload: %@", [responseMessage payload]);
+        NSLog(@"Received socket ping response");
     }];
     
     [socket sendMessage:message];
-}
-
-- (void)socketDisconnected:(GifManSocket *)socket
-{
-//    NSLog(@"Disable hubot box");
-}
-
-- (void)socketFailedToConnect:(GifManSocket *)socket
-{
-//    NSLog(@"Disable hubot box");
 }
 
 - (void)socketReceivedUnboundMessage:(GifManSocket *)socket message:(GifManSocketMessage *)message

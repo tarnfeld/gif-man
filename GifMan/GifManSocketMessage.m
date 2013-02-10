@@ -13,6 +13,7 @@
 @synthesize type = __type;
 @synthesize payload = __payload;
 @synthesize responseHandler = __responseHandler;
+@synthesize chatDisplay = __chatDisplay;
 
 - (id)initWithType:(NSString *)type
 {
@@ -37,7 +38,7 @@
         __identifier = [(NSString *) CFUUIDCreateString(NULL, CFUUIDCreate(NULL)) retain];
     }
     
-    return [__identifier autorelease];
+    return __identifier;
 }
 
 - (NSString *)JSONRepresentation

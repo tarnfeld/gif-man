@@ -16,6 +16,9 @@
 
 }
 
+- (NSString *)displayName;
 - (NSString *)identity;
+- (SkypeChatDisplay *)display;
+- (void)makeInputTextFirstResponder;
 
 @end

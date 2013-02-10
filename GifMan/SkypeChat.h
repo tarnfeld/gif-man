@@ -4,7 +4,7 @@
 
 @class SKPopover, NSURL, NSMenu, QLPreviewPanel, SKSMS, SKObjectInterface, MacSearch, ChatNotificationSettings, NSMutableSet, SkypeMacChatConversation, SkypeChatMessage, NSDate, NSArray, SKConversation, AddNumberPopoutController, NSString, NSMutableDictionary, NSMutableArray, NSTimer;
 
-@interface SkypeChat : GenericChat <MacConversationDelegate, MacSearchDelegate, QLPreviewPanelDataSource, QLPreviewPanelDelegate, AddNumberPopoutDelegate, SKPopoverDelegate, EmoticonControlDelegate> {
+@interface SkypeChat : GenericChat /*<MacConversationDelegate, MacSearchDelegate, QLPreviewPanelDataSource, QLPreviewPanelDelegate, AddNumberPopoutDelegate, SKPopoverDelegate, EmoticonControlDelegate>*/ {
     SkypeMacChatConversation *_macConversation;
     SKConversation *_SKConversation;
     MacSearch *_historySearch;

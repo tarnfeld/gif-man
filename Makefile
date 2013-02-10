@@ -15,11 +15,14 @@ LAUNCH_AGENT_PLIST_FILE = com.tomarnfeld.gifman.plist
 GIFMAN_SOCKET_HOST=127.0.0.1
 GIFMAN_SOCKET_PORT=1337
 
+NPM_EXECUTABLE_HOME := server/node_modules/.bin
+PATH := ${NPM_EXECUTABLE_HOME}:${PATH}
+
 #
 # GifMan Makefile
 #
 
-all: clean bundle style
+all: clean bundle style hubot
 
 #
 # Build Targets
@@ -48,6 +51,9 @@ simbl:
 	else \
 		echo "`tput setaf 2`✔ SIMBL already installed`tput sgr0`"; \
 	fi
+
+hubot:
+	@cd server && npm install
 
 #
 # Clean Targets

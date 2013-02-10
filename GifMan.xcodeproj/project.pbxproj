@@ -413,6 +413,7 @@
 		E2353C2616C2671B005BAB05 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		E23BD3DA163342AD00D370EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E23BD3DC163342B900D370EF /* Conversation.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Conversation.html; sourceTree = "<group>"; };
+		E2461A2E16C5E7C60064E79C /* SkypeChatContact.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SkypeChatContact.h; sourceTree = "<group>"; };
 		E257128A16C2E0AF000D87E4 /* GifManSocketMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GifManSocketMessage.h; sourceTree = "<group>"; };
 		E257128B16C2E0AF000D87E4 /* GifManSocketMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GifManSocketMessage.m; sourceTree = "<group>"; };
 		E257128E16C2E433000D87E4 /* GifManSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GifManSocket.h; sourceTree = "<group>"; };
@@ -926,6 +927,7 @@
 				E2A6318F16C4F19E00EF6BCF /* GenericWebView.h */,
 				E2A6319016C4F19E00EF6BCF /* GenericWebViewController.h */,
 				E2A6319116C4F19E00EF6BCF /* SkypeChat.h */,
+				E2461A2E16C5E7C60064E79C /* SkypeChatContact.h */,
 				E2A6319216C4F19E00EF6BCF /* SkypeChatDisplay.h */,
 				E2A6319316C4F19E00EF6BCF /* SkypeChatStyle.h */,
 				E2A6319416C4F19E00EF6BCF /* SkypeChatWebView.h */,

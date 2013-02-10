@@ -1,5 +1,5 @@
 /**
- *
+ * Content
  */
 
 .item.loading .time {
@@ -7,6 +7,9 @@
   background: url(../gfx/loading.gif) 0 2px no-repeat;
 }
 
+/**
+ * Toggle
+ */
 .gifman-toggle-wrapper {
   position: fixed;
   z-index: 100;
@@ -33,3 +36,32 @@
 .gifman-toggle-wrapper .gifman-toggle {
   float: left;
 }
+
+/**
+ * Hubot
+ */
+.message.hubot {
+  background: #fafafa;
+}
+
+.message.hubot .container {
+  font-style: italic;
+}
+
+.message.hubot .delete {
+  right: -15px;
+}
+
+.message.hubot:hover .time {
+  right: 35px!important;
+}
+
+.message.hubot .body p {
+  margin: 0;
+  padding: 0;
+}
+
+.message.hubot ~ .message:not(.hubot) .container {
+  margin-top: 0;
+}
+
