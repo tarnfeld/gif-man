@@ -228,6 +228,11 @@ GifMan.Helpers = {
         return '<a href="' + full_url + '">' + url + '</a>';
     }
     );
+  },
+
+  // Format a string
+  format: function (text) {
+    return text.replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1<br />$2');
   }
 }
 
@@ -253,7 +258,7 @@ GifMan.API = {
     $(".time", div).text(d.getHours() + ':' + d.getMinutes());
 
     $.each(messages, function(i, message) {
-      $(".body", div).append($("<p>").html(GifMan.Helpers.linkify(message)));
+      $(".body", div).append($("<p>").html(GifMan.Helpers.format(GifMan.Helpers.linkify(message))));
     })
 
     if ($("#typing").length > 0) {
