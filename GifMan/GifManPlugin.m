@@ -10,14 +10,25 @@
 #import "GifManKVStore.h"
 
 #import <objc/runtime.h>
-#import <objc/message.h>
 #import <WebKit/WebKit.h>
 
 #import "GifManInspection.h"
 #import "GifManConsole.h"
 
+#import "GifManGenericChat.h"
+#import "SkypeChatContact.h"
+#import "SkypeChat.h"
+
 #define kGifManClientApplicationName @"GifMan"
 #define kGifManSkypeQueueName @"SkypeQueue"
+
+#if !defined(GIFMAN_SOCKET_HOST)
+    #define GIFMAN_SOCKET_HOST @"127.0.0.1"
+#endif
+
+#if !defined(GIFMAN_SOCKET_PORT)
+    #define GIFMAN_SOCKET_PORT 1337
+#endif
 
 static GifManKVStore *__KVStore;
 static NSUInteger __selectedMessageID;
@@ -28,7 +39,7 @@ static NSUInteger __selectedMessageID;
 
 @interface GifManPlugin ()
 
-- (void)swizzleWebkitMethods;
+- (void)swizzleSkypeMethods;
 
 - (NSArray *)_webView:(SkypeChatWebView *)webView contextMenuItemsForElement:(NSDictionary *)element defaultMenuItems:(NSArray *)defaultMenuItems;
 - (void)_webView:(WebView *)sender didFinishLoadForFrame:(WebFrame *)frame;
@@ -38,10 +49,13 @@ static NSUInteger __selectedMessageID;
 
 // SkypeChatClient Private Methods
 - (NSUInteger)SK_findMessageIDFromDOMNode:(DOMNode *)node;
+- (SkypeChat *)chat;
 
 @end
 
 @implementation GifManPlugin
+
+@synthesize socket = __socket;
 
 + (void)load
 {
@@ -51,7 +65,7 @@ static NSUInteger __selectedMessageID;
     [SkypeAPI setSkypeDelegate:plugin];
 
     // Swizzle the web view methods
-    [plugin swizzleWebkitMethods];
+    [plugin swizzleSkypeMethods];
 }
 
 + (GifManPlugin *)sharedPlugin
@@ -70,15 +84,23 @@ static NSUInteger __selectedMessageID;
     self = [super init];
     if (self) {
         
+        // Skype message queue
         __skypeOperationQueue = [[NSOperationQueue alloc] init];
         [__skypeOperationQueue setName:kGifManSkypeQueueName];
+        
+        // Create the socket
+        __socket = [[GifManSocket alloc] initWithDelegate:self host:GIFMAN_SOCKET_HOST port:GIFMAN_SOCKET_PORT];
     }
 
     return self;
 }
 
-- (void)swizzleWebkitMethods
+- (void)swizzleSkypeMethods
 {
+    //
+    // SkypeChatDispaly
+    //
+    
     // webView:resource:willSendRequest:redirectResponse:fromDataSource
     Class display = NSClassFromString(@"SkypeChatDisplay");
     
@@ -145,8 +167,23 @@ static NSUInteger __selectedMessageID;
     implementation = method_getImplementation(originalMethod);
     class_addMethod(display, selector, implementation, method_getTypeEncoding(originalMethod));
     
-    // Add some custom iVars
-    class_addIvar(display, "__GM_selectedWebView", sizeof([WebScriptObject class]), log2(sizeof([WebScriptObject class])), "@");
+    //
+    // GenericChat
+    //
+    
+    Class genericChat = NSClassFromString(@"GenericChat");
+    
+    // sendMessageCmd:
+    selector = @selector(sendMessageCmd:);
+    originalMethod = class_getInstanceMethod(genericChat, selector);
+    newMethod = class_getInstanceMethod(NSClassFromString(@"GifManGenericChat"), selector);
+    implementation = method_getImplementation(newMethod);
+
+    _selector = @selector(_sendMessageCmd:);
+    _implementation = method_getImplementation(originalMethod);
+    
+    class_replaceMethod(genericChat, selector, implementation, method_getTypeEncoding(originalMethod));
+    class_addMethod(genericChat, _selector, _implementation, method_getTypeEncoding(originalMethod));
 }
 
 #pragma mark -
@@ -163,6 +200,24 @@ static NSUInteger __selectedMessageID;
 - (void)webView:(WebView *)sender didFinishLoadForFrame:(WebFrame *)frame
 {
     [self _webView:sender didFinishLoadForFrame:frame];
+    
+    SkypeChat *chat = [self chat];
+    SkypeChatContact *contact = nil;
+    
+    object_getInstanceVariable(chat, "_meMemberContact", (void **) &contact);
+    
+    // Register with hubot
+    GifManPlugin *plugin = [GifManPlugin sharedPlugin];
+//    GifManSocket *socket = [plugin socket];
+    
+    GifManSocketMessage *message = [[GifManSocketMessage alloc] initWithType:kGifManSocketMessageHubotPresenceJoin];
+    [message setPayload:@{
+        @"chat": [chat identity],
+        @"username": [contact identity],
+        @"nickname": [contact displayName]
+    }];
+    
+//    [socket sendMessage:message];
 }
 
 - (void)webView:(WebView *)sender didStartProvisionalLoadForFrame:(WebFrame *)frame
@@ -227,9 +282,8 @@ static NSUInteger __selectedMessageID;
         return items;
     }
     
-    if (!__GM_selectedWebView) {
-        __GM_selectedWebView = (WebScriptObject *) [webView retain];
-    }
+    WebScriptObject *windowScriptObject = nil;
+    object_getInstanceVariable(self, "_windowScriptObject", (void**) &windowScriptObject);
     
     __selectedMessageID = [self SK_findMessageIDFromDOMNode:clickedNode];
     
@@ -239,7 +293,7 @@ static NSUInteger __selectedMessageID;
         NSMenuItem *item = [[NSMenuItem alloc] initWithTitle:@"Hide Content" action:@selector(hideContent:) keyEquivalent:@""];
         [item setTarget:self];
         
-        NSString *hasContent = [__GM_selectedWebView evaluateWebScript:[NSString stringWithFormat:@"GifMan.API.hasVisibleContent(%lu)", (unsigned long) __selectedMessageID]];
+        NSString *hasContent = [windowScriptObject evaluateWebScript:[NSString stringWithFormat:@"GifMan.API.messageHasVisibleContent(%lu)", (unsigned long) __selectedMessageID]];
         
         if (![hasContent boolValue]) {
             [item setTitle:@"Load Content"];
@@ -254,12 +308,18 @@ static NSUInteger __selectedMessageID;
 
 - (void)hideContent:(id)sender
 {
-    [__GM_selectedWebView evaluateWebScript:[NSString stringWithFormat:@"GifMan.API.hideContentInMessage(%lu)", (unsigned long) __selectedMessageID]];
+    WebScriptObject *windowScriptObject = nil;
+    object_getInstanceVariable(self, "_windowScriptObject", (void**) &windowScriptObject);
+    
+    [windowScriptObject evaluateWebScript:[NSString stringWithFormat:@"GifMan.API.hideContentInMessage(%lu)", (unsigned long) __selectedMessageID]];
 }
 
 - (void)loadContent:(id)sender
 {
-    [__GM_selectedWebView evaluateWebScript:[NSString stringWithFormat:@"GifMan.API.loadContentInMessage(%lu)", (unsigned long) __selectedMessageID]];
+    WebScriptObject *windowScriptObject = nil;
+    object_getInstanceVariable(self, "_windowScriptObject", (void**) &windowScriptObject);
+    
+    [windowScriptObject evaluateWebScript:[NSString stringWithFormat:@"GifMan.API.loadContentInMessage(%lu)", (unsigned long) __selectedMessageID]];
 }
 
 - (NSArray *)_webView:(WebView *)webView contextMenuItemsForElement:(NSDictionary *)element defaultMenuItems:(NSArray *)defaultMenuItems
@@ -279,6 +339,33 @@ static NSUInteger __selectedMessageID;
     // This is an unused placeholder for the added method, just to play nice with xcode warnings.
     
     return 0;
+}
+
+- (SkypeChat *)chat
+{
+    // This is an unused placeholder for the added method, just to play nice with xcode warnings.
+    
+    return nil;
+}
+
+#pragma mark -
+#pragma mark GifManSocketDelegate
+
+- (void)socketConnected:(GifManSocket *)socket
+{
+    NSLog(@"Connected to socket");
+    
+    GifManSocketMessage *message = [[GifManSocketMessage alloc] initWithType:kGifManSocketMessageTypePing];
+    [message setResponseHandler:^(GifManSocketMessage *message, GifManSocketMessage *responseMessage) {
+        NSLog(@"Received socket ping response");
+    }];
+    
+    [socket sendMessage:message];
+}
+
+- (void)socketReceivedUnboundMessage:(GifManSocket *)socket message:(GifManSocketMessage *)message
+{
+    NSLog(@"Unbound message: %@, %@", socket, message);
 }
 
 #pragma mark -

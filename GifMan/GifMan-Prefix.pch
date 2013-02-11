@@ -7,6 +7,9 @@
 #import <Cocoa/Cocoa.h>
 #import <Skype/Skype.h>
 
+#import "WebSocket_Prefix.pch"
+#import "SBJson.h"
+
 #if !defined(GIFMAN_EXTERN)
     #define GIFMAN_EXTERN extern
 #endif

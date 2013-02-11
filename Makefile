@@ -12,11 +12,17 @@ BUNDLE_INSTALL_DIR = $(SIMBLE_INSTALL_DIR)/Plugins
 LAUNCH_AGENT_INSTALL_DIR = ~/Library/LaunchAgents
 LAUNCH_AGENT_PLIST_FILE = com.tomarnfeld.gifman.plist
 
+GIFMAN_SOCKET_HOST=127.0.0.1
+GIFMAN_SOCKET_PORT=1337
+
+NPM_EXECUTABLE_HOME := server/node_modules/.bin
+PATH := ${NPM_EXECUTABLE_HOME}:${PATH}
+
 #
 # GifMan Makefile
 #
 
-all: clean bundle style
+all: clean bundle style hubot
 
 #
 # Build Targets
@@ -24,7 +30,8 @@ all: clean bundle style
 
 bundle:
 	@echo "`tput setaf 6`Bilding SIMBL bundle`tput sgr0`"
-	@xcodebuild -project "$(PROJECT)" -target "$(BUNDLE_TARGET)"
+	@xcodebuild -project "$(PROJECT)" -target "$(BUNDLE_TARGET)" \
+	  GCC_PREPROCESSOR_DEFINITIONS="GIFMAN_SOCKET_HOST=@\\\"$(GIFMAN_SOCKET_HOST)\\\" GIFMAN_SOCKET_PORT=$(GIFMAN_SOCKET_PORT)"
 	@echo "`tput setaf 2`✔ Built bundle`tput sgr0`"
 
 style:
@@ -44,6 +51,9 @@ simbl:
 	else \
 		echo "`tput setaf 2`✔ SIMBL already installed`tput sgr0`"; \
 	fi
+
+hubot:
+	@cd server && npm install
 
 #
 # Clean Targets

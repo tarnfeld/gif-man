@@ -23,15 +23,14 @@ GifMan.Conversation = function (api, kvStore) {
 
     // Check all messages in the page for changes
     self._checkMessages = function () {
-        $(".item:not(.read)", _container).each(function(i, e) { self._parseMessage(e); });
-        $(".item.force-load", _container).each(function(i, e) { self._parseMessage(e); });
+        $(".item:not(.read), .item.force-load", _container).each(function(i, e) { self._parseMessage(e); });
     };
 
     // Parse a message and handle any embedding
     self._parseMessage = function (message) {
       if ($(message).hasClass("loading") || $(message).hasClass("loaded") || $(message).hasClass("force-hidden")) return;
 
-      if (!kvStore.get("embed_enabled")) {
+      if (!kvStore.get("embed_enabled") && !$(message).hasClass("force-load")) {
         $(message).addClass("loaded");
         return;
       }
@@ -214,6 +213,34 @@ GifMan.Conversation = function (api, kvStore) {
     this._init();
 };
 
+// Helpers
+GifMan.Helpers = {
+
+  // Linkify
+  linkify: function (text) {
+    return text.replace(
+      /((https?\:\/\/)|(www\.))(\S+)(\w{2,4})(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/gi,
+      function(url){
+        var full_url = url;
+        if (!full_url.match('^https?:\/\/')) {
+          full_url = 'http://' + full_url;
+        }
+        return '<a href="' + full_url + '">' + url + '</a>';
+    }
+    );
+  },
+
+  // Format a string
+  format: function (text) {
+    return text.replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1<br />$2');
+
+    // WIP
+    return text
+            .replace(/\s/g, '&nbsp;')
+            .replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1<br />$2');
+  }
+}
+
 // Notification API
 GifMan.API = {
   hideContentInMessage: function (message_id) {
@@ -223,8 +250,31 @@ GifMan.API = {
   loadContentInMessage: function (message_id) {
     $("#" + message_id).removeClass("loading").removeClass("loaded").addClass("force-load").removeClass("force-hidden");
   },
-  hasVisibleContent: function (message_id) {
+  messageHasVisibleContent: function (message_id) {
     return $("#" + message_id).hasClass("loaded");
+  },
+  hasContent: function(message_id) {
+    return $("#" + message_id).find(".body a").length > 0;
+  },
+  addHubotMessage: function(message_id, messages) {
+    var div = $("<div class=\"item hubot emote\"><div class=\"container\"><div class=\"head\"><span class=\"sender\">Hubot</span><span class=\"time\"></span><button class=\"delete\" title=\"Remove Message\"></button></div><div class=\"body\"></div></div></div>"),
+        d = new Date();
+
+    $(".time", div).text(d.getHours() + ':' + d.getMinutes());
+
+    $.each(messages, function(i, message) {
+      $(".body", div).append($("<p>").html(GifMan.Helpers.format(GifMan.Helpers.linkify(message))));
+    })
+
+    if ($("#typing").length > 0) {
+      $("#conversation #typing").before(div);
+    } else {
+      $("#conversation").append(div);
+    }
+
+    if (scroll && (document.body.scrollTop+window.innerHeight >= document.body.offsetHeight-106)) {
+      window.scrollTo(0, $("#conversation").outerHeight());
+    }
   }
 };
 

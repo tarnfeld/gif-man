@@ -17,3 +17,7 @@ Products/*
 xcuserdata
 profile
 *.moved-aside
+npm-debug.log
+
+server/node_modules/*
+server/*-scripts.json

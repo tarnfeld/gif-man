@@ -1,0 +1,78 @@
+#!/usr/bin/env coffee
+# vim:ft=coffee ts=2 sw=2 et :
+# -*- mode:coffee -*-
+
+commander = require('commander')
+http = require('http')
+winston = require('winston')
+endpoints = require('../src/socket-endpoints')
+io = null
+
+
+commander.version "0.0.1"
+commander.option "-v, --verbose", "Verbose logging", false
+commander.option "-p, --port [port]", "Socket port", "1337"
+commander.parse process.argv
+
+
+logger = new (winston.Logger)({
+  transports: [
+    new (winston.transports.Console)({
+      level: "verbose",
+      timestamp: true,
+      json: false,
+      silent: commander.verbose,
+      colorize: true
+    })
+  ]
+})
+
+winston.addColors
+  error: "red",
+  warn: "yellow",
+  info: "cyan",
+  debug: "grey",
+
+
+io = require('socket.io').listen parseInt(commander.port),
+  logger:
+    debug: logger.debug,
+    info: logger.info,
+    error: logger.error,
+    warn: logger.warn
+  transports: ["websocket"]
+
+logger.info "socket.io listening on " + commander.port
+
+io.sockets.on "connection", (socket) ->
+  logger.log "info", "client connected"
+
+  socket.on "message", (raw_data) ->
+    data = JSON.parse raw_data
+
+    logger.debug "message received: " + raw_data
+
+    if (!data)
+      logger.error "invalid message data: " + raw_data
+
+    if (typeof data.type == 'undefined')
+      logger.error "message type is undefined: " + raw_data
+      return
+
+    if (typeof data.identifier == 'undefined')
+      logger.error "message identifier is undefined: " + raw_data
+      return
+
+    if (typeof endpoints[data.type] == 'undefined')
+      logger.error "unknown endpoint " + data.type
+      return
+
+    callback = (payload) ->
+      if (payload)
+        socket.emit("message", {
+          type: data.type,
+          identifier: data.identifier,
+          payload: payload
+        })
+
+    endpoints[data.type] { socket: socket, logger: logger, identifier: data.identifier, type: data.type }, data.payload, callback
