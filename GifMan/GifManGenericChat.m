@@ -23,7 +23,7 @@
 - (void)sendMessageCmd:(IMTextInputView *)textView
 {
     NSString *message = [textView string];
-    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"^#?!hubot.*" options:0 error:nil];
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"^#?!.*" options:0 error:nil];
     NSTextCheckingResult *result = [regex firstMatchInString:message options:0 range:NSMakeRange(0, [message length])];
     
     if ([result numberOfRanges] > 0) {
