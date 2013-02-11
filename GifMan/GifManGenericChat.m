@@ -39,7 +39,7 @@
         NSString *nickname = [contact displayName];
         NSString *replyType;
         
-        NSRegularExpression *routeRegex = [NSRegularExpression regularExpressionWithPattern:@"> *skype$" options:NSRegularExpressionCaseInsensitive error:nil];
+        NSRegularExpression *routeRegex = [NSRegularExpression regularExpressionWithPattern:@"[>#] *(skype|s)$" options:NSRegularExpressionCaseInsensitive error:nil];
         NSTextCheckingResult *routeResult = [routeRegex firstMatchInString:message options:0 range:NSMakeRange(0, [message length])];
         
         if (routeResult != nil && [routeResult numberOfRanges] > 0) {
