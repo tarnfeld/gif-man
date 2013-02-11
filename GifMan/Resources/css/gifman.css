@@ -49,3 +49,9 @@
   margin: 0 !important;
   padding: 0 !important;
 }
+
+.item.hubot ~ .item.followup .container {
+  margin-top: 0px;
+  padding-top: 9px;
+  border-top: 1px solid #e6e6e6;
+}

@@ -10,6 +10,7 @@
 #import "GifManPlugin.h"
 
 #import "SkypeChatContact.h"
+#import "IMTextInputView.h"
 
 #import <objc/runtime.h>
 #import <WebKit/WebKit.h>
@@ -23,7 +24,7 @@
 - (void)sendMessageCmd:(IMTextInputView *)textView
 {
     NSString *message = [textView string];
-    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"^#?!.*" options:0 error:nil];
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"^!.*" options:0 error:nil];
     NSTextCheckingResult *result = [regex firstMatchInString:message options:0 range:NSMakeRange(0, [message length])];
     
     if ([result numberOfRanges] > 0) {
@@ -38,8 +39,11 @@
         NSString *nickname = [contact displayName];
         NSString *replyType;
         
-        if ([[message substringWithRange:NSMakeRange(0, 2)] isEqualToString:@"#!"]) {
-            message = [message substringFromIndex:2];
+        NSRegularExpression *routeRegex = [NSRegularExpression regularExpressionWithPattern:@"> *skype$" options:NSRegularExpressionCaseInsensitive error:nil];
+        NSTextCheckingResult *routeResult = [routeRegex firstMatchInString:message options:0 range:NSMakeRange(0, [message length])];
+        
+        if (routeResult != nil && [routeResult numberOfRanges] > 0) {
+            message = [[message substringWithRange:NSMakeRange(0, [routeResult rangeAtIndex:0].location)] substringFromIndex:1];
             replyType = kGifManSocketMessageReplyTypeSpray;
         }
         else {
@@ -52,7 +56,7 @@
             @"nickname": nickname,
             @"chat": chatIdentity,
             @"chat_name": chatName,
-            @"message": message,
+            @"message": [message stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]],
             @"reply_type": replyType
         };
         
@@ -61,24 +65,38 @@
         [socketMessage setPayload:payload];
         [socketMessage setChatDisplay:[self display]];
         [socketMessage setResponseHandler:^(GifManSocketMessage *message, GifManSocketMessage *response) {
-           
+
             NSArray *messages = [[response payload] objectForKey:@"messages"];
             NSString *identifier = [message identifier];
-            
-            WebScriptObject *window;
-            object_getInstanceVariable([message chatDisplay], "_windowScriptObject", (void **)&window);
-            
-            [[window evaluateWebScript:@"GifMan.API"] callWebScriptMethod:@"addHubotMessage" withArguments:@[identifier, messages]];
+            NSString *rReplyType = [[message payload] objectForKey:@"reply_type"];
+                        
+            if ([rReplyType isEqualToString:kGifManSocketMessageReplyTypeMe]) {
+                WebScriptObject *window;
+                object_getInstanceVariable([message chatDisplay], "_windowScriptObject", (void **)&window);
+                
+                [[window evaluateWebScript:@"GifMan.API"] callWebScriptMethod:@"addHubotMessage" withArguments:@[identifier, messages]];
+            }
+            else if ([rReplyType isEqualToString:kGifManSocketMessageReplyTypeSpray]) {
+                
+                GenericChat *chat;
+                object_getInstanceVariable([message chatDisplay], "_chat", (void **)&chat);
+                
+//                    IMTextInputView *input = [class_createInstance(NSClassFromString(@"IMTextInputView"), sizeof("@")) init];
+//                    [input setString:[messages componentsJoinedByString:@"\n"]];
+//                    [input setValue:[NSNumber numberWithBool:YES] forKey:@"_sendingEnabled"];
+//                    
+//                    [input release];
+                
+                [[chat inputText] setString:[messages componentsJoinedByString:@"\n"]];
+            }
         }];
         
         [socket sendMessage:socketMessage];
         
-        if (![replyType isEqualToString:kGifManSocketMessageReplyTypeSpray]) {
-            [textView setString:@""];
-            [self makeInputTextFirstResponder];
-            
-            return;
-        }
+        [textView setString:@""];
+        [self makeInputTextFirstResponder];
+                
+        return;
     }
     
     [self _sendMessageCmd:textView];

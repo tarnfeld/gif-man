@@ -13,7 +13,8 @@ class GifMan extends Adapter
       "type": "GifMan::hubotReply"
       "identifier": envelope.message.id,
       "payload": {
-        "messages": strings
+        "messages": strings,
+        "reply_type": envelope.user.reply_type
       }
     })
 
@@ -51,7 +52,8 @@ class GifMan extends Adapter
         user = @userForId message.payload.username,
                name: message.payload.nickname,
                room: message.payload.chat,
-               room_name: message.payload.chat_name
+               room_name: message.payload.chat_name,
+               reply_type: message.payload.reply_type
 
         @receive new TextMessage user, message.payload.message, message.identifier
 
